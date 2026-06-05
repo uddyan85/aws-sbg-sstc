@@ -1,26 +1,299 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ==================================================
+   BASE
+================================================== */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.aws-body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #050816;
+  color: #ffffff;
+}
+
+.main-content {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+}
+
+/* ==================================================
+   BACKGROUND
+================================================== */
+.background-wrapper {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -50;
+}
+
+.background-base {
+  position: absolute;
+  inset: 0;
+  background: #050816;
+}
+
+/* ==================================================
+   GLOWING ORBS (performance optimised)
+================================================== */
+.gradient-layer {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(140px);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.gradient-1 {
+  width: 900px;
+  height: 900px;
+  background: rgba(164, 90, 250, 0.25);
+  top: -250px;
+  left: -250px;
+  animation: orb1 18s ease-in-out infinite;
+}
+
+.gradient-2 {
+  width: 800px;
+  height: 800px;
+  background: rgba(164, 90, 250, 0.2);
+  top: 10%;
+  right: -200px;
+  animation: orb2 22s ease-in-out infinite;
+}
+
+.gradient-3 {
+  width: 700px;
+  height: 700px;
+  background: rgba(164, 90, 250, 0.15);
+  bottom: -200px;
+  left: 30%;
+  animation: orb3 26s ease-in-out infinite;
+}
+
+/* ==================================================
+   AURORA WAVES
+================================================== */
+.aurora-wave {
+  position: absolute;
+  width: 160%;
+  left: -30%;
+  border-radius: 50%;
+  filter: blur(100px);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.aurora-wave-1 {
+  top: 10%;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(164, 90, 250, 0.18), transparent 70%);
+  animation: wave1 18s ease-in-out infinite;
+}
+
+.aurora-wave-2 {
+  bottom: 5%;
+  height: 450px;
+  background: radial-gradient(ellipse at center, rgba(164, 90, 250, 0.14), transparent 75%);
+  animation: wave2 24s ease-in-out infinite;
+}
+
+/* ==================================================
+   CENTER & TOP GLOWS
+================================================== */
+.center-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: rgba(164, 90, 250, 0.08);
+  filter: blur(160px);
+}
+
+.top-glow {
+  position: absolute;
+  width: 1200px;
+  height: 700px;
+  left: 50%;
+  top: -200px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(164, 90, 250, 0.06);
+  filter: blur(140px);
+}
+
+/* ==================================================
+   EXTRA GLOWS
+================================================== */
+.extra-glow-left {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  bottom: -150px;
+  left: 15%;
+  border-radius: 999px;
+  background: rgba(164, 90, 250, 0.08);
+  filter: blur(160px);
+}
+
+.extra-glow-right {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  right: 10%;
+  top: 20%;
+  border-radius: 999px;
+  background: rgba(164, 90, 250, 0.08);
+  filter: blur(160px);
+}
+
+/* ==================================================
+   GRID & NOISE
+================================================== */
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.5;
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+  background-size: 5px 5px;
+}
+
+/* ==================================================
+   ANIMATIONS
+================================================== */
+@keyframes orb1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(180px, 120px) scale(1.15); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-180px, 100px) scale(1.2); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orb3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(120px, -120px) scale(1.15); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes wave1 {
+  0% { transform: rotate(0deg) translateY(0); }
+  50% { transform: rotate(2deg) translateY(40px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+@keyframes wave2 {
+  0% { transform: rotate(0deg) translateY(0); }
+  50% { transform: rotate(-2deg) translateY(-40px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+/* ==================================================
+   RESPONSIVE & PERFORMANCE TWEAKS
+================================================== */
+@media (max-width: 1279px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Reduce background intensity on small screens */
+@media (max-width: 640px) {
+  .gradient-1,
+  .gradient-2,
+  .gradient-3 {
+    filter: blur(100px);
+    opacity: 0.7;
+  }
+  .grid-overlay {
+    background-size: 30px 30px;
+    opacity: 0.3;
+  }
+  .aurora-wave {
+    filter: blur(70px);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .gradient-1,
+  .gradient-2,
+  .gradient-3 {
+    filter: blur(120px);
+  }
+  .grid-overlay {
+    background-size: 45px 45px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-layer,
+  .aurora-wave {
+    animation: none;
+  }
+  .noise-overlay {
+    opacity: 0.01;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Smooth navbar transition helper (optional) */
+.navbar-scroll-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* FOR sticky top announcement strip */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1.1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1.1); }
+}
+
+
+/* for HERO image glow: */
+@keyframes sweep {
+  0% {
+    transform: translateX(-120%) rotate(12deg);
+  }
+  100% {
+    transform: translateX(220%) rotate(12deg);
+  }
+}
+
+.animate-sweep {
+  animation: sweep 2.2s linear infinite;
 }
