@@ -84,13 +84,13 @@ export default function Hero() {
         >
           {/* <span className="block text-white">AWS</span> */}
 
-          <span className="bg-gradient-to-r from-[#FF9900] via-white to-[#FF9900] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r text-white bg-clip-text text-transparent">
            Student Community Day
           </span>
 
-          <span className="block mt-2 bg-gradient-to-r from-[#FF9900] via-white to-[#FF9900] bg-clip-text text-transparent">
-            Bhilai 2026
-          </span>
+         <span className="inline-block mt-2 font-medium text-[#ffb347] drop-shadow-[0_0_35px_rgba(255,179,71,1)] animate-pulse-slow">
+  Bhilai 2026
+</span>
 
           {/* <span className="block text-white mt-2">Bhilai 2026</span> */}
 

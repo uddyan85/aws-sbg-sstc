@@ -34,13 +34,14 @@ export default function FloatingParticles() {
 
     const mouse = { x: width / 2, y: height / 2, radius: 160 };
 
-    const labels = ["AWS", "EC2", "S3", "Lambda", "IAM", "Bedrock"];
+    const labels = ["AWS", "EC2", "S3", "Lambda", "IAM", "Bedrock", "RDS", "Aurora", "DynamoDB", "CloudFront", "ECS", "EKS", "CloudWatch", "VPC", "SQS", "SageMaker", ""];
+    
     const colors = ["#FF9900", "#4DA3FF", "#A855F7", "#22C55E", "#FF4D4D", "#6B7280"];
 
     const nodes: Node[] = [];
     const pulses: Pulse[] = [];
 
-    const nodeCount = 24;
+    const nodeCount = 20;
 
     for (let i = 0; i < nodeCount; i++) {
       const x = Math.random() * width;

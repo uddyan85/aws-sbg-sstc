@@ -1,12 +1,39 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import {
+  Inter,
+  Plus_Jakarta_Sans,
+  JetBrains_Mono,
+  Space_Grotesk,
+} from "next/font/google";
 import "./globals.css";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
+/* ================= AWS + AMAZON STYLE FONT STACK ================= */
+
+// Primary UI font (AWS console feel)
 const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+// Premium event / hero headings (more modern than Jakarta)
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
+});
+
+// Secondary fallback heading font (kept for layering)
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+});
+
+// Code / infra / cloud logs style
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +49,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} aws-body`}>
+      <body
+        className={`
+          ${inter.variable}
+          ${spaceGrotesk.variable}
+          ${jakarta.variable}
+          ${mono.variable}
+          aws-body
+        `}
+      >
         {/* ================= BACKGROUND ================= */}
         <div className="background-wrapper">
           <div className="background-base" />
