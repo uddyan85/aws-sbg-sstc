@@ -1,66 +1,423 @@
-﻿import { Cloud, Heart, MapPin, Mail } from 'lucide-react'
-import Link from 'next/link'
+﻿"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+
+
+import {
+  Cloud,
+  Heart,
+  Mail,
+  MapPin,
+  Shield,
+  FileText,
+  ArrowUpRight,
+} from "lucide-react";
+
+import {
+  FaLinkedinIn,
+  FaInstagram,
+  FaMeetup,
+  FaXTwitter,
+} from "react-icons/fa6";
+
+import PolicyDialog from "../ui/PolicyDialog";
 
 export default function Footer() {
+  const [openConduct, setOpenConduct] = useState(false);
+  const [openPrivacy, setOpenPrivacy] = useState(false);
+
   return (
-    <footer className="bg-slate-950 text-slate-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid gap-12 xl:grid-cols-4">
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="rounded-3xl bg-[#FF9900]/15 p-3 text-[#FF9900]">
-                <Cloud className="h-6 w-6" />
+    <>
+      <footer className="relative mt-16">
+
+        {/* TOP BORDER */}
+
+        <div className="h-px bg-gradient-to-r from-transparent via-[#A45AFA]/50 to-transparent" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-5 py-10">
+
+          {/* HEADER */}
+
+          <div
+            className="
+              mb-14
+              flex flex-col lg:flex-row
+              gap-8
+              justify-between
+            "
+          >
+            <div className="max-w-xl">
+
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="
+                    h-14 w-16
+                    rounded-2xl
+                    bg-[#A45AFA]/10
+                    border border-[#A45AFA]/20
+                    flex items-center justify-center
+                  "
+                >
+                  <Cloud className="h-7 w-7 text-[#A45AFA]" />
+                </div>
+
+                <div>
+                  <h3 className="text-white font-bold text-xl">
+                    AWS SBG SSTC
+                  </h3>
+
+                  <p className="text-slate-400 text-sm">
+                    Bhilai 2026
+                  </p>
+                </div>
               </div>
-              <span className="text-2xl font-bold text-white">AWS Bhilai</span>
+
+              <p className="text-slate-400 leading-10">
+                A premier gathering of innovators, developers, and industry leaders focused on meaningful connections, transformative ideas, and the technologies redefining the future.
+              </p>
             </div>
-            <p className="text-sm leading-7 text-slate-400">
-              Empowering students with cloud knowledge, hands-on learning, and community connections.
-            </p>
-          </div>
 
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
-            <ul className="space-y-3 text-sm text-slate-400">
-              <li><Link href="#about" className="hover:text-[#FF9900] transition-colors">About</Link></li>
-              <li><Link href="#speakers" className="hover:text-[#FF9900] transition-colors">Speakers</Link></li>
-              <li><Link href="#agenda" className="hover:text-[#FF9900] transition-colors">Agenda</Link></li>
-              <li><Link href="#register" className="hover:text-[#FF9900] transition-colors">Register</Link></li>
-            </ul>
-          </div>
+            {/* EVENT STATUS */}
 
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Contact</h3>
-            <ul className="space-y-3 text-sm text-slate-400">
-              <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#FF9900]" />
-                <a href="mailto:bhilai@awsstudentcommunity.day" className="hover:text-[#FF9900] transition-colors">
-                  bhilai@awsstudentcommunity.day
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#FF9900]" />
-                <span>Bhilai, Chhattisgarh, India</span>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Stay connected</h3>
-            <div className="flex flex-col gap-3 text-sm text-slate-400">
-              <Link href="#" className="hover:text-[#FF9900] transition-colors">LinkedIn</Link>
-              <Link href="#" className="hover:text-[#FF9900] transition-colors">Twitter</Link>
-              <Link href="#" className="hover:text-[#FF9900] transition-colors">Instagram</Link>
+            <div
+              className="
+                h-fit
+                px-5 py-3
+                rounded-2xl
+                border border-[#A45AFA]/20
+                bg-[#A45AFA]/1
+                text-[#A45AFA]
+                text-sm
+                uppercase
+                font-semibold
+                flex items-center gap-3
+              "
+            >
+              AWS Student Community Day • AUGUST 2026
             </div>
           </div>
+
+          {/* GRID */}
+
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+
+            {/* EVENT */}
+
+            <div>
+              <h4 className="text-white font-semibold mb-5">
+                The Event
+              </h4>
+
+              <ul className="space-y-3">
+                {[
+                  "About",
+                  "Agenda",
+                  "Speakers",
+                  "Venue",
+                  "FAQ",
+                ].map((item) => (
+                  <li key={item}>
+                    <Link
+                      href="#"
+                      className="
+                        text-slate-400
+                        hover:text-[#A45AFA]
+                        transition
+                      "
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* COMMUNITY */}
+
+            <div>
+              <h4 className="text-white font-semibold mb-5">
+                Community
+              </h4>
+
+              <ul className="space-y-3">
+
+                <li>
+                  <Link
+                    href="https://builder.aws.com/community/student-builder-groups"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                    flex items-center gap-2
+                    text-slate-400
+                    hover:text-[#A45AFA]
+                    transition
+                    "
+                  >
+                    AWS Student Builder Groups
+                    <ArrowUpRight size={14} />
+                  </Link>
+                </li>
+
+                <li>
+                  <button
+                    onClick={() => setOpenConduct(true)}
+                    className="
+                      text-slate-400
+                      hover:text-[#A45AFA]
+                      transition
+                      flex items-center gap-2
+                    "
+                  >
+                    <Shield size={15} />
+                    Code of Conduct
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    onClick={() => setOpenPrivacy(true)}
+                    className="
+                      text-slate-400
+                      hover:text-[#A45AFA]
+                      transition
+                      flex items-center gap-2
+                    "
+                  >
+                    <FileText size={15} />
+                    Privacy Policy
+                  </button>
+                </li>
+
+              </ul>
+            </div>
+
+
+            {/* RESOURCES */}
+
+           <div>
+  <h4 className="text-white font-semibold mb-5">
+    AWS Resources
+  </h4>
+
+  <ul className="space-y-3">
+
+    <li>
+      <Link
+        href="https://aws.amazon.com/free/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          flex items-center gap-2
+          text-slate-400
+          hover:text-[#A45AFA]
+          transition
+        "
+      >
+        AWS Free Tier
+        <ArrowUpRight size={14} />
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        href="https://skillbuilder.aws/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          flex items-center gap-2
+          text-slate-400
+          hover:text-[#A45AFA]
+          transition
+        "
+      >
+        AWS Skill Builder
+        <ArrowUpRight size={14} />
+      </Link>
+    </li>
+
+    {/* <li>
+      <Link
+        href="https://aws.amazon.com/certification/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          flex items-center gap-2
+          text-slate-400
+          hover:text-[#A45AFA]
+          transition
+        "
+      >
+        AWS Certification
+        <ArrowUpRight size={14} />
+      </Link>
+    </li> */}
+
+    <li>
+      <Link
+        href="https://docs.aws.amazon.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          flex items-center gap-2
+          text-slate-400
+          hover:text-[#A45AFA]
+          transition
+        "
+      >
+        AWS Docs
+        <ArrowUpRight size={14} />
+      </Link>
+    </li>
+
+  </ul>
+</div>
+
+
+            {/* CONTACT */}
+
+            <div>
+              <h4 className="text-white font-semibold mb-5">
+                Contact
+              </h4>
+
+              <div className="space-y-4 text-slate-400">
+
+                <div className="flex gap-3">
+                  <Mail size={18} />
+                  <span>aws.sbg.sstc@gmail.com</span>
+                </div>
+
+                <div className="flex gap-3">
+                  <MapPin size={18} />
+                  <span>Bhilai, Chhattisgarh, India</span>
+                </div>
+
+
+{/* add social media links icons */}
+
+<div className="flex flex-wrap gap-3">
+
+  <Link
+    href="https://www.meetup.com/aws-sbg-at-sstc/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group h-11 w-11 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center hover:bg-[#A45AFA]/10 hover:border-[#A45AFA]/40 transition-all"
+  >
+    <FaMeetup className="text-slate-400 group-hover:text-[#A45AFA] text-lg" />
+  </Link>
+
+  <Link
+    href="https://www.linkedin.com/company/aws-sbg-sstc/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group h-11 w-11 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center hover:bg-[#A45AFA]/10 hover:border-[#A45AFA]/40 transition-all"
+  >
+    <FaLinkedinIn className="text-slate-400 group-hover:text-[#A45AFA] text-lg" />
+  </Link>
+
+  <Link
+    href="https://www.instagram.com/aws_student_builder_group_sstc/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group h-11 w-11 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center hover:bg-[#A45AFA]/10 hover:border-[#A45AFA]/40 transition-all"
+  >
+    <FaInstagram className="text-slate-400 group-hover:text-[#A45AFA] text-lg" />
+  </Link>
+
+  <Link
+    href="https://x.com/awsccsstc/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group h-11 w-11 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center hover:bg-[#A45AFA]/10 hover:border-[#A45AFA]/40 transition-all"
+  >
+    <FaXTwitter className="text-slate-400 group-hover:text-[#A45AFA] text-lg" />
+  </Link>
+
+</div>
+
+              </div>
+            </div>
+
+          </div>
+
+          {/* BOTTOM */}
+
+          <div className="mt-14 pt-8 border-t border-white/10">
+
+            <div
+              className="
+                flex flex-col md:flex-row
+                gap-4
+                justify-between
+                items-center
+              "
+            >
+              <p className="text-slate-500 text-sm">
+                © 2026 AWS Student Community Day Bhilai.
+              </p>
+
+              <div className="flex items-center gap-2 text-slate-500 text-sm">
+                Made with
+                <Heart
+                  className="text-[#A45AFA]"
+                  size={15}
+                />
+                for builders.
+              </div>
+            </div>
+          </div>
+
         </div>
+      </footer>
 
-        <div className="mt-12 rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center text-sm text-slate-400">
-          <p>© 2026 AWS Student Community Day Bhilai. All rights reserved.</p>
-          <p className="mt-3 flex flex-wrap items-center justify-center gap-2 text-slate-400">
-            Made with <Heart className="w-4 h-4 text-red-500" /> by the AWS Student Community.
+      {/* CODE OF CONDUCT */}
+
+      <PolicyDialog
+        open={openConduct}
+        onClose={() => setOpenConduct(false)}
+        title="Code of Conduct"
+        badge="COMMUNITY POLICY"
+      >
+        <div className="space-y-6 text-slate-300">
+          <p>
+            We are committed to providing a safe,
+            welcoming and inclusive environment.
           </p>
+
+          <ul className="space-y-3 list-disc pl-6">
+            <li>Respect all participants.</li>
+            <li>No harassment or discrimination.</li>
+            <li>Be professional and inclusive.</li>
+            <li>Follow organizer instructions.</li>
+            <li>Promote positive collaboration.</li>
+          </ul>
         </div>
-      </div>
-    </footer>
-  )
+      </PolicyDialog>
+
+      {/* PRIVACY */}
+
+      <PolicyDialog
+        open={openPrivacy}
+        onClose={() => setOpenPrivacy(false)}
+        title="Privacy Policy"
+        badge="LEGAL INFORMATION"
+      >
+        <div className="space-y-6 text-slate-300">
+          <p>
+            Your privacy matters. Information collected
+            during registration is used only for event
+            communication and management.
+          </p>
+
+          <ul className="space-y-3 list-disc pl-6">
+            <li>Information is never sold.</li>
+            <li>Used only for event purposes.</li>
+            <li>Stored securely.</li>
+            <li>You may request removal anytime.</li>
+          </ul>
+        </div>
+      </PolicyDialog>
+    </>
+  );
 }
