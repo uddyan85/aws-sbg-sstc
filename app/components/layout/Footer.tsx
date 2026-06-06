@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 
-
 import {
   Cloud,
   Heart,
@@ -26,6 +25,13 @@ import PolicyDialog from "../ui/PolicyDialog";
 export default function Footer() {
   const [openConduct, setOpenConduct] = useState(false);
   const [openPrivacy, setOpenPrivacy] = useState(false);
+const eventLinks = [
+  { label: "About", href: "#about" },
+  { label: "Agenda", href: "#agenda" },
+  { label: "Speakers", href: "#speakers" },
+  { label: "Venue", href: "#venue" },
+  { label: "FAQ", href: "#faq" },
+];
 
   return (
     <>
@@ -104,34 +110,23 @@ export default function Footer() {
 
             {/* EVENT */}
 
-            <div>
-              <h4 className="text-white font-semibold mb-5">
-                The Event
-              </h4>
-
-              <ul className="space-y-3">
-                {[
-                  "About",
-                  "Agenda",
-                  "Speakers",
-                  "Venue",
-                  "FAQ",
-                ].map((item) => (
-                  <li key={item}>
-                    <Link
-                      href="#"
-                      className="
-                        text-slate-400
-                        hover:text-[#A45AFA]
-                        transition
-                      "
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="space-y-3">
+  {eventLinks.map((item) => (
+    <li key={item.label}>
+      <Link
+        href={item.href}
+        className="
+          text-slate-400
+          hover:text-[#A45AFA]
+          transition-all
+          duration-300
+        "
+      >
+        {item.label}
+      </Link>
+    </li>
+  ))}
+</ul>
 
             {/* COMMUNITY */}
 
