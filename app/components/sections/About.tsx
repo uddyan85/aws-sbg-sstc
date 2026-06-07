@@ -223,13 +223,13 @@ export default function About() {
           <div className="grid gap-12 md:grid-cols-3">
             {[
               {
-                value: "499+",
+                value: "399+",
                 ghost: "499",
                 label: "Builders",
               },
               {
-                value: "15+",
-                ghost: "15",
+                value: "11+",
+                ghost: "11",
                 label: "Speakers",
               },
               {
