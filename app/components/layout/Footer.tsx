@@ -108,8 +108,13 @@ const eventLinks = [
 
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
 
-            {/* EVENT */}
 
+
+            {/*---------------------- EVENT ----------------------*/}
+<div>
+  <h4 className="text-white font-semibold mb-5 uppercase">
+                Event
+              </h4>
             <ul className="space-y-3">
   {eventLinks.map((item) => (
     <li key={item.label}>
@@ -127,11 +132,14 @@ const eventLinks = [
     </li>
   ))}
 </ul>
+</div>
 
-            {/* COMMUNITY */}
+
+
+            {/*---------------------- COMMUNITY ----------------------*/}
 
             <div>
-              <h4 className="text-white font-semibold mb-5">
+              <h4 className="text-white font-semibold mb-5 uppercase">
                 Community
               </h4>
 
@@ -188,10 +196,10 @@ const eventLinks = [
             </div>
 
 
-            {/* RESOURCES */}
+            {/*---------------------- RESOURCES ----------------------*/}
 
            <div>
-  <h4 className="text-white font-semibold mb-5">
+  <h4 className="text-white font-semibold mb-5 uppercase">
     AWS Resources
   </h4>
 
@@ -269,11 +277,11 @@ const eventLinks = [
 </div>
 
 
-            {/* CONTACT */}
+            {/*---------------------- CONNECT ----------------------*/}
 
             <div>
-              <h4 className="text-white font-semibold mb-5">
-                Contact
+              <h4 className="text-white font-semibold mb-5 uppercase">
+                Connect
               </h4>
 
               <div className="space-y-4 text-slate-400">
@@ -289,7 +297,7 @@ const eventLinks = [
                 </div>
 
 
-{/* add social media links icons */}
+{/*---------------------- social media links ----------------------*/}
 
 <div className="flex flex-wrap gap-3">
 
@@ -355,7 +363,7 @@ const eventLinks = [
               <div className="flex items-center gap-2 text-slate-500 text-sm">
                 Made with
                 <Heart
-                  className="text-[#A45AFA]"
+                  className="text-[#A45AFA] animate-pulse"
                   size={15}
                 />
                 for builders.
@@ -366,53 +374,172 @@ const eventLinks = [
         </div>
       </footer>
 
-      {/* CODE OF CONDUCT */}
+      {/*---------------------- CODE OF CONDUCT ----------------------*/}
 
       <PolicyDialog
-        open={openConduct}
-        onClose={() => setOpenConduct(false)}
-        title="Code of Conduct"
-        badge="COMMUNITY POLICY"
-      >
-        <div className="space-y-6 text-slate-300">
-          <p>
-            We are committed to providing a safe,
-            welcoming and inclusive environment.
-          </p>
+  open={openConduct}
+  onClose={() => setOpenConduct(false)}
+  title="Code of Conduct"
+  badge="COMMUNITY POLICY"
+>
+  <div className="space-y-6">
 
-          <ul className="space-y-3 list-disc pl-6">
-            <li>Respect all participants.</li>
-            <li>No harassment or discrimination.</li>
-            <li>Be professional and inclusive.</li>
-            <li>Follow organizer instructions.</li>
-            <li>Promote positive collaboration.</li>
-          </ul>
+    <div className="rounded-2xl border border-[#A45AFA]/20 bg-[#A45AFA]/5 p-5">
+      <p className="text-slate-300 leading-7">
+        We are committed to providing a safe, welcoming, inclusive, and
+        respectful environment for all attendees, speakers, volunteers,
+        and organizers throughout AWS Student Community Day Bhilai.
+      </p>
+    </div>
+
+    <div className="grid gap-3 sm:grid-cols-2">
+
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+        <div className="flex items-center gap-3">
+          <span className="text-lg">🤝</span>
+          <span className="text-white font-medium">
+            Respect Everyone
+          </span>
         </div>
-      </PolicyDialog>
+      </div>
 
-      {/* PRIVACY */}
-
-      <PolicyDialog
-        open={openPrivacy}
-        onClose={() => setOpenPrivacy(false)}
-        title="Privacy Policy"
-        badge="LEGAL INFORMATION"
-      >
-        <div className="space-y-6 text-slate-300">
-          <p>
-            Your privacy matters. Information collected
-            during registration is used only for event
-            communication and management.
-          </p>
-
-          <ul className="space-y-3 list-disc pl-6">
-            <li>Information is never sold.</li>
-            <li>Used only for event purposes.</li>
-            <li>Stored securely.</li>
-            <li>You may request removal anytime.</li>
-          </ul>
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+        <div className="flex items-center gap-3">
+          <span className="text-lg">🛡️</span>
+          <span className="text-white font-medium">
+            No Harassment
+          </span>
         </div>
-      </PolicyDialog>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+        <div className="flex items-center gap-3">
+          <span className="text-lg">💬</span>
+          <span className="text-white font-medium">
+            Professional Communication
+          </span>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+        <div className="flex items-center gap-3">
+          <span className="text-lg">⚡</span>
+          <span className="text-white font-medium">
+            Follow Event Guidelines
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+      <h4 className="mb-3 text-white font-medium">
+        Reporting Concerns
+      </h4>
+
+      <p className="text-sm text-slate-400 leading-7">
+        If you experience or witness behavior that violates this Code of
+        Conduct, please contact an event organizer immediately. Reports
+        will be handled respectfully and confidentially.
+      </p>
+    </div>
+
+    <p className="text-center text-xs sm:text-sm text-slate-500">
+      By attending this event, you agree to uphold these principles and
+      help create a positive experience for everyone.
+    </p>
+
+  </div>
+</PolicyDialog>
+
+
+
+      {/*---------------------- PRIVACY ----------------------*/}
+
+<PolicyDialog
+  open={openPrivacy}
+  onClose={() => setOpenPrivacy(false)}
+  title="Privacy Policy"
+  badge="LEGAL INFORMATION"
+>
+  <div className="space-y-6">
+
+    {/* INTRO */}
+
+    <div className="rounded-2xl border border-[#A45AFA]/20 bg-[#A45AFA]/5 p-5">
+      <p className="text-slate-300 leading-7">
+        Your privacy is important to us. Information collected during
+        registration and participation is used solely for event
+        communication, management, and improving attendee experience.
+      </p>
+    </div>
+
+    {/* POLICY ITEMS */}
+
+    <div className="grid gap-3 sm:grid-cols-2">
+
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+        <div className="flex items-center gap-3">
+          <span className="text-lg">🔒</span>
+          <span className="text-white font-medium">
+            Secure Storage
+          </span>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+        <div className="flex items-center gap-3">
+          <span className="text-lg">🚫</span>
+          <span className="text-white font-medium">
+            Never Sold
+          </span>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+        <div className="flex items-center gap-3">
+          <span className="text-lg">📧</span>
+          <span className="text-white font-medium">
+            Event Communication Only
+          </span>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+        <div className="flex items-center gap-3">
+          <span className="text-lg">🗑️</span>
+          <span className="text-white font-medium">
+            Data Removal Requests
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    {/* DETAILS */}
+
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+      <h4 className="mb-3 text-white font-medium">
+        How We Use Your Information
+      </h4>
+
+      <p className="text-sm text-slate-400 leading-7">
+        Personal information provided during registration may be used to
+        send event updates, important announcements, schedule changes,
+        participation details, and post-event communications related to
+        AWS Student Community Day Bhilai.
+      </p>
+    </div>
+
+    {/* FOOTER NOTE */}
+
+    <p className="text-center text-xs sm:text-sm text-slate-500">
+      By registering for this event, you consent to the collection and
+      use of information as described in this Privacy Policy.
+    </p>
+
+  </div>
+</PolicyDialog>
     </>
   );
 }
