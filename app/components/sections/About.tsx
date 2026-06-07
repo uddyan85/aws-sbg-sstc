@@ -37,10 +37,18 @@ const pillars = [
 
 export default function About() {
   return (
+    
     <section
       id="about"
       className="relative overflow-hidden bg-[#050816] py-32"
     >
+
+      {/* this for only make similar background color of About + Hero */}
+      <div className="absolute top-0 left-0 w-full h-10 overflow-hidden">
+  <div className="absolute inset-0 bg-gradient-to-b from-[#A45AFA]/35 via-[#A45AFA]/5 to-transparent" />
+
+  <div className="absolute left-1/2 -translate-x-1/2 -top-12 h-52 w-[800px] rounded-full bg-[#A45AFA]/20 blur-[120px]" />
+</div>
       {/* ===================== */}
       {/* BACKGROUND */}
       {/* ===================== */}
