@@ -1,96 +1,178 @@
-import { MapPin, Navigation, Car, Train, Bus } from 'lucide-react'
-import Link from 'next/link'
+"use client";
+
+import Link from "next/link";
+import {
+  MapPin,
+  Navigation,
+  Train,
+  Bus,
+  Car,
+  Accessibility,
+  Building2,
+} from "lucide-react";
 
 export default function Venue() {
   return (
-    <section id="venue" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Event Venue</h2>
-          <p className="text-xl text-gray-600">Bhilai&apos;s premier convention center</p>
+    <section
+      id="venue"
+      className="relative overflow-hidden bg-[#050816] py-32"
+    >
+
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -left-32 top-0 h-[550px] w-[550px] rounded-full bg-[#A45AFA]/15 blur-[150px]" />
+        <div className="absolute -right-32 bottom-0 h-[650px] w-[650px] rounded-full bg-[#A45AFA]/10 blur-[180px]" />
+
+        <div
+          className="absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(164,90,250,.35) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(164,90,250,.35) 1px, transparent 1px)
+            `,
+            backgroundSize: "70px 70px",
+          }}
+        />
+
+        {Array.from({ length: 25 }).map((_, i) => (
+          <span
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-[#A45AFA]/40 animate-pulse"
+            style={{
+              left: `${(i * 17) % 100}%`,
+              top: `${(i * 29) % 100}%`,
+              animationDelay: `${i * 0.2}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        {/* HEADER */}
+        <div className="mx-auto max-w-5xl text-center">
+          <span className="inline-flex rounded-full border border-[#A45AFA]/30 bg-[#A45AFA]/10 px-5 py-2 text-sm font-semibold tracking-[0.3em] text-[#DDBEFF] backdrop-blur-xl">
+            EVENT VENUE
+          </span>
+
+          <h2 className="mt-8 text-6xl md:text-8xl font-black leading-none tracking-tight text-white">
+            Where We
+            <span className="block bg-gradient-to-r from-[#A45AFA] via-[#F0E1FF] to-[#A45AFA] bg-clip-text text-transparent">
+              Meet & Build
+            </span>
+          </h2>
+
+          <p className="mx-auto mt-8 max-w-4xl text-lg md:text-xl leading-relaxed text-slate-400">
+            Join hundreds of builders, students, developers and AWS community
+            members at one of Bhilai's most accessible venues.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <div className="bg-gray-100 rounded-lg h-64 md:h-full min-h-[300px] relative overflow-hidden">
-              {/* Google Maps iframe - Replace with actual Bhilai venue coordinates */}
+        {/* VENUE GRID */}
+        <div className="mt-24 grid gap-10 lg:grid-cols-2">
+          {/* MAP */}
+          <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-xl">
+            <div className="h-[500px] w-full">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59364.87525941188!2d81.40511334212696!3d21.210534089032802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a293d1b9b2b2b2b%3A0x2b2b2b2b2b2b2b2b!2sBhilai%2C%20Chhattisgarh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps?q=Shri+Shankaracharya+Medical+College+Auditorium+Bhilai&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
-                allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 w-full h-full"
-              ></iframe>
+                allowFullScreen
+                className="h-full w-full"
+              />
             </div>
           </div>
 
+          {/* INFO */}
           <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Civic Center Bhilai</h3>
-              <div className="flex items-start gap-2 text-gray-600 mb-4">
-                <MapPin className="w-5 h-5 text-[#FF9900] mt-0.5" />
+            <div className="rounded-[32px] border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl">
+              <div className="flex items-center gap-3">
+                <Building2 className="h-8 w-8 text-[#A45AFA]" />
+                <h3 className="text-3xl font-black text-white">
+                  Shri Shankaracharya Technical Campus Bhilai
+                </h3>
+              </div>
+
+              <div className="mt-6 flex gap-3 text-slate-400">
+                <MapPin className="mt-1 h-5 w-5 text-[#A45AFA]" />
                 <div>
-                  <p>Sector 1, Nehru Nagar</p>
-                  <p>Bhilai, Chhattisgarh 490001</p>
+                  <p>Junwani Road</p>
+                  <p>Bhilai, Chhattisgarh 490020</p>
                   <p>India</p>
                 </div>
               </div>
+
               <Link
-                href="https://maps.google.com/?q=Civic+Center+Bhilai"
+                href="https://www.google.com/maps?q=Shri+Shankaracharya+Medical+College+Auditorium+Bhilai&output=embed"
                 target="_blank"
-                className="inline-flex items-center gap-2 text-[#FF9900] hover:text-[#FF9900]/80 font-semibold"
+                className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#A45AFA]/30 bg-[#A45AFA]/10 px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-[#A45AFA]/20"
               >
-                <Navigation className="w-4 h-4" />
+                <Navigation className="h-4 w-4" />
                 Get Directions
               </Link>
             </div>
 
-            <div className="border-t border-gray-200 pt-6">
-              <h4 className="text-lg font-semibold text-gray-900 mb-4">How to get there</h4>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-[#FF9900]/10 rounded-full flex items-center justify-center">
-                    <Train className="w-4 h-4 text-[#FF9900]" />
+            {/* TRANSPORT */}
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  icon: Train,
+                  title: "Railway",
+                  desc: "Bhilai Power House & Bhilai Nagar stations nearby",
+                },
+                {
+                  icon: Bus,
+                  title: "Bus",
+                  desc: "Connected through all major city routes",
+                },
+                {
+                  icon: Car,
+                  title: "Parking",
+                  desc: "Parking facilities available on-site",
+                },
+              ].map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={item.title}
+                    className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl"
+                  >
+                    <Icon className="h-6 w-6 text-[#A45AFA]" />
+
+                    <h4 className="mt-4 font-semibold text-white">
+                      {item.title}
+                    </h4>
+
+                    <p className="mt-2 text-sm text-slate-400">
+                      {item.desc}
+                    </p>
                   </div>
-                  <div>
-                    <p className="font-semibold">Railway</p>
-                    <p className="text-sm text-gray-600">Bhilai Power House & Bhilai Nagar stations nearby</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-[#FF9900]/10 rounded-full flex items-center justify-center">
-                    <Bus className="w-4 h-4 text-[#FF9900]" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Bus</p>
-                    <p className="text-sm text-gray-600">City buses available from all major routes</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-[#FF9900]/10 rounded-full flex items-center justify-center">
-                    <Car className="w-4 h-4 text-[#FF9900]" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Parking</p>
-                    <p className="text-sm text-gray-600">Paid parking available at venue</p>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
 
-            <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-              <h4 className="font-semibold text-gray-900 mb-2">Accessibility</h4>
-              <p className="text-sm text-gray-600">
-                The venue is wheelchair accessible with ramps, elevators, and accessible restrooms.
-                Please contact us for any specific accessibility requirements.
+            {/* ACCESSIBILITY */}
+            <div className="rounded-[32px] border border-[#A45AFA]/20 bg-[#A45AFA]/5 p-8 backdrop-blur-xl">
+              <div className="flex items-center gap-3">
+                <Accessibility className="h-6 w-6 text-[#A45AFA]" />
+
+                <h4 className="text-xl font-bold text-white">
+                  Accessibility
+                </h4>
+              </div>
+
+              <p className="mt-4 text-slate-400 leading-relaxed">
+                The venue is fully wheelchair accessible with ramps,
+                elevators and accessible facilities. If you have
+                specific accessibility requirements, please contact
+                the organizing team before the event.
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
