@@ -15,7 +15,7 @@ export default function Hero() {
       className="
         relative
         min-h-[100dvh]
-        pt-[140px] 
+        pt-[150px] 
         flex
         items-center
         justify-center
@@ -36,17 +36,17 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="mb-6"
+          className="mb-2"
         >
           <div
             className="
               relative
-              h-[110px]
-              w-[110px]
-              sm:h-[130px]
-              sm:w-[130px]
-              md:h-[150px]
-              md:w-[150px]
+              h-[150px]
+              w-[150px]
+              sm:h-[170px]
+              sm:w-[170px]
+              md:h-[180px]
+              md:w-[180px]
               
               flex items-center justify-center
               group
@@ -103,7 +103,7 @@ export default function Hero() {
           transition={{ delay: 0.2 }}
           className="mt-5 max-w-2xl text-sm sm:text-base md:text-lg text-gray-400"
         >
-          One day. One stage. Chhattisgarh’s largest AWS community gathering — where future builders, industry leaders, and cloud innovators come together.
+          One day. One stage. Chhattisgarh’s largest AWS community gathering where future builders, industry leaders, and cloud innovators come together.
         </motion.p>
 
         {/* ================= DATE / TIME (ONE LINE ALWAYS) ================= */}
@@ -154,7 +154,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mt-8 flex flex-col sm:flex-row gap-4"
+          className="mt-8 mb-16 flex flex-col sm:flex-row gap-4"
         >
           <Link
             href="#register"
