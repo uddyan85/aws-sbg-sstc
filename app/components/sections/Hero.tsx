@@ -103,7 +103,7 @@ export default function Hero() {
           transition={{ delay: 0.2 }}
           className="mt-5 max-w-2xl text-sm sm:text-base md:text-lg text-gray-400"
         >
-          A high-energy AWS event with workshops, labs, AI sessions, and real-world cloud learning.
+          One day. One stage. Chhattisgarh’s largest AWS community gathering—where future builders, industry leaders, and cloud innovators come together.
         </motion.p>
 
         {/* ================= DATE / TIME (ONE LINE ALWAYS) ================= */}
