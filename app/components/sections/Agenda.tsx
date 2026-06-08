@@ -175,10 +175,10 @@ export default function Agenda() {
             </span>
           </h2>
 
-          <p className="mx-auto mt-8 max-w-3xl text-slate-400">
+          {/* <p className="mx-auto mt-8 max-w-3xl text-slate-400">
             Premium conference schedule designed as a cloud mission control
             timeline.
-          </p>
+          </p> */}
         </div>
 
         {/* Filters */}

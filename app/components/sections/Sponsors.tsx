@@ -247,7 +247,8 @@ export default function Sponsors() {
                 href="#contact"
                 className="mt-10 inline-flex items-center gap-3 rounded-full border border-[#A45AFA]/30 bg-[#A45AFA]/10 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-[#A45AFA]/20"
               >
-                Partner With Us
+                {/* Partner With Us */}
+                Join as a Sponsor
                 <ArrowRight className="h-5 w-5" />
               </Link>
             </div>
