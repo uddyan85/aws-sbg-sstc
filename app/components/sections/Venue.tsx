@@ -70,7 +70,7 @@ export default function Venue() {
         {/* VENUE GRID */}
         <div className="mt-24 grid gap-10 lg:grid-cols-2">
           {/* MAP */}
-          <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-xl">
+          <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-xl h-[500px]">
             <div className="h-[500px] w-full">
               <iframe
                 src="https://www.google.com/maps?q=Shri+Shankaracharya+Medical+College+Auditorium+Bhilai&output=embed"
@@ -151,24 +151,6 @@ export default function Venue() {
                   </div>
                 );
               })}
-            </div>
-
-            {/* ACCESSIBILITY */}
-            <div className="rounded-[32px] border border-[#A45AFA]/20 bg-[#A45AFA]/5 p-8 backdrop-blur-xl">
-              <div className="flex items-center gap-3">
-                <Accessibility className="h-6 w-6 text-[#A45AFA]" />
-
-                <h4 className="text-xl font-bold text-white">
-                  Accessibility
-                </h4>
-              </div>
-
-              <p className="mt-4 text-slate-400 leading-relaxed">
-                The venue is fully wheelchair accessible with ramps,
-                elevators and accessible facilities. If you have
-                specific accessibility requirements, please contact
-                the organizing team before the event.
-              </p>
             </div>
           </div>
         </div>
