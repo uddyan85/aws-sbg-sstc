@@ -1,72 +1,166 @@
-import { AtSign, GitBranch, Link2 } from 'lucide-react'
+import { AtSign, GitBranch, Link2 } from "lucide-react";
+import { FaLinkedinIn } from "react-icons/fa6";
 
 const teamMembers = [
   {
-    name: 'Your Name',
-    role: 'Community Lead',
-    bio: 'AWS Community Builder passionate about cloud education',
-    image: 'https://via.placeholder.com/150?text=Team',
-    social: { linkedin: '#', twitter: '#', github: '#' },
+    name: "Your Name",
+    role: "Community Lead",
+    bio: "AWS Community Builder passionate about cloud education",
+    image: "https://via.placeholder.com/300x300?text=Team",
+    social: {
+      linkedin: "#",
+      twitter: "#",
+      github: "#",
+    },
   },
   {
-    name: 'Team Member 2',
-    role: 'Technical Lead',
-    bio: 'Solutions Architect helping others learn AWS',
-    image: 'https://via.placeholder.com/150?text=Team',
-    social: { linkedin: '#', twitter: '#', github: '#' },
+    name: "Team Member 2",
+    role: "Technical Lead",
+    bio: "Solutions Architect helping others learn AWS",
+    image: "https://via.placeholder.com/300x300?text=Team",
+    social: {
+      linkedin: "#",
+      twitter: "#",
+      github: "#",
+    },
   },
   {
-    name: 'Team Member 3',
-    role: 'Events Lead',
-    bio: 'Organizing tech events for student communities',
-    image: 'https://via.placeholder.com/150?text=Team',
-    social: { linkedin: '#', twitter: '#', github: '#' },
+    name: "Team Member 3",
+    role: "Events Lead",
+    bio: "Organizing tech events for student communities",
+    image: "https://via.placeholder.com/300x300?text=Team",
+    social: {
+      linkedin: "#",
+      twitter: "#",
+      github: "#",
+    },
   },
   {
-    name: 'Team Member 4',
-    role: 'Marketing Lead',
-    bio: 'Building community connections and partnerships',
-    image: 'https://via.placeholder.com/150?text=Team',
-    social: { linkedin: '#', twitter: '#', github: '#' },
+    name: "Team Member 4",
+    role: "Marketing Lead",
+    bio: "Building community connections and partnerships",
+    image: "https://via.placeholder.com/300x300?text=Team",
+    social: {
+      linkedin: "#",
+      twitter: "#",
+      github: "#",
+    },
   },
-]
+];
 
 export default function Team() {
   return (
-    <section id="team" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Team</h2>
-          <p className="text-xl text-gray-600">The passionate team behind AWS Student Community Day Bhilai</p>
+    <section id="team" className="relative py-28 overflow-hidden bg-[#050816] text-white">
+
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -left-32 top-0 h-[550px] w-[550px] rounded-full bg-[#A45AFA]/20 blur-[160px]" />
+        <div className="absolute -right-32 bottom-0 h-[650px] w-[650px] rounded-full bg-[#A45AFA]/10 blur-[180px]" />
+
+        <div
+          className="absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(164,90,250,.35) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(164,90,250,.35) 1px, transparent 1px)
+            `,
+            backgroundSize: "70px 70px",
+          }}
+        />
+
+        {Array.from({ length: 25 }).map((_, i) => (
+          <span
+            key={i}
+            className="absolute h-1.5 w-1.5 rounded-full bg-[#A45AFA]/50 animate-pulse"
+            style={{
+              left: `${(i * 17) % 100}%`,
+              top: `${(i * 29) % 100}%`,
+              animationDelay: `${i * 0.15}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* CONTENT */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* HEADER */}
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-extrabold tracking-tight">
+            Meet the Team
+          </h2>
+          <p className="mt-4 text-lg text-gray-300">
+            The minds behind AWS Student Community Day Bhilai
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* GRID */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-2xl shadow-xl transition-all duration-300 hover:-translate-y-3 hover:border-[#A45AFA]/50"
             >
-              <img src={member.image} alt={member.name} className="w-full h-48 object-cover" />
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-[#FF9900] font-semibold mb-2">{member.role}</p>
-                <p className="text-gray-600 text-sm mb-4">{member.bio}</p>
-                <div className="flex gap-3">
-                  <a href={member.social.linkedin} className="text-gray-400 hover:text-[#0077b5] transition-colors">
-                    <Link2 className="w-5 h-5" />
+
+              {/* Glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-b from-[#A45AFA]/20 to-transparent" />
+
+              {/* IMAGE */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-52 object-cover transform group-hover:scale-110 transition duration-500"
+                />
+              </div>
+
+              {/* CONTENT */}
+              <div className="relative p-6">
+
+                <h3 className="text-xl font-bold">{member.name}</h3>
+
+                <p className="text-[#A45AFA] font-semibold mt-1">
+                  {member.role}
+                </p>
+
+                <p className="text-gray-300 text-sm mt-3 leading-relaxed">
+                  {member.bio}
+                </p>
+
+                {/* SOCIALS */}
+                <div className="mt-6 flex flex-col gap-3">
+
+                  {/* LinkedIn Primary Button */}
+                  <a
+                    href={member.social.linkedin}
+                    className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-[#0A66C2]/20 border border-[#0A66C2]/40 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition"
+                  >
+                    <FaLinkedinIn className="w-4 h-4" />
+                    LinkedIn
                   </a>
-                  <a href={member.social.twitter} className="text-gray-400 hover:text-[#1DA1F2] transition-colors">
-                    <AtSign className="w-5 h-5" />
-                  </a>
-                  <a href={member.social.github} className="text-gray-400 hover:text-gray-900 transition-colors">
-                    <GitBranch className="w-5 h-5" />
-                  </a>
+
+                  {/* Other Icons */}
+                  <div className="flex justify-center gap-5 text-gray-400">
+                    <a href={member.social.twitter} className="hover:text-[#1DA1F2] transition">
+                      <AtSign className="w-5 h-5" />
+                    </a>
+                    <a href={member.social.github} className="hover:text-white transition">
+                      <GitBranch className="w-5 h-5" />
+                    </a>
+                    <a href={member.social.linkedin} className="hover:text-[#0A66C2] transition">
+                      <Link2 className="w-5 h-5" />
+                    </a>
+                  </div>
+
                 </div>
+
               </div>
             </div>
           ))}
+
         </div>
       </div>
     </section>
-  )
+  );
 }
