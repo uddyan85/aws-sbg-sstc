@@ -54,7 +54,8 @@ export default function Team() {
 
       {/* BACKGROUND */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-32 top-0 h-[550px] w-[550px] rounded-full bg-[#A45AFA]/20 blur-[160px]" />
+        <div className="absolute -left-32 top-0 h-[550px] w-[550px] rounded-full bg-[#A45AFA]/15 blur-[150px]" />
+
         <div className="absolute -right-32 bottom-0 h-[650px] w-[650px] rounded-full bg-[#A45AFA]/10 blur-[180px]" />
 
         <div
@@ -71,11 +72,11 @@ export default function Team() {
         {Array.from({ length: 25 }).map((_, i) => (
           <span
             key={i}
-            className="absolute h-1.5 w-1.5 rounded-full bg-[#A45AFA]/50 animate-pulse"
+            className="absolute h-1 w-1 rounded-full bg-[#A45AFA]/40 animate-pulse"
             style={{
               left: `${(i * 17) % 100}%`,
               top: `${(i * 29) % 100}%`,
-              animationDelay: `${i * 0.15}s`,
+              animationDelay: `${i * 0.2}s`,
             }}
           />
         ))}
@@ -85,11 +86,19 @@ export default function Team() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* HEADER */}
-        <div className="text-center mb-20">
-          <h2 className="text-5xl font-extrabold tracking-tight">
-            Meet the Team
+        <div className="mx-auto mb-10 max-w-5xl text-center">
+          <span className="inline-flex rounded-full border border-[#A45AFA]/30 bg-[#A45AFA]/10 px-5 py-2 text-sm font-semibold tracking-[0.3em] text-[#DDBEFF] backdrop-blur-xl">
+            Team
+          </span>
+
+          <h2 className="mt-8 text-6xl md:text-8xl font-black leading-none tracking-tight text-white">
+            {/* Powered By */}
+            <span className="block bg-gradient-to-r from-[#A45AFA] via-[#F0E1FF] to-[#A45AFA] bg-clip-text text-transparent">
+               Meet the Team
+            </span>
           </h2>
-          <p className="mt-4 text-lg text-gray-300">
+
+          <p className="mx-auto mt-8 max-w-4xl text-lg md:text-xl leading-relaxed text-slate-400">
             The minds behind AWS Student Community Day Bhilai
           </p>
         </div>

@@ -25,7 +25,7 @@ export default function Home() {
       <Team />
       <FAQ />
       <Contact />
-      <Register />
+      {/* <Register /> */}
     </>
   )
 }
