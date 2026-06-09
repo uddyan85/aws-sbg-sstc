@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { AtSign, Link2, Mail, MapPin, Send } from 'lucide-react'
+import { LiaLinkedinIn } from 'react-icons/lia'
+import { RiInstagramLine } from 'react-icons/ri'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -111,7 +113,7 @@ export default function Contact() {
                       href="mailto:bhilai@awsstudentcommunity.day"
                       className="text-white/70 hover:text-white"
                     >
-                      bhilai@awsstudentcommunity.day
+                      aws.sbg.sstc@gmail.com
                     </a>
                   </div>
                 </div>
@@ -123,7 +125,8 @@ export default function Contact() {
                   <div>
                     <p className="font-semibold">Address</p>
                     <p className="text-white/70">
-                      Civic Center Bhilai, Chhattisgarh
+                  <p>Junwani Road, Bhilai, Chhattisgarh 490020</p>
+                  <p>India</p>
                     </p>
                   </div>
                 </div>
@@ -139,11 +142,11 @@ export default function Contact() {
 
               <div className="flex gap-4">
                 <a className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
-                  <Link2 className="w-5 h-5 text-white" />
+                  <LiaLinkedinIn className="w-5 h-5 text-white" />
                 </a>
 
                 <a className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
-                  <AtSign className="w-5 h-5 text-white" />
+                  <RiInstagramLine className="w-5 h-5 text-white" />
                 </a>
               </div>
             </div>

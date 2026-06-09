@@ -181,139 +181,29 @@ export default function Agenda() {
           </p> */}
         </div>
 
-        {/* Filters */}
-        <div className="mt-16 flex flex-wrap justify-center gap-4">
-          {tracks.map((track) => (
-            <button
-              key={track}
-              onClick={() => setSelectedTrack(track)}
-              className={`rounded-full px-6 py-3 text-sm font-semibold transition-all ${
-                selectedTrack === track
-                  ? "bg-[#A45AFA]/20 border border-[#A45AFA]/40 text-white"
-                  : "bg-white/[0.03] border border-white/10 text-slate-400"
-              }`}
-            >
-              {track}
-            </button>
-          ))}
+        {/* BACKGROUND GLOW */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="h-[500px] w-[500px] rounded-full bg-[#A45AFA]/20 blur-[180px]" />
+      </div>
+
+      {/* SINGLE BLUR BOX */}
+      <div className="relative mt-7 z-10">
+
+        <div className="rounded-3xl border border-white/10 bg-white/[0.04] px-14 py-12 text-center backdrop-blur-2xl shadow-[0_0_60px_rgba(164,90,250,0.15)]">
+
+          <h1 className="text-5xl md:text-6xl font-black text-white tracking-wide">
+            COMING SOON
+          </h1>
+
+          <div className="mx-auto mt-5 h-px w-32 bg-gradient-to-r from-transparent via-[#A45AFA] to-transparent" />
+
+          <p className="mt-6 text-sm text-slate-300">
+            The agenda is being finalized. Stay tuned for updates.
+          </p>
+
         </div>
 
-        {/* Timeline */}
-        <div className="relative mt-28 max-w-6xl mx-auto">
-          {/* Rail */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 -translate-x-1/2">
-            <div className="relative h-full w-[3px] bg-gradient-to-b from-[#A45AFA] via-[#A45AFA]/40 to-transparent">
-              <div className="absolute left-1/2 h-32 w-3 -translate-x-1/2 rounded-full bg-gradient-to-b from-transparent via-[#A45AFA] to-transparent animate-pulse" />
-            </div>
-          </div>
-
-          {filteredAgenda.map((item, index) => (
-            <div
-              key={index}
-              className={`relative mb-16 flex ${
-                index % 2 === 0
-                  ? "md:justify-start"
-                  : "md:justify-end"
-              }`}
-            >
-              {/* Connector */}
-              <div
-                className={`absolute top-16 h-px bg-gradient-to-r from-[#A45AFA] to-transparent ${
-                  index % 2 === 0
-                    ? "left-6 md:right-1/2 md:left-auto w-20"
-                    : "left-6 md:left-1/2 md:right-auto w-20"
-                }`}
-              />
-
-              {/* Diamond Node */}
-              <div className="absolute left-0 md:left-1/2 top-12 md:-translate-x-1/2">
-                <div className="absolute inset-0 h-8 w-8 rounded-full bg-[#A45AFA]/40 blur-xl" />
-
-                <div className="relative h-8 w-8 rotate-45 rounded-md border border-[#A45AFA] bg-[#050816]" />
-              </div>
-
-              {/* Card */}
-              <div
-                className="
-                group
-                relative
-                ml-14
-                md:ml-0
-                w-full
-                md:w-[46%]
-                overflow-hidden
-                rounded-[32px]
-                border
-                border-white/10
-                bg-[linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02))]
-                p-8
-                backdrop-blur-2xl
-                transition-all
-                duration-500
-                hover:-translate-y-2
-                hover:border-[#A45AFA]/40
-                hover:shadow-[0_0_40px_rgba(164,90,250,.15)]
-              "
-              >
-                {/* Accent */}
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#A45AFA] to-transparent" />
-
-                {/* Time Badge */}
-                <div className="absolute right-6 top-6 rounded-full border border-[#A45AFA]/20 bg-[#0B1020] px-4 py-2 text-xs font-bold tracking-wider text-[#DDBEFF]">
-                  {item.time}
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Sparkles
-                    size={18}
-                    className="text-[#A45AFA]"
-                  />
-                  <span className="rounded-full border border-[#A45AFA]/20 bg-[#A45AFA]/10 px-3 py-1 text-xs text-[#DDBEFF]">
-                    {item.track}
-                  </span>
-                </div>
-
-                <h3 className="mt-6 text-3xl font-black text-white">
-                  {item.title}
-                </h3>
-
-                <p className="mt-4 text-slate-400">
-                  {item.description}
-                </p>
-
-                <div className="mt-5 flex items-center gap-2 text-slate-500">
-                  <MapPin size={15} />
-                  {item.location}
-                </div>
-
-                <button
-                  onClick={() => toggleExpand(index)}
-                  className="mt-6 flex items-center gap-2 text-[#A45AFA]"
-                >
-                  {expandedItems.includes(index) ? (
-                    <>
-                      View Less
-                      <ChevronUp size={16} />
-                    </>
-                  ) : (
-                    <>
-                      View Details
-                      <ChevronDown size={16} />
-                    </>
-                  )}
-                </button>
-
-                {expandedItems.includes(index) && (
-                  <div className="mt-6 border-t border-white/10 pt-6 text-slate-400">
-                    Session materials, speaker profiles,
-                    learning objectives, and certification
-                    guidance will appear here.
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+      </div>
 
         {/* Stats */}
         <div className="mt-28 grid gap-6 md:grid-cols-4">
