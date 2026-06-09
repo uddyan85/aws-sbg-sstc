@@ -22,7 +22,7 @@ const faqs = [
   },
 ]
 
-export default function FAQ() {
+export default function Faq() {
   const [active, setActive] = useState<number | null>(0)
 
   return (
