@@ -7,9 +7,9 @@ import Venue from './components/sections/Venue'
 import Partners from './components/sections/Partners'
 import Sponsors from './components/sections/Sponsors'
 import Team from './components/sections/Team'
-import FAQ from './components/sections/Faq'
 import Contact from './components/sections/Contact'
 import Register from './components/sections/Register'
+import Faq from './components/sections/FAQ'
 
 export default function Home() {
   return (
@@ -23,7 +23,7 @@ export default function Home() {
       <Sponsors />
       {/* <Partners /> */}
       <Team />
-      <FAQ />
+      <Faq />
       <Contact />
       {/* <Register /> */}
     </>
