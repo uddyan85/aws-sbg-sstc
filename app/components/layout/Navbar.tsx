@@ -211,9 +211,14 @@ export default function Navbar() {
 
           {/* LOGO */}
           <Link href="/" className="flex items-center gap-2 relative z-10">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#A45AFA] to-purple-700">
-              <Cloud className="h-4 w-4 text-white" />
+            <div className="flex h-12 w-12 items-center justify-center">
+              <img src="/AWS.png" alt="AWS Image" />
             </div>
+            
+            <div className="flex h-8 w-8 items-center justify-center">
+              <img src="/AWS_SBG.png" alt="AWS SBG Image" />
+            </div>
+
             <div className="leading-tight">
               <h1 className="text-lg font-semibold text-white">
                 AWS SBG SSTC

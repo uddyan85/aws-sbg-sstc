@@ -21,6 +21,7 @@ import {
 } from "react-icons/fa6";
 
 import PolicyDialog from "../ui/PolicyDialog";
+import { div } from "framer-motion/client";
 
 export default function Footer() {
   const [openConduct, setOpenConduct] = useState(false);
@@ -58,14 +59,16 @@ const eventLinks = [
               <div className="flex items-center gap-3 mb-4">
                 <div
                   className="
-                    h-14 w-16
-                    rounded-2xl
-                    bg-[#A45AFA]/10
-                    border border-[#A45AFA]/20
                     flex items-center justify-center
                   "
                 >
-                  <Cloud className="h-7 w-7 text-[#A45AFA]" />
+                  <div className="flex h-12 w-12 items-center justify-center">
+              <img src="/AWS.png" alt="AWS Image" />
+            </div>
+            
+            <div className="flex h-8 w-8 items-center justify-center">
+              <img src="/AWS_SBG.png" alt="AWS SBG Image" />
+            </div>
                 </div>
 
                 <div>
