@@ -6,9 +6,9 @@ import { Menu, X, Cloud } from 'lucide-react'
 
 const navItems = [
   { name: 'About', href: '#about' },
+  { name: 'Tracks', href: '#tracks' },
   { name: 'Speakers', href: '#speakers' },
   { name: 'Agenda', href: '#agenda' },
-  { name: 'Tracks', href: '#tracks' },
   { name: 'Venue', href: '#venue' },
   { name: 'Sponsors', href: '#sponsors' },
   { name: 'Team', href: '#team' },
@@ -210,7 +210,7 @@ export default function Navbar() {
           </div>
 
           {/* LOGO */}
-          <Link href="/" className="flex items-center gap-2 relative z-10">
+          <Link href="/" className="flex items-center justify-center gap-2 relative z-10">
             <div className="flex h-12 w-12 items-center justify-center">
               <img src="/AWS.png" alt="AWS Image" />
             </div>
@@ -311,8 +311,6 @@ export default function Navbar() {
           </div>
         </div>
       </header>
-
-      {/* 🧠 Add this in your global CSS */}
     </>
   )
 }
