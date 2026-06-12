@@ -123,13 +123,15 @@ export default function Hero() {
           "
         >
           <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-            29 AUG, 2026
+            {/* 29 AUG, 2026 */}
+            COMING
           </span>
 
           <span className="text-[#A45AFA]">•</span>
 
           <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-            08:00 AM
+            {/* 08:00 AM */}
+            SOON
           </span>
 
           <span className="text-[#A45AFA]">•</span>
@@ -146,7 +148,7 @@ export default function Hero() {
           transition={{ delay: 0.3 }}
           className="mt-8 w-full"
         >
-          <CountdownTimer targetDate="2026-08-29T08:00:00" />
+          {/* <CountdownTimer targetDate="2026-08-29T08:00:00" /> */}
         </motion.div>
 
         {/* ================= CTA ================= */}
