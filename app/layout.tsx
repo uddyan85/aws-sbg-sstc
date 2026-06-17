@@ -40,6 +40,11 @@ export const metadata: Metadata = {
   title: "AWS Student Community Day Bhilai 2026",
   description:
     "A day of learning, networking, and innovation with AWS technologies in Bhilai, India",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -56,6 +61,7 @@ export default function RootLayout({
           ${jakarta.variable}
           ${mono.variable}
           aws-body
+          min-h-screen flex flex-col
         `}
       >
         {/* ================= BACKGROUND ================= */}
