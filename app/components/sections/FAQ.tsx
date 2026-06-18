@@ -7,19 +7,33 @@ import { ChevronDown } from 'lucide-react'
 
 const faqs = [
   {
-    question: 'Who can attend?',
+    question: 'Who can attend AWS SCD?',
     answer:
-      'Students, professionals, and anyone interested in cloud computing can attend.',
+      'The event is open to university students, researchers, and early-career developers who are passionate about exploring cloud computing and building skills in modern cloud technologies.',
   },
   {
-    question: 'Do I need a laptop?',
-    answer:
-      'Not mandatory, but recommended for hands-on workshops.',
+    question:'Do I need prior AWS experience?',
+    answer:'No. The event is beginner-friendly. Sessions are designed for all levels, including those new to cloud computing.',
+  },
+  {
+    question: 'Is there an age or year restriction?',
+    answer: 'There are no strict age limits. The event is open to all college students (any year or branch) and recent graduates within the past year, regardless of institution. ',
+  },
+  {
+    question: 'What should I bring?',
+    answer:'Bring your laptop (fully charged), student ID, and lots of enthusiasm. All workshops are hands-on, so having your own machine is essential for participation. ',
+  },
+  {
+    question: 'What will I get / Are there any attendee perks?',
+    answer:'A full day of immersive learning with access to all sessions, along with breakfast, lunch, and refreshments, an official swag kit, and exclusive sponsor giveaways. Beyond the perks, you’ll also have valuable opportunities to connect and network with community leaders, fellow builders, and industry experts. ',
   },
   {
     question: 'Will certificates be provided?',
-    answer:
-      'Yes, participation certificates will be given to all attendees.',
+    answer:'Yes, every attendee will receive a Certificate of Participation, along with a Credly badge that can be showcased on your professional profile.',
+  },
+  {
+    question: 'I want to sponsor or partner with the event. Where should I reach out?',
+    answer:'Email "aws.sbg.sstc@gmail.com" to express your interest in sponsorship or partnership, and the team will share the necessary details and next steps with you. ',
   },
 ]
 
