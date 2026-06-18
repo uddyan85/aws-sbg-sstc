@@ -61,17 +61,17 @@ export default function Team() {
           className="text-center max-w-4xl mx-auto mb-16"
         >
         {/* HEADER */}
-        <div className="mx-auto max-w-5xl text-center">
+        <div className="mx-auto mt-18 max-w-5xl text-center">
           <span className="inline-flex rounded-full border border-[#A45AFA]/30 bg-[#A45AFA]/10 px-5 py-2 text-sm font-semibold tracking-[0.3em] text-[#DDBEFF] backdrop-blur-xl uppercase">
             Our Organizing Team
           </span>
 
-          <h2 className="mt-8 text-6xl md:text-8xl font-black leading-none tracking-tight text-white">
+          {/* <h2 className="mt-8 text-6xl md:text-8xl font-black leading-none tracking-tight text-white">
             The Team Behind
             <span className="block bg-gradient-to-r from-[#A45AFA] via-[#F0E1FF] to-[#A45AFA] bg-clip-text text-transparent">
               AWS SCD
             </span>
-          </h2>
+          </h2> */}
 
           <p className="mx-auto mt-8 max-w-4xl text-lg md:text-xl leading-relaxed text-slate-400">
             The core team behind AWS Student Community Day 2026 — building, designing, organizing, and delivering the experience from start to finish.
