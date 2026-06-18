@@ -16,10 +16,10 @@ export const teamMembers: TeamMember[] = [
     order: 1,
   },
   {
-    id: "uddyan-sahu",
-    name: "Uddyan Sahu",
-    role: "Team Lead",
-    title: "Organiser",
+    id: "soon",
+    name: "",
+    role: "",
+    title: "soon",
     bio: "",
     avatar: "/profile2.jpg",
     social: {
