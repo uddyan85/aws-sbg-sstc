@@ -266,8 +266,8 @@ const moveIndicator = useCallback(() => {
                     navRefs.current[item.href] = el;
                   }}
                   onClick={() => handleClick(item.href)}
-                  className={`relative z-10 px-3 py-2 text-sm font-medium transition uppercase ${
-                    isActive ? "text-white" : "text-white/60 hover:text-white"
+                  className={`relative z-10 px-3 py-2 text-sm font-medium transition uppercase cursor-pointer ${
+                    isActive ? "text-white" : "text-white/60 hover:text-white cursor-pointer"
                   }`}
                 >
                   {item.name}
@@ -279,7 +279,7 @@ const moveIndicator = useCallback(() => {
           {/* CTA */}
           <button
             onClick={() => handleClick("/register")}
-            className="hidden lg:block rounded-lg bg-gradient-to-r from-[#A45AFA] to-purple-700 px-4 py-2 text-sm font-semibold text-white hover:scale-105 transition"
+            className="hidden lg:block rounded-lg bg-gradient-to-r from-[#A45AFA] to-purple-700 px-4 py-2 text-sm font-semibold text-white hover:scale-105 transition cursor-pointer"
           >
             Register
           </button>
