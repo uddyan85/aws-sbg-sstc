@@ -1,29 +1,28 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Users, Sparkles } from 'lucide-react';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Users, Sparkles } from "lucide-react";
 
-import { teamMembers } from '../../data/teamMembers';
-import { TeamMember } from '../../types/team';
-import { TeamMemberCard } from '../../team/TeamMemberCard';
-import { TeamMemberModal } from '../../team/TeamMemberModal';
+import { teamMembers } from "../../data/teamMembers";
+import { TeamMember } from "../../types/team";
+import { TeamMemberCard } from "../../team/TeamMemberCard";
+import { TeamMemberModal } from "../../team/TeamMemberModal";
 
 export default function Team() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
-  const [filter, setFilter] = useState<string>('all');
+  const [filter, setFilter] = useState<string>("all");
 
   // const categories = ['all', ...new Set(teamMembers.map((m) => m.category))];
 
   const filteredMembers =
-    filter === 'all'
+    filter === "all"
       ? teamMembers
       : teamMembers.filter((m) => m.category === filter);
 
   return (
     <section className="relative py-20 overflow-hidden bg-[#050816]">
-       
-       {/* BACKGROUND */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-32 top-0 h-[550px] w-[550px] rounded-full bg-[#A45AFA]/15 blur-[150px]" />
 
@@ -60,23 +59,25 @@ export default function Team() {
           viewport={{ once: true }}
           className="text-center max-w-4xl mx-auto mb-16"
         >
-        {/* HEADER */}
-        <div className="mx-auto mt-18 max-w-5xl text-center">
-          <span className="inline-flex rounded-full border border-[#A45AFA]/30 bg-[#A45AFA]/10 px-5 py-2 text-sm font-semibold tracking-[0.3em] text-[#DDBEFF] backdrop-blur-xl uppercase">
-            Our Organizing Team
-          </span>
+          {/* HEADER */}
+          <div className="mx-auto mt-18 max-w-5xl text-center">
+            <span className="inline-flex rounded-full border border-[#A45AFA]/30 bg-[#A45AFA]/10 px-5 py-2 text-sm font-semibold tracking-[0.3em] text-[#DDBEFF] backdrop-blur-xl uppercase">
+              Our Organizing Team
+            </span>
 
-          {/* <h2 className="mt-8 text-6xl md:text-8xl font-black leading-none tracking-tight text-white">
+            {/* <h2 className="mt-8 text-6xl md:text-8xl font-black leading-none tracking-tight text-white">
             The Team Behind
             <span className="block bg-gradient-to-r from-[#A45AFA] via-[#F0E1FF] to-[#A45AFA] bg-clip-text text-transparent">
               AWS SCD
             </span>
           </h2> */}
 
-          <p className="mx-auto mt-8 max-w-4xl text-lg md:text-xl leading-relaxed text-slate-400">
-            The core team behind AWS Student Community Day 2026 — building, designing, organizing, and delivering the experience from start to finish.
-          </p>
-        </div>
+            <p className="mx-auto mt-8 max-w-4xl text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed text-slate-400">
+              The core team behind AWS Student Community Day 2026 — building,
+              designing, organizing, and delivering the experience from start to
+              finish.
+            </p>
+          </div>
         </motion.div>
       </div>
 
