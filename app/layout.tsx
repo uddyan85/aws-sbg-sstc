@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+
+import LayoutWrapper from "./components/layout/LayoutWrapper";
+
 import {
   Inter,
   Plus_Jakarta_Sans,
@@ -92,11 +95,11 @@ export default function RootLayout({
         </div>
 
         {/* ================= CONTENT ================= */}
-        <Navbar />
+        
+        
+        <LayoutWrapper>{children}</LayoutWrapper>
 
-        <main className="main-content">{children}</main>
 
-        <Footer />
       </body>
     </html>
   );
