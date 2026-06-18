@@ -24,7 +24,7 @@ const faqs = [
     answer:'Bring your laptop (fully charged), student ID, and lots of enthusiasm. All workshops are hands-on, so having your own machine is essential for participation. ',
   },
   {
-    question: 'What will I get / Are there any attendee perks?',
+    question: 'What will I get as an attendee?',
     answer:'A full day of immersive learning with access to all sessions, along with breakfast, lunch, and refreshments, an official swag kit, and exclusive sponsor giveaways. Beyond the perks, you’ll also have valuable opportunities to connect and network with community leaders, fellow builders, and industry experts. ',
   },
   {
