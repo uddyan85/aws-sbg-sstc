@@ -107,7 +107,7 @@ export default function Team() {
         {/* floating dot accent */}
         <span className="absolute -top-0.2 -right-0.2 h-5 w-5 rounded-full bg-[#A45AFA] shadow-lg shadow-[#A45AFA]/50 animate-ping" />
       </button>
-   
+    </div>
 
 
         <motion.div
@@ -151,7 +151,6 @@ export default function Team() {
         </div>
       </div>
 
- </div>
       {/* <TeamMemberModal
         member={selectedMember}
         onClose={() => setSelectedMember(null)}
