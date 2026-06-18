@@ -10,10 +10,10 @@ const navItems = [
   { name: "About", href: "#about" },
   { name: "Tracks", href: "#tracks" },
   { name: "Speakers", href: "#speakers" },
+  { name: "Team", href: "/team" },
   { name: "Agenda", href: "#agenda" },
   { name: "Venue", href: "#venue" },
   { name: "Sponsors", href: "#sponsors" },
-  { name: "Team", href: "/team" },
   { name: "FAQ", href: "#faq" },
   { name: "Contact", href: "#contact" },
 ];
