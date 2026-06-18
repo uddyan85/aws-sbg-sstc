@@ -62,7 +62,6 @@ export default function Team() {
         {/* Back Button */}
        <div
       className="
-      relative
         fixed z-50
         left-4 top-4 md:left-6 md:top-6 lg:left-10 lg:top-10
       "
