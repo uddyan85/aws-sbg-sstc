@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link";
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
@@ -26,7 +27,9 @@ export default function Faq() {
   const [active, setActive] = useState<number | null>(0)
 
   return (
-    <section className="relative py-28 bg-[#050816] overflow-hidden text-white">
+    <section 
+    id="faq"
+    className="relative py-28 bg-[#050816] overflow-hidden text-white">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0 overflow-hidden">
