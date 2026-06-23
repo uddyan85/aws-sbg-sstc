@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -12,8 +11,10 @@ export default function LayoutWrapper({
 }) {
   const pathname = usePathname();
 
-  // hide on team page
-  const hideLayout = pathname === "/team";
+  // pages where navbar/footer should be hidden
+  const hideLayoutRoutes = ["/team", "/contact", "/registration",];
+
+  const hideLayout = hideLayoutRoutes.includes(pathname);
 
   return (
     <>

@@ -15,7 +15,7 @@ const navItems = [
   { name: "Venue", href: "#venue" },
   { name: "Sponsors", href: "#sponsors" },
   { name: "FAQ", href: "#faq" },
-  { name: "Contact", href: "#contact" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
