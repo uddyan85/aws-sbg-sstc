@@ -114,8 +114,8 @@ export default function Contact() {
               name="reason"
               value={formData.reason}
               onChange={handleChange}
-              className="mt-8 w-full max-w-2xl text-4xl md:text-6xl font-light bg-transparent border-b-2 border-white/20 focus:border-[#A45AFA] outline-none transition text-white/90 pb-2 appearance-none [&>option]:bg-[#050816]"
-              autoFocus
+              className="mt-8 w-full max-w-2xl text-4xl md:text-6xl font-light bg-transparent border-b-2 border-white/20 focus:border-[#A45AFA] outline-none transition text-white/90 pb-2 appearance-none [&>option]:bg-[#050816] cursor-pointer"
+              autoFocus 
             >
               <option value="" disabled>Select an option</option>
               <option value="sponsorship">Sponsorship &amp; Partnership</option>
@@ -234,7 +234,7 @@ export default function Contact() {
           {step > 0 && (
             <button
               onClick={handleBack}
-              className="group flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 hover:bg-white/10 transition"
+              className="group flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 hover:bg-white/10 transition cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5" />
               Back
@@ -245,7 +245,7 @@ export default function Contact() {
             <button
               onClick={handleNext}
               disabled={!isStepValid()}
-              className="flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-[#A45AFA] to-[#7C3AED] font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] transition"
+              className="flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-[#A45AFA] to-[#7C3AED] font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] transition cursor-pointer"
             >
               Next
               <ChevronRight className="w-5 h-5" />
@@ -254,7 +254,7 @@ export default function Contact() {
             <button
               onClick={handleSubmit}
               disabled={!isStepValid() || isSubmitting}
-              className="flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-[#A45AFA] to-[#7C3AED] font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] transition"
+              className="flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-[#A45AFA] to-[#7C3AED] font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] transition cursor-pointer"
             >
               {isSubmitting ? "Sending…" : "Send Message"}
               <Send className="w-5 h-5" />

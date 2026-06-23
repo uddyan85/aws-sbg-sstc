@@ -22,7 +22,6 @@ export default function Team() {
 
   return (
     <div className="relative isolate bg-[#050816]">
-
       {/* ================= BACK BUTTON (TOP LAYER) ================= */}
       <div className="fixed z-[9999] left-4 top-4 md:left-6 md:top-6 lg:left-10 lg:top-10">
         <button
@@ -101,26 +100,28 @@ export default function Team() {
 
             <p className="mt-8 text-slate-400 text-base md:text-xl leading-relaxed">
               The core team behind AWS Student Community Day 2026 — building,
-              designing, organizing, and delivering the experience from start to finish.
+              designing, organizing, and delivering the experience from start to
+              finish.
             </p>
           </motion.div>
         </div>
-      </section>
+        {/* </section> */}
 
-      {/* ================= TEAM GRID ================= */}
-      <section className="relative z-10 pb-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredMembers.map((member, index) => (
-              <TeamMemberCard
-                key={member.id}
-                member={member}
-                onClick={setSelectedMember}
-                index={index}
-              />
-            ))}
+        {/* ================= TEAM GRID ================= */}
+        <section className="relative z-10 pb-20">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredMembers.map((member, index) => (
+                <TeamMemberCard
+                  key={member.id}
+                  member={member}
+                  onClick={setSelectedMember}
+                  index={index}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
       </section>
     </div>
   );
