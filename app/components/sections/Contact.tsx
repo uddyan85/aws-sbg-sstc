@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Send } from "lucide-react";
 
+import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
+
 export default function Contact() {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -15,6 +18,8 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
     null,
   );
+
+  const router = useRouter();
 
   const totalSteps = 4;
 
@@ -70,7 +75,7 @@ export default function Contact() {
         return (
           <>
             <p className="text-5xl md:text-7xl font-light text-white/90">
-              …and my email is
+              My email is
             </p>
             <input
               name="email"
@@ -138,6 +143,35 @@ export default function Contact() {
 
   return (
     <section className="relative min-h-screen bg-[#050816] text-white overflow-hidden">
+
+{/* ================= BACK BUTTON (TOP LAYER) ================= */}
+      <div className="fixed z-[9999] left-4 top-4 md:left-6 md:top-6 lg:left-10 lg:top-10">
+        <button
+          onClick={() => router.back()}
+          className="
+            group relative flex items-center justify-center
+            h-11 w-11 md:h-12 md:w-12
+            rounded-full
+            bg-white/5 backdrop-blur-2xl
+            border border-white/10
+            transition-all duration-300
+            hover:scale-110 active:scale-95
+            cursor-pointer
+          "
+        >
+          <span className="absolute inset-0 rounded-full bg-[#A45AFA]/20 blur-md animate-pulse" />
+          <span className="absolute inset-0 rounded-full border border-[#A45AFA]/30 group-hover:rotate-45 transition-transform duration-700" />
+
+          <ArrowLeft
+            size={18}
+            className="relative z-10 text-slate-300 group-hover:text-white transition-all duration-300 group-hover:-translate-x-0.5"
+          />
+
+          <span className="absolute  left-3 h-5 w-5 rounded-full bg-[#A45AFA] animate-ping" />
+        </button>
+      </div>
+
+
       {/* Background effects (same as before) */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-32 top-0 h-[550px] w-[550px] rounded-full bg-[#A45AFA]/15 blur-[150px]" />
@@ -231,12 +265,12 @@ export default function Contact() {
         {/* Status messages */}
         {submitStatus === "success" && (
           <p className="mt-6 text-green-400 text-center text-lg animate-pulse">
-            ✅ Message sent successfully!
+            Message sent successfully!
           </p>
         )}
         {submitStatus === "error" && (
           <p className="mt-6 text-red-400 text-center text-lg animate-pulse">
-            ❌ Failed to send. Please try again.
+            Failed to send. Please try again.
           </p>
         )}
       </div>
