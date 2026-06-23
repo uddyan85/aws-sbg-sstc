@@ -13,6 +13,7 @@ export default function Contact() {
     email: "",
     role: "",
     reason: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
@@ -21,7 +22,7 @@ export default function Contact() {
 
   const router = useRouter();
 
-  const totalSteps = 4;
+  const totalSteps = 5;
 
   const handleNext = () => {
     if (step < totalSteps - 1) setStep(step + 1);
@@ -46,7 +47,7 @@ export default function Contact() {
 
     setSubmitStatus("success");
     setIsSubmitting(false);
-    setFormData({ name: "", email: "", role: "", reason: "" });
+    setFormData({ name: "", email: "", role: "", reason: "", message: "" });
     setStep(0);
 
     setTimeout(() => setSubmitStatus(null), 3000);
@@ -123,8 +124,25 @@ export default function Contact() {
               <option value="tickets">Tickets &amp; Registration</option>
               <option value="press">Press &amp; Media</option>
               <option value="community">Community Partnership</option>
-              <option value="other">Something else</option>
+              <option value="other">Other</option>
             </select>
+          </>
+        );
+        case 4:
+        return (
+          <>
+            <p className="text-5xl md:text-7xl font-light text-white/90">
+              Here's my message…
+            </p>
+            <input
+              name="message"
+              type="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Type here…"
+              className="mt-8 w-full max-w-2xl text-4xl md:text-6xl font-light bg-transparent border-b-2 border-white/20 focus:border-[#A45AFA] outline-none transition placeholder:text-white/30 pb-2"
+              autoFocus
+            />
           </>
         );
       default:
@@ -138,6 +156,7 @@ export default function Contact() {
     if (step === 1) return formData.email.trim().length > 0 && formData.email.includes("@");
     if (step === 2) return formData.role.trim().length > 0;
     if (step === 3) return formData.reason.length > 0;
+    if (step === 4) return formData.message.trim().length > 0;
     return false;
   };
 
