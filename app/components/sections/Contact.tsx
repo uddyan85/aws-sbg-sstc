@@ -75,7 +75,7 @@ export default function Contact() {
         return (
           <>
             <p className="text-5xl md:text-7xl font-light text-white/90">
-              My email is
+              And my email is
             </p>
             <input
               name="email"
@@ -108,13 +108,13 @@ export default function Contact() {
         return (
           <>
             <p className="text-5xl md:text-7xl font-light text-white/90">
-              I’m reaching out about
+              I'm reaching out about
             </p>
             <select
               name="reason"
               value={formData.reason}
               onChange={handleChange}
-              className="mt-8 w-full max-w-2xl text-4xl md:text-6xl font-light bg-transparent border-b-2 border-white/20 focus:border-[#A45AFA] outline-none transition text-white/90 pb-2 appearance-none [&>option]:bg-[#050816] cursor-pointer"
+              className="mt-8 w-full max-w-2xl text-4xl md:text-4xl font-light bg-transparent border-b-2 border-white/20 focus:border-[#A45AFA] outline-none transition text-white/90 pb-2 appearance-none [&>option]:bg-[#050816] cursor-pointer"
               autoFocus 
             >
               <option value="" disabled>Select an option</option>
