@@ -221,7 +221,7 @@ export default function Contact() {
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-12">
         {/* Step indicator (dots) */}
-        <div className="flex gap-3 mb-12">
+        {/* <div className="flex gap-3 mb-12">
           {Array.from({ length: totalSteps }).map((_, i) => (
             <button
               key={i}
@@ -232,7 +232,7 @@ export default function Contact() {
               aria-label={`Go to step ${i + 1}`}
             />
           ))}
-        </div>
+        </div> */}
 
         {/* Step container with slide animation */}
         <div className="relative w-full max-w-4xl overflow-hidden">
