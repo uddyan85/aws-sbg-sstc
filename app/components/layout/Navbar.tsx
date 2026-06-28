@@ -28,77 +28,71 @@ export default function Navbar() {
 
   const router = useRouter();
 
-
-
- const handleClick = (href: string) => {
-  // FULL PAGE ROUTES
-  if (href.startsWith("/")) {
-    router.push(href);
-    setOpen(false);
-    return;
-  }
-
-  // SECTION SCROLL
-  const el = document.querySelector(href);
-
-  if (!el) return;
-
-  const top = (el as HTMLElement).offsetTop - 80;
-
-  window.scrollTo({
-    top,
-    behavior: "smooth",
-  });
-
-  setActive(href);
-  setOpen(false);
-};
-
-
-
-  const updateActive = useCallback(() => {
-  if (ticking.current) return;
-
-  ticking.current = true;
-
-  requestAnimationFrame(() => {
-    let current = '#about';
-
-    for (const item of navItems) {
-      // Skip pages
-      if (!item.href.startsWith('#')) continue;
-
-      const el = document.querySelector(item.href);
-
-      if (!el) continue;
-
-      const rect = el.getBoundingClientRect();
-
-      if (rect.top <= 120 && rect.bottom > 120) {
-        current = item.href;
-        break;
-      }
+  const handleClick = (href: string) => {
+    // FULL PAGE ROUTES
+    if (href.startsWith("/")) {
+      router.push(href);
+      setOpen(false);
+      return;
     }
 
-    setActive(current);
-    ticking.current = false;
-  });
-}, []);
+    // SECTION SCROLL
+    const el = document.querySelector(href);
 
-  
-const moveIndicator = useCallback(() => {
-  if (!active.startsWith('#')) return;
+    if (!el) return;
 
-  const el = navRefs.current[active];
+    const top = (el as HTMLElement).offsetTop - 80;
 
-  if (!el) return;
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
 
-  setIndicator({
-    left: el.offsetLeft,
-    width: el.offsetWidth,
-  });
-}, [active]);
+    setActive(href);
+    setOpen(false);
+  };
 
+  const updateActive = useCallback(() => {
+    if (ticking.current) return;
+
+    ticking.current = true;
+
+    requestAnimationFrame(() => {
+      let current = "#about";
+
+      for (const item of navItems) {
+        // Skip pages
+        if (!item.href.startsWith("#")) continue;
+
+        const el = document.querySelector(item.href);
+
+        if (!el) continue;
+
+        const rect = el.getBoundingClientRect();
+
+        if (rect.top <= 120 && rect.bottom > 120) {
+          current = item.href;
+          break;
+        }
+      }
+
+      setActive(current);
+      ticking.current = false;
+    });
+  }, []);
+
+  const moveIndicator = useCallback(() => {
+    if (!active.startsWith("#")) return;
+
+    const el = navRefs.current[active];
+
+    if (!el) return;
+
+    setIndicator({
+      left: el.offsetLeft,
+      width: el.offsetWidth,
+    });
+  }, [active]);
 
   useEffect(() => {
     window.addEventListener("scroll", updateActive, {
@@ -116,107 +110,11 @@ const moveIndicator = useCallback(() => {
 
   return (
     <>
-      {/* TOP MARQUEE */}
-      <div className="fixed top-0 left-0 w-full z-[60]">
-        <div className="relative overflow-hidden border-b border-white/10 bg-black/40 backdrop-blur-2xl">
-          {/* glow background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#A45AFA]/10 via-transparent to-purple-500/10 animate-pulse" />
-
-          {/* edge fade */}
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-black to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-black to-transparent" />
-
-          {/* ticker */}
-          <div className="group overflow-hidden whitespace-nowrap py-2">
-            {/* FIRST LAYER */}
-            <div className="flex min-w-max items-center gap-12 animate-[marquee_40s_linear_infinite] group-hover:[animation-play-state:paused]">
-              {/* LIVE */}
-              <span className="flex items-center gap-2 text-xs text-white/80">
-                <span className="relative">
-                  <span className="relative z-10 rounded-full bg-red-500/15 px-2 py-0.5 text-[14px] font-bold text-red-500 h-1.5 w-1.5 rounded-full bg-[#A45AFA] animate-pulse">
-                    ● LIVE
-                  </span>
-                  <span className="absolute inset-0 rounded-full border border-red-400/40 animate-pulse" />
-                  <span className="absolute inset-0 rounded-full bg-red-500/10 blur-md" />
-                </span>
-                AWS STUDENT COMMUNITY DAY 2026
-              </span>
-
-              {/* EXPERT */}
-              <span className="flex items-center gap-2 text-xs text-white/70">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#A45AFA] animate-pulse" />
-                EXPERT SESSIONS
-              </span>
-
-              {/* REGISTER */}
-              <span className="flex items-center gap-2 text-xs">
-                <span className="relative">
-                  <span className="relative z-10 rounded-full bg-red-500/15 px-2 py-0.5 text-[14px] font-bold text-red-500 h-1.5 w-1.5 rounded-full bg-[#A45AFA] animate-pulse">
-                    REGISTER NOW
-                  </span>
-                  <span className="absolute inset-0 rounded-full border border-red-400/40 animate-pulse" />
-                  <span className="absolute inset-0 rounded-full bg-red-500/10 blur-md" />
-                </span>
-                LIMITED SEATS AVAILABLE
-              </span>
-
-              {/* PANEL */}
-              <span className="flex items-center gap-2 text-xs text-white/70">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#A45AFA] animate-pulse" />
-                PANEL DISCUSSIONS
-              </span>
-
-              {/* HOSTED */}
-              <span className="flex items-center gap-2 text-xs text-white/70">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#A45AFA] animate-pulse" />
-                Hosted by AWS SBG SSTC
-              </span>
-
-              {/* DUPLICATE (ONLY ONCE — FOR SEAMLESS LOOP) */}
-              <span className="flex items-center gap-2 text-xs text-white/80">
-                <span className="relative">
-                  <span className="relative z-10 rounded-full bg-red-500/15 px-2 py-0.5 text-[14px] font-bold text-red-500 h-1.5 w-1.5 rounded-full bg-[#A45AFA] animate-pulse">
-                    ● LIVE
-                  </span>
-                  <span className="absolute inset-0 rounded-full border border-red-400/40 animate-pulse" />
-                  <span className="absolute inset-0 rounded-full bg-red-500/10 blur-md" />
-                </span>
-                AWS STUDENT COMMUNITY DAY 2026
-              </span>
-
-              <span className="flex items-center gap-2 text-xs text-white/70">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#A45AFA] animate-pulse" />
-                EXPERT SESSIONS
-              </span>
-
-              <span className="flex items-center gap-2 text-xs">
-                <span className="relative">
-                  <span className="relative z-10 rounded-full bg-red-500/15 px-2 py-0.5 text-[14px] font-bold text-red-500 h-1.5 w-1.5 rounded-full bg-[#A45AFA] animate-pulse">
-                    REGISTER NOW
-                  </span>
-                  <span className="absolute inset-0 rounded-full border border-red-400/40 animate-pulse" />
-                  <span className="absolute inset-0 rounded-full bg-red-500/10 blur-md" />
-                </span>
-                LIMITED SEATS AVAILABLE
-              </span>
-
-              <span className="flex items-center gap-2 text-xs text-white/70">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#A45AFA] animate-pulse" />
-                PANEL DISCUSSIONS
-              </span>
-            </div>
-          </div>
-
-          {/* 🔥 BOTTOM PREMIUM LINE */}
-          <div className="absolute bottom-0 left-0 h-[3px] w-full">
-            <div className="h-full w-full bg-gradient-to-r from-transparent via-[#A45AFA] to-transparent animate-pulse" />
-          </div>
-        </div>
-      </div>
+      {/* Live MARQUEE */}
 
       {/* ---------------------------------------------------------------------------- */}
       {/* NAVBAR */}
-      <header className="fixed top-[44px] sm:top-[37px] left-1/2 z-50 w-[96%] max-w-6xl -translate-x-1/2">
+      <header className="fixed top-[4px] sm:top-[3px] left-1/2 z-50 w-[96%] max-w-6xl -translate-x-1/2">
         <nav className="relative flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 backdrop-blur-3xl px-4 py-4 shadow-[0_10px_50px_rgba(164,90,250,0.20)]">
           {/* Glow */}
           <div className="pointer-events-none absolute inset-0">
@@ -267,7 +165,9 @@ const moveIndicator = useCallback(() => {
                   }}
                   onClick={() => handleClick(item.href)}
                   className={`relative z-10 px-3 py-2 text-sm font-medium transition uppercase cursor-pointer ${
-                    isActive ? "text-white" : "text-white/60 hover:text-white cursor-pointer"
+                    isActive
+                      ? "text-white"
+                      : "text-white/60 hover:text-white cursor-pointer"
                   }`}
                 >
                   {item.name}
