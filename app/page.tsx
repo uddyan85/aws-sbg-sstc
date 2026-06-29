@@ -1,20 +1,31 @@
-import Hero from './components/sections/Hero'
-import About from './components/sections/About'
-import Speakers from './components/sections/Speakers'
-import Agenda from './components/sections/Agenda'
-import Tracks from './components/sections/Tracks'
-import Venue from './components/sections/Venue'
-import Partners from './components/sections/Partners'
-import Sponsors from './components/sections/Sponsors'
-import Team from './components/sections/Team'
-import Contact from './components/sections/Contact'
-import Register from './components/sections/Register'
-import Faq from './components/sections/FAQ'
+import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import Speakers from "./components/sections/Speakers";
+import Agenda from "./components/sections/Agenda";
+import Tracks from "./components/sections/Tracks";
+import Venue from "./components/sections/Venue";
+import Sponsors from "./components/sections/Sponsors";
+import Faq from "./components/sections/FAQ";
+import ImageMarqueeStrip from "./components/sections/ImageMarqueeStrip";
+
+const images = [
+  { src: "/AWS-logo.png", alt: "AWS" },
+  { src: "/AWS_SBG.png", alt: "AWS" },
+  { src: "/SSTC_.png", alt: "AWS" },
+];
 
 export default function Home() {
   return (
     <>
       <Hero />
+      
+      <ImageMarqueeStrip
+        images={images}
+        speed={100}
+        direction="left"
+        pauseOnHover
+      />
+
       <About />
       <Tracks />
       <Speakers />
@@ -27,5 +38,5 @@ export default function Home() {
       {/* <Contact /> */}
       {/* <Register /> */}
     </>
-  )
+  );
 }
