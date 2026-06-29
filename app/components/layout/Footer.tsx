@@ -95,7 +95,7 @@ export default function Footer() {
                 flex items-center gap-3
               "
             >
-              AWS Student Community Day • AUGUST 2026
+              AWS Student Community Day • SEPTEMBER 2026
             </div>
           </div>
 
