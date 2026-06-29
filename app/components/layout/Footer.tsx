@@ -332,13 +332,14 @@ export default function Footer() {
               "
             >
               <p className="text-slate-500 text-sm">
-                © 2026 AWS Student Community Day Bhilai.
+                © 2026 AWS Student Builder Group SSTC. All rights reserved.
               </p>
 
               <div className="flex items-center gap-2 text-slate-500 text-sm">
                 Made with
-                <Heart className="text-[#A45AFA] animate-pulse" size={15} />
+                <Heart className=" text-bold text-[#A45AFA] animate-pulse" size={15} />
                 for builders.
+                {/* by Uddyan */}
               </div>
             </div>
           </div>
