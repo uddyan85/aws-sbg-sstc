@@ -16,7 +16,7 @@ import Image from "next/image";
 const speakers = [
   {
     id: 1,
-    name: "Dr. Sarah Chen",
+    name: "Dr. ABC",
     company: "AWS Community Builder",
     category: "keynote",
     title: "Principal Cloud Architect",
@@ -26,7 +26,7 @@ const speakers = [
   },
   {
     id: 2,
-    name: "Marcus Rivera",
+    name: "xyz",
     company: "Startup Founder",
     category: "keynote",
     title: "AI/ML Specialist",
@@ -35,7 +35,7 @@ const speakers = [
   },
   {
     id: 3,
-    name: "Priya Patel",
+    name: "Mr. ABC",
     company: "AWS",
     category: "speaker",
     title: "Senior Developer Advocate",
@@ -44,7 +44,7 @@ const speakers = [
   },
   {
     id: 4,
-    name: "James Okafor",
+    name: "Dr. ABC",
     company: "AWS",
     category: "speaker",
     title: "Solutions Architect",
@@ -53,7 +53,7 @@ const speakers = [
   },
   {
     id: 5,
-    name: "Elena Vogt",
+    name: "xyz",
     company: "Independent Consultant",
     category: "speaker",
     title: "DevOps & Serverless Expert",
@@ -62,7 +62,7 @@ const speakers = [
   },
   {
     id: 6,
-    name: "David Kim",
+    name: "Dr. ABC",
     company: "AWS User Group Leader",
     category: "speaker",
     title: "Cloud Educator",
