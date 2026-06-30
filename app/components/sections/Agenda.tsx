@@ -97,7 +97,7 @@ export default function Agenda() {
     return (
         <section
             id="agenda"
-            className="relative min-h-screen overflow-hidden bg-[#050816] py-15 md:py-20"
+            className="relative min-h-screen overflow-hidden bg-[#050816] py-15"
         >
 
             {/* ─── CONTENT ────────────────────────────────────────────────── */}

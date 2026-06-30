@@ -309,7 +309,7 @@ export default function Tracks() {
                   />
 
                   {/* NUMBER */}
-                  <div className="absolute right-6 top-5 text-7xl font-black text-white/5 select-none pointer-events-none">
+                  <div className="absolute right-6 top-5 text-7xl font-black text-white/25 select-none pointer-events-none">
                     {String(index + 1).padStart(2, "0")}
                   </div>
 
@@ -318,7 +318,7 @@ export default function Tracks() {
                       className={`
                                                 inline-flex rounded-full border border-white/10
                                                 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em]
-                                                text-white bg-white/5
+                                                text-[#A45AFA] bg-white/5
                                             `}
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
@@ -340,7 +340,7 @@ export default function Tracks() {
                     </p>
 
                     {/* TOPICS */}
-                    <div className="mt-8 border-t border-white/10 pt-6">
+                    <div className="mt-8 border-t border-[#A45AFA]/30 pt-6">
                       <p className="mb-5 text-xs uppercase tracking-[0.3em] text-[#A45AFA]">
                         Learning Outcomes
                       </p>
@@ -362,7 +362,7 @@ export default function Tracks() {
                               className="mt-2 h-2.5 w-2.5 rounded-full bg-[#A45AFA] flex-shrink-0"
                               whileHover={{
                                 scale: 1.5,
-                                boxShadow: "0 0 20px rgba(164,90,250,0.5)",
+                                boxShadow: "0 0 20px rgba(164, 90, 250, 0.5)",
                               }}
                               transition={{
                                 type: "spring",

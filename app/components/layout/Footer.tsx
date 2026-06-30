@@ -54,7 +54,6 @@ export default function Footer() {
           >
             <div className="max-w-xl">
               <div className="flex items-center gap-3 mb-5">
-                
                 <div className="flex items-center justify-center gap-2 relative z-10">
                   <div className="flex h-12 w-12 items-center justify-center">
                     <img src="/AWS.png" alt="AWS Image" />
@@ -86,12 +85,12 @@ export default function Footer() {
                 h-fit
                 px-5 py-3
                 rounded-2xl
-                border border-[#A45AFA]/20
-                bg-[#A45AFA]/1
+                border border-[#A45AFA]/90
+                bg-[#A45AFA]/10
                 text-[#A45AFA]
                 text-sm
                 uppercase
-                font-semibold
+                font-bold
                 flex items-center gap-3
               "
             >
@@ -157,6 +156,7 @@ export default function Footer() {
                       hover:text-[#A45AFA]
                       transition
                       flex items-center gap-2
+                      cursor-pointer
                     "
                   >
                     <Shield size={15} />
@@ -172,6 +172,7 @@ export default function Footer() {
                       hover:text-[#A45AFA]
                       transition
                       flex items-center gap-2
+                      cursor-pointer
                     "
                   >
                     <FileText size={15} />
@@ -269,7 +270,12 @@ export default function Footer() {
               <div className="space-y-4 text-slate-400">
                 <div className="flex gap-3">
                   <Mail size={18} />
-                  <span>aws.sbg.sstc@gmail.com</span>
+                  <a
+                    href="mailto:aws.sbg.sstc@gmail.com"
+                    className="hover:underline hover:text-[#A45AFA]"
+                  >
+                    aws.sbg.sstc@gmail.com
+                  </a>
                 </div>
 
                 <div className="flex gap-3">
@@ -337,7 +343,10 @@ export default function Footer() {
 
               <div className="flex items-center gap-2 text-slate-500 text-sm">
                 Made with
-                <Heart className=" text-bold text-[#A45AFA] animate-pulse" size={15} />
+                <Heart
+                  className=" text-bold text-[#A45AFA] animate-pulse"
+                  size={15}
+                />
                 for builders.
                 {/* by Uddyan */}
               </div>

@@ -30,7 +30,6 @@ export default function Hero() {
 
       {/* CONTENT */}
       <div className="relative z-10 w-full max-w-6xl px-6 text-center flex flex-col items-center">
-
         {/* AWS IMAGE (ONLY HERO FOCUS) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
@@ -52,9 +51,9 @@ export default function Hero() {
               group
             "
           >
-             <div className="absolute inset-0 overflow-hidden rounded-full">
-        <div className="absolute -left-1/2 top-0 h-full w-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-[sweep_2.4s_linear_infinite]" />
-      </div>
+            <div className="absolute inset-0 overflow-hidden rounded-full">
+              <div className="absolute -left-1/2 top-0 h-full w-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/25 to-transparent blur-sm animate-[sweep_2.4s_linear_infinite]" />
+            </div>
 
             {/* image */}
             <Image
@@ -85,15 +84,14 @@ export default function Hero() {
           {/* <span className="block text-white">AWS</span> */}
 
           <span className="bg-gradient-to-r font-bold text-white bg-clip-text text-transparent">
-           Student Community Day
+            Student Community Day
           </span>
 
-         <span className="inline-block mt-2 font-medium text-[#ffb347] drop-shadow-[0_0_35px_rgba(255,179,71,1)] animate-pulse-slow">
-           Bhilai 2026
-         </span>
+          <span className="inline-block mt-2 font-medium text-[#FF9900] drop-shadow-[0_0_35px_rgba(255,179,71,1)] animate-pulse-slow">
+            Bhilai 2026
+          </span>
 
           {/* <span className="block text-white mt-2">Bhilai 2026</span> */}
-
         </motion.h1>
 
         {/* ================= SUBTITLE ================= */}
@@ -103,7 +101,9 @@ export default function Hero() {
           transition={{ delay: 0.2 }}
           className="mt-5 max-w-2xl text-sm sm:text-base md:text-lg text-gray-400"
         >
-          One day. One stage. Chhattisgarh’s largest AWS community gathering where future builders, industry leaders, and cloud innovators come together.
+          One day. One stage. Chhattisgarh’s largest AWS community gathering
+          where future builders, industry leaders, and cloud innovators come
+          together.
         </motion.p>
 
         {/* ================= DATE / TIME (ONE LINE ALWAYS) ================= */}
@@ -189,7 +189,6 @@ export default function Hero() {
             Learn More
           </Link>
         </motion.div>
-
       </div>
     </section>
   );

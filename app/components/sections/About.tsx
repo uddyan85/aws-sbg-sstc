@@ -172,7 +172,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#050816] py-20 sm:py-20 md:py-30"
+      className="relative overflow-hidden bg-[#050816] py-20 sm:py-20 md:py-20"
     >
       
       {/* CONTENT */}
@@ -209,7 +209,7 @@ export default function About() {
               </h2>
 
               <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl leading-relaxed text-slate-400 max-w-xl">
-                <span className="text-[#ffb347] font-bold">
+                <span className="text-[#FF9900] font-bold">
                   AWS Student Community Day Bhilai 2026
                 </span>{" "}
                 brings together ambitious students, cloud builders, AWS leaders,
