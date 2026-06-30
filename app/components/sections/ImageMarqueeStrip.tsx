@@ -116,12 +116,12 @@ export default function ImageMarqueeStrip({
             key={i}
             className="
               flex-shrink-0
-              mx-1 sm:mx-5 md:mx-2
+              mx-1 sm:mx-5 md:mx-1
               w-[100px] h-[60px]
-              sm:w-[140px] sm:h-[80px]
+              sm:w-[140px] sm:h-[90px]
               md:w-[180px] md:h-[100px]
-              lg:w-[220px] lg:h-[120px]
-              xl:w-[260px] xl:h-[140px]
+              lg:w-[220px] lg:h-[110px]
+              xl:w-[260px] xl:h-[110px]
             "
           >
             <div className="relative w-full h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-lg">
@@ -144,7 +144,7 @@ export default function ImageMarqueeStrip({
   return (
     <section
       ref={containerRef}
-      className={`relative overflow-hidden py-5 md:py-3 
+      className={`relative overflow-hidden py-2 md:py-2 
         bg-gradient-to-r from-slate-950 via-slate-900 to-black
         ${className}`}
       aria-hidden="true"  // decorative, so screen readers ignore
