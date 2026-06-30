@@ -1,257 +1,241 @@
 "use client";
 
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
-  Clock,
-  MapPin,
-  ChevronDown,
-  ChevronUp,
-  CalendarDays,
-  Sparkles,
+    CalendarDays,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-
-const agendaData = [
-  {
-    time: "08:00 AM - 09:00 AM",
-    title: "Registration & Networking Breakfast",
-    description:
-      "Attendee check-in, welcome kit collection, breakfast, and networking with fellow cloud enthusiasts.",
-    track: "All",
-    location: "Registration Area",
-  },
-  {
-    time: "09:00 AM - 09:20 AM",
-    title: "Opening Ceremony",
-    description:
-      "Welcome note from organizers, sponsor introductions, and event overview.",
-    track: "All",
-    location: "Main Hall",
-  },
-  {
-    time: "09:20 AM - 10:00 AM",
-    title: "Keynote: Building the Future on AWS",
-    description:
-      "Industry leaders discuss cloud innovation, AI transformation, and the future of AWS technologies.",
-    track: "Keynote",
-    location: "Main Hall",
-  },
-  {
-    time: "10:00 AM - 10:45 AM",
-    title: "Modern Cloud Architecture",
-    description:
-      "Learn how organizations build resilient, scalable, and secure applications on AWS.",
-    track: "Architecture",
-    location: "Hall A",
-  },
-  {
-    time: "10:45 AM - 11:00 AM",
-    title: "Fun Activity & Audience Engagement",
-    description:
-      "Fun Activity & Audience Engagement with Builders, speakers, sponsors, and community members.",
-    track: "All",
-    location: "Networking Lounge",
-  },
-  {
-    time: "11:00 AM - 11:45 AM",
-    title: "Generative AI with Amazon Bedrock",
-    description:
-      "Discover how to build and deploy generative AI applications using Amazon Bedrock and foundation models.",
-    track: "AI/ML",
-    location: "Hall B",
-  },
-  {
-    time: "11:45 AM - 12:30 PM",
-    title: "Serverless at Scale",
-    description:
-      "Best practices for designing event-driven and serverless applications using AWS services.",
-    track: "Serverless",
-    location: "Hall A",
-  },
-  {
-    time: "12:30 PM - 01:30 PM",
-    title: "Lunch + Networking + Booth Visit",
-    description:
-      "Enjoy lunch while connecting with attendees, AWS User Groups, and community leaders.",
-    track: "All",
-    location: "Dining Area",
-  },
-  {
-    time: "01:30 PM - 02:15 PM",
-    title: "Containers & Kubernetes on AWS",
-    description:
-      "Explore Amazon EKS, container orchestration, deployment strategies, and observability.",
-    track: "DevOps",
-    location: "Hall B",
-  },
-  {
-    time: "02:15 PM - 03:00 PM",
-    title: "Cloud Security Best Practices",
-    description:
-      "Learn how to secure cloud workloads with IAM, GuardDuty, Security Hub, and Zero Trust principles.",
-    track: "Security",
-    location: "Hall A",
-  },
-  {
-    time: "03:00 PM - 04:00 PM",
-    title: "Career Growth & AWS Certifications",
-    description:
-      "Guidance on certification paths, interview preparation, and building a cloud career.",
-    track: "Career",
-    location: "Hall B",
-  },
-  {
-    time: "04:00 PM - 04:40 PM",
-    title: "Community Success Stories",
-    description:
-      "Real-world experiences and lessons learned from builders, startups, and AWS community leaders.",
-    track: "Community",
-    location: "Main Hall",
-  },
-  {
-    time: "04:40 PM - 05:00 PM",
-    title: "Closing Ceremony & Group Photo",
-    description:
-      "Event wrap-up, sponsor acknowledgements, giveaways, certificates, and community photo session.",
-    track: "All",
-    location: "Main Hall",
-  },
-
-
+// ─── STATS DATA ────────────────────────────────────────────────────────────────
+const statsData = [
+    { value: 9, label: "Hours",  suffix: "+" },
+    { value: 12, label: "Sessions", suffix: "+" },
+    { value: 8, label: "Speakers", suffix: "+" },
+    { value: 400, label: "Builders", suffix: "+" },
 ];
 
+// ─── STAT CARD ────────────────────────────────────────────────────────────────
+const StatCard = ({
+    value,
+    label,
+    suffix,
+    index,
+}: {
+    value: number;
+    label: string;
+    suffix: string;
+    index: number;
+}) => {
+    const [count, setCount] = useState(0);
 
-export default function Agenda() {
-  const [selectedTrack, setSelectedTrack] = useState("All");
-  const [expandedItems, setExpandedItems] = useState<number[]>([]);
+    useEffect(() => {
+        const duration = 2000;
+        const steps = 60;
+        const stepValue = value / steps;
+        const stepTime = duration / steps;
+        let current = 0;
 
+        const timer = setInterval(() => {
+            current += stepValue;
+            if (current >= value) {
+                setCount(value);
+                clearInterval(timer);
+            } else {
+                setCount(Math.floor(current));
+            }
+        }, stepTime);
 
-  const tracks = ["All", "Beginner", "Intermediate", "Career"];
+        return () => clearInterval(timer);
+    }, [value]);
 
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 + index * 0.1, duration: 0.7 }}
+            whileHover={{
+                y: -6,
+                scale: 1.02,
+                transition: { duration: 0.3 },
+            }}
+            className="group relative rounded-[28px] border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur-xl overflow-hidden hover:border-[#A45AFA]/30 transition-all duration-500"
+        >
+            {/* Hover glow */}
+            <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-[#A45AFA]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-[28px]"
+                initial={false}
+            />
 
-  const filteredAgenda = agendaData.filter(
-    (item) =>
-      selectedTrack === "All" || item.track === selectedTrack
-  );
-
-
-  const toggleExpand = (index: number) => {
-    setExpandedItems((prev) =>
-      prev.includes(index)
-        ? prev.filter((i) => i !== index)
-        : [...prev, index]
-    );
-  };
-
-
-  return (
-    <section
-      id="agenda"
-      className="relative overflow-hidden bg-[#050816] py-32"
-    >
-      {/* Background */}
-      <div className="absolute inset-0">
-        <div className="absolute left-[-250px] top-[-100px] h-[700px] w-[700px] rounded-full bg-[#A45AFA]/15 blur-[180px]" />
-        <div className="absolute right-[-250px] bottom-[-100px] h-[700px] w-[700px] rounded-full bg-[#A45AFA]/10 blur-[200px]" />
-
-
-        <div
-          className="absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage: `
-            linear-gradient(rgba(164,90,250,.25) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(164,90,250,.25) 1px, transparent 1px)
-          `,
-            backgroundSize: "60px 60px",
-          }}
-        />
-      </div>
-
-
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
-
-
-        {/* Header */}
-        <div className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#A45AFA]/30 bg-[#A45AFA]/10 px-5 py-2 text-sm tracking-[0.3em] text-[#DDBEFF]">
-            <CalendarDays size={16} />
-            EVENT AGENDA
-          </div>
-
-
-          <h2 className="mt-8 text-6xl md:text-8xl font-black text-white">
-            Command
-            <span className="block bg-gradient-to-r from-[#A45AFA] via-white to-[#A45AFA] bg-clip-text text-transparent">
-              Timeline
-            </span>
-          </h2>
-
-
-          {/* <p className="mx-auto mt-8 max-w-3xl text-slate-400">
-            Premium conference schedule designed as a cloud mission control
-            timeline.
-          </p> */}
-        </div>
-
-
-        {/* BACKGROUND GLOW */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="h-[500px] w-[500px] rounded-full bg-[#A45AFA]/20 blur-[180px]" />
-      </div>
-
-
-      {/* SINGLE BLUR BOX */}
-      <div className="relative mt-7 z-10">
-
-
-        <div className="rounded-3xl border border-white/10 bg-white/[0.04] px-14 py-12 text-center backdrop-blur-2xl shadow-[0_0_60px_rgba(164,90,250,0.15)]">
-
-
-          <h1 className="text-5xl md:text-6xl font-black text-white tracking-wide">
-            COMING SOON
-          </h1>
-
-
-          <div className="mx-auto mt-5 h-px w-32 bg-gradient-to-r from-transparent via-[#A45AFA] to-transparent" />
-
-
-          <p className="mt-6 text-sm text-slate-300">
-            The agenda is being finalized. Stay tuned for updates.
-          </p>
-
-
-        </div>
-
-
-      </div>
-
-
-        {/* Stats */}
-        <div className="mt-28 grid gap-6 md:grid-cols-4">
-          {[
-            { value: "9+", label: "Hours" },
-            { value: "12+", label: "Sessions" },
-            { value: "9+", label: "Industry Speakers" },
-            { value: "400+", label: "Builders" },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="rounded-[28px] border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur-xl"
+            {/* Value */}
+            <motion.div
+                className="bg-gradient-to-r from-[#A45AFA] to-white bg-clip-text text-5xl font-black text-transparent"
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.6 + index * 0.1, duration: 0.6, type: "spring" }}
             >
-              <div className="bg-gradient-to-r from-[#A45AFA] to-white bg-clip-text text-5xl font-black text-transparent">
-                {item.value}
-              </div>
+                {count}
+                {suffix}
+            </motion.div>
 
-
-              <div className="mt-3 text-xs uppercase tracking-[0.3em] text-slate-400">
-                {item.label}
-              </div>
+            {/* Label */}
+            <div className="mt-3 text-xs uppercase tracking-[0.3em] text-slate-400 font-medium">
+                {label}
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
+            {/* Animated border glow */}
+            <motion.div
+                className="absolute bottom-0 left-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#A45AFA] to-transparent group-hover:w-3/4 transition-all duration-700 -translate-x-1/2"
+            />
+        </motion.div>
+    );
+};
+
+// ─── MAIN COMPONENT ──────────────────────────────────────────────────────────
+export default function Agenda() {
+    const [isHovering, setIsHovering] = useState(false);
+
+    return (
+        <section
+            id="agenda"
+            className="relative min-h-screen overflow-hidden bg-[#050816] py-15 md:py-20"
+        >
+
+            {/* ─── CONTENT ────────────────────────────────────────────────── */}
+            <div className="relative z-10 mx-auto max-w-7xl px-6">
+                {/* ─── HEADER ────────────────────────────────────────────────── */}
+                <div className="text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="inline-flex items-center gap-2 rounded-full border border-[#A45AFA]/30 bg-[#A45AFA]/10 px-5 py-2 text-sm tracking-[0.3em] text-[#DDBEFF] backdrop-blur-sm"
+                    >
+                        <CalendarDays size={16} />
+                        EVENT AGENDA
+                    </motion.div>
+
+                    <motion.h2
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1, duration: 0.7 }}
+                        className="mt-8 text-6xl md:text-8xl font-black text-white leading-[1.1]"
+                    >
+                        Command
+                        <span className="block bg-gradient-to-r from-[#A45AFA] via-white to-[#A45AFA] bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+                            Timeline
+                        </span>
+                    </motion.h2>
+                </div>
+
+                {/* ─── COMING SOON CARD ────────────────────────────────────── */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
+                    className="relative mt-12"
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
+                >
+                    {/* Animated border glow */}
+                    <motion.div
+                        className="absolute -inset-[2px] rounded-3xl bg-gradient-to-r from-[#A45AFA]/0 via-[#A45AFA]/60 to-[#A45AFA]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm"
+                        animate={{
+                            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                        }}
+                        transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            ease: "linear",
+                        }}
+                        style={{
+                            backgroundSize: "200% 100%",
+                        }}
+                    />
+
+                    <div className="relative rounded-3xl border border-white/10 bg-white/[0.04] px-6 py-12 sm:px-14 sm:py-16 text-center backdrop-blur-2xl shadow-[0_0_80px_rgba(164,90,250,0.12)] overflow-hidden">
+                        {/* Inner glow */}
+                        <motion.div
+                            className="absolute inset-0 bg-gradient-to-br from-[#A45AFA]/5 via-transparent to-transparent"
+                            animate={{
+                                opacity: isHovering ? 0.6 : 0.3,
+                            }}
+                            transition={{ duration: 0.6 }}
+                        />
+
+                        {/* Title */}
+                        <motion.h1
+                            className="text-5xl sm:text-6xl md:text-7xl font-black text-white tracking-wide"
+                            animate={{
+                                scale: isHovering ? 1.02 : 1,
+                            }}
+                            transition={{ duration: 0.4 }}
+                        >
+                            COMING SOON
+                        </motion.h1>
+
+                        {/* Divider */}
+                        <motion.div
+                            className="mx-auto mt-5 h-px w-32 bg-gradient-to-r from-transparent via-[#A45AFA] to-transparent"
+                            animate={{
+                                width: isHovering ? 200 : 128,
+                            }}
+                            transition={{ duration: 0.6 }}
+                        />
+
+                        {/* Description */}
+                        <motion.p
+                            className="mt-6 text-sm text-slate-300 max-w-md mx-auto"
+                            animate={{
+                                opacity: isHovering ? 0.9 : 0.7,
+                            }}
+                        >
+                            The agenda is being finalized.
+                            <br />
+                            <span className="text-slate-400">
+                                Stay tuned for updates.
+                            </span>
+                        </motion.p>
+
+                        {/* Pulse ring */}
+                        <motion.div
+                            className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-[#A45AFA]/5 blur-3xl"
+                            animate={{
+                                scale: [1, 1.5, 1],
+                                opacity: [0.3, 0.6, 0.3],
+                            }}
+                            transition={{
+                                duration: 4,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
+                        />
+                    </div>
+                </motion.div>
+
+                {/* ─── STATS ──────────────────────────────────────────────────── */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6, duration: 0.8 }}
+                    className="mt-20 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+                >
+                    {statsData.map((stat, idx) => (
+                        <StatCard
+                            key={stat.label}
+                            {...stat}
+                            index={idx}
+                        />
+                    ))}
+                </motion.div>
+
+                {/* ─── BOTTOM DECORATIVE LINE ──────────────────────────────── */}
+                <motion.div
+                    initial={{ opacity: 0, scaleX: 0 }}
+                    animate={{ opacity: 1, scaleX: 1 }}
+                    transition={{ delay: 0.8, duration: 1 }}
+                    className="mt-16 h-px bg-gradient-to-r from-transparent via-[#A45AFA]/30 to-transparent"
+                />
+            </div>
+        </section>
+    );
+}

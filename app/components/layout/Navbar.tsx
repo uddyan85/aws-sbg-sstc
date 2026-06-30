@@ -114,7 +114,7 @@ export default function Navbar() {
 
       {/* ---------------------------------------------------------------------------- */}
       {/* NAVBAR */}
-      <header className="fixed top-[4px] sm:top-[3px] left-1/2 z-50 w-[96%] max-w-6xl -translate-x-1/2">
+      <header className="fixed top-[6px] sm:top-[6px] left-1/2 z-50 w-[96%] max-w-6xl -translate-x-1/2">
         <nav className="relative flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 backdrop-blur-3xl px-4 py-4 shadow-[0_10px_50px_rgba(164,90,250,0.20)]">
           {/* Glow */}
           <div className="pointer-events-none absolute inset-0">

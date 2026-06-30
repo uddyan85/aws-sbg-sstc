@@ -43,37 +43,7 @@ export default function Faq() {
   return (
     <section 
     id="faq"
-    className="relative py-28 bg-[#050816] overflow-hidden text-white">
-
-      {/* BACKGROUND */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-32 top-0 h-[550px] w-[550px] rounded-full bg-[#A45AFA]/15 blur-[150px]" />
-
-        <div className="absolute -right-32 bottom-0 h-[650px] w-[650px] rounded-full bg-[#A45AFA]/10 blur-[180px]" />
-
-        <div
-          className="absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(164,90,250,.35) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(164,90,250,.35) 1px, transparent 1px)
-            `,
-            backgroundSize: "70px 70px",
-          }}
-        />
-
-        {Array.from({ length: 25 }).map((_, i) => (
-          <span
-            key={i}
-            className="absolute h-1 w-1 rounded-full bg-[#A45AFA]/40 animate-pulse"
-            style={{
-              left: `${(i * 17) % 100}%`,
-              top: `${(i * 29) % 100}%`,
-              animationDelay: `${i * 0.2}s`,
-            }}
-          />
-        ))}
-      </div>
+    className="relative py-20 bg-[#050816] overflow-hidden text-white">
 
       {/* HEADER */}
         <div className="mx-auto mb-10 max-w-5xl text-center">

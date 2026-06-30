@@ -174,43 +174,8 @@ export default function About() {
       id="about"
       className="relative overflow-hidden bg-[#050816] py-20 sm:py-20 md:py-30"
     >
-      {/* ============================================================ */}
-      {/* BACKGROUND - Unchanged                                       */}
-      {/* ============================================================ */}
-
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-40 top-0 h-[600px] w-[600px] rounded-full bg-[#A45AFA]/25 blur-[150px] md:blur-[180px]" />
-        <div className="absolute -right-40 bottom-0 h-[600px] w-[600px] rounded-full bg-[#7C3AED]/20 blur-[150px] md:blur-[180px]" />
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[400px] rounded-full bg-[#A45AFA]/10 blur-[120px]" />
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(164,90,250,.4) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(164,90,250,.4) 1px, transparent 1px)
-            `,
-            backgroundSize: "70px 70px",
-          }}
-        />
-        <div className="hidden md:block">
-          {Array.from({ length: 30 }).map((_, i) => (
-            <span
-              key={i}
-              className="absolute h-1.5 w-1.5 rounded-full bg-[#A45AFA]/30 animate-pulse"
-              style={{
-                left: `${(i * 23) % 100}%`,
-                top: `${(i * 37) % 100}%`,
-                animationDelay: `${i * 0.12}s`,
-                animationDuration: `${2 + (i % 4)}s`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* ============================================================ */}
-      {/* CONTENT                                                     */}
-      {/* ============================================================ */}
+      
+      {/* CONTENT */}
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         {/* ------------------------------------------------------------
