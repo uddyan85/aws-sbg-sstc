@@ -15,7 +15,7 @@ export default function Venue() {
   return (
     <section
       id="venue"
-      className="relative overflow-hidden bg-[#050816] py-20"
+      className="relative overflow-hidden bg-[#050816] py-15"
     >
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
@@ -90,7 +90,7 @@ export default function Venue() {
                 {
                   icon: Train,
                   title: "Railway",
-                  desc: "Bhilai Power House & Bhilai Nagar stations nearby",
+                  desc: "Bhilai Power House & Durg stations nearby",
                 },
                 {
                   icon: Bus,
