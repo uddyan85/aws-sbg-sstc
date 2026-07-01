@@ -23,7 +23,7 @@ const sponsorTiers = [
     color: "#A45AFA",
     badgeColor: "from-[#A45AFA] to-[#E9D5FF]",
     sponsors: [
-      { name: "AWS", logo: "AWS-logo.png" },
+      { name: "Amazon Web Services", logo: "AWS-logo.png" },
       // { name: "AWS", logo: "AWS.png" },
     ],
   },
