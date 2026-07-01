@@ -34,7 +34,7 @@ const pillars = [
     title: "Learn",
     icon: BrainCircuit,
     description:
-      "Explore Cloud, AI, DevOps, Security, Serverless and modern AWS technologies.",
+      "Gain insights from AWS Community Leaders, AWS DevEx, and industry experts on the latest AWS innovations and what's shaping the cloud ecosystem in 2026.",
   },
   {
     id: "02",
@@ -48,8 +48,15 @@ const pillars = [
     title: "Belong",
     icon: Rocket,
     description:
-      "Become part of a thriving ecosystem where learning, mentorship and collaboration continue long after the event.",
+      "Become part of a vibrant community of 400+ student builders, AWS engineers, and partners from across India.",
   },
+  // {
+  //   id: "04",
+  //   title: "Build",
+  //   icon: Rocket,
+  //   description:
+  //     "Gain hands-on experience through technical sessions, live demos, workshops, and real-world AWS use cases.",
+  // },
 ];
 
 const features = [
@@ -61,7 +68,7 @@ const features = [
   {
     icon: Network,
     title: "Networking",
-    description: "Connect with 1000+ builders & industry experts.",
+    description: "Connect with 400+ builders & industry experts.",
   },
   {
     icon: Gift,

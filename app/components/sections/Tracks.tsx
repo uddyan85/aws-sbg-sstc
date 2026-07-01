@@ -186,7 +186,7 @@ export default function Tracks() {
 
         {/* ===== TRACKS ===== */}
         <motion.div
-          className="mt-24 grid gap-8 lg:grid-cols-3"
+          className="mt-20 grid gap-8 lg:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -507,7 +507,7 @@ export default function Tracks() {
                 </motion.div>
 
                 <p className="mt-2 text-sm uppercase tracking-[0.4em] text-slate-500">
-                  COMMUNITY DAY
+                  Student COMMUNITY DAY
                 </p>
               </motion.div>
             </div>

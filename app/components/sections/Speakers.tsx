@@ -67,18 +67,18 @@ export default function Speakers() {
             </span>
           </motion.h2>
 
-          <motion.p
+          {/* <motion.p
             className="mx-auto mt-8 max-w-4xl text-lg md:text-xl leading-relaxed text-slate-400"
             variants={itemVariants}
           >
             Learn directly from AWS Community Leaders, Builders, Cloud
             Architects, AI Experts and Industry Professionals.
-          </motion.p>
+          </motion.p> */}
         </motion.div>
 
         {/* SPEAKER REVEAL */}
         <motion.div
-          className="relative mt-24 overflow-hidden rounded-[40px] border border-[#A45AFA]/20 bg-white/[0.03] backdrop-blur-xl"
+          className="relative mt-20 overflow-hidden rounded-[40px] border border-[#A45AFA]/20 bg-white/[0.03] backdrop-blur-xl"
           variants={cardVariants}
           whileHover={{ borderColor: "rgba(164, 90, 250, 0.4)" }}
           transition={{ duration: 0.3 }}

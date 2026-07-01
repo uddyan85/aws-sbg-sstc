@@ -32,14 +32,14 @@ export default function Venue() {
             </span>
           </h2>
 
-          <p className="mx-auto mt-8 max-w-4xl text-lg md:text-xl leading-relaxed text-slate-400">
+          {/* <p className="mx-auto mt-8 max-w-4xl text-lg md:text-xl leading-relaxed text-slate-400">
             Join hundreds of builders, students, developers and AWS community
             members at one of Bhilai's most accessible venues.
-          </p>
+          </p> */}
         </div>
 
         {/* VENUE GRID */}
-        <div className="mt-24 grid gap-10 lg:grid-cols-2">
+        <div className="mt-20 grid gap-10 lg:grid-cols-2">
           {/* MAP */}
           <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-xl h-[500px]">
             <div className="h-[500px] w-full">

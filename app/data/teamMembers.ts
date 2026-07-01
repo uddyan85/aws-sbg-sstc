@@ -5,14 +5,14 @@ export const teamMembers: TeamMember[] = [
     id: "uddyan-sahu",
     name: "Uddyan Sahu",
     role: "Team Lead",
-    title: "Organiser",
+    title: "Organizer",
     bio: "Leading the AWS Student Community Day 2026 with passion for cloud computing and community building. Aryan brings strategic vision and leadership to make this event a success.",
     avatar: "/profile2.jpg",
     social: {
       linkedin: "https://www.linkedin.com/in/uddyan-sahu-77u666/",
       twitter: "",
     },
-    category: "organiser",
+    category: "Organizer",
     order: 1,
   },
   {
@@ -26,7 +26,7 @@ export const teamMembers: TeamMember[] = [
       linkedin: "",
       twitter: "",
     },
-    category: "organiser",
+    category: "Organizer",
     order: 2,
   },
   // {

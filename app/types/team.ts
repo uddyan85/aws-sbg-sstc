@@ -10,6 +10,6 @@ export interface TeamMember {
     twitter?: string;
     website?: string;
   };
-  category: 'organiser' | 'operations' | 'pr' | 'technical' | 'design'| 'Social';
+  category: 'Organizer' | 'operations' | 'pr' | 'technical' | 'design'| 'Social';
   order: number;
 }
