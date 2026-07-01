@@ -38,8 +38,19 @@ const faqs = [
   {
     question:
       "I want to sponsor or partner with the event. Where should I reach out?",
-    answer:
-      'Email "aws.sbg.sstc@gmail.com" to express your interest in sponsorship or partnership, and the team will share the necessary details and next steps with you. ',
+    answer: (
+      <>
+        Email{" "}
+        <a
+          href="mailto:aws.sbg.sstc@gmail.com"
+          className="text-[#A45AFA] hover:underline font-semibold"
+        >
+          aws.sbg.sstc@gmail.com{" "}
+        </a>{" "}
+        to express your interest in sponsorship or partnership, and the team
+        will share the necessary details and next steps with you.
+      </>
+    ),
   },
 ];
 
