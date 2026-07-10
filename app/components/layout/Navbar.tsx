@@ -179,9 +179,88 @@ export default function Navbar() {
           {/* CTA */}
           <button
             onClick={() => handleClick("/register")}
-            className="hidden lg:block rounded-lg bg-gradient-to-r from-[#A45AFA] to-purple-700 px-4 py-2 text-sm font-semibold text-white hover:scale-105 transition cursor-pointer"
+            className="
+    hidden lg:inline-flex
+    group
+    relative
+    items-center
+    justify-center
+    overflow-hidden
+
+    rounded-xl
+    px-6
+    py-2
+
+    font-semibold
+    text-black
+
+    bg-gradient-to-b
+    from-[#FFB238]
+    via-[#FF9900]
+    to-[#CC7000]
+
+    border border-[#FFD27A]/20
+    backdrop-blur-xl
+
+    shadow-[0_4px_20px_rgba(255,153,0,0.35)]
+
+    transition-all
+    duration-500
+
+    hover:scale-105
+    hover:-translate-y-0.5
+    hover:shadow-[0_0_25px_rgba(255,153,0,0.7),0_0_50px_rgba(255,153,0,0.45),0_0_100px_rgba(255,153,0,0.25)]
+
+    cursor-pointer
+  "
           >
-            Register
+            {/* Glass Highlight */}
+            <span
+              className="
+      absolute
+      inset-0
+      rounded-xl
+      bg-gradient-to-b
+      from-white/30
+      via-white/10
+      to-transparent
+    "
+            />
+
+            {/* Bloom */}
+            <span
+              className="
+      absolute
+      -inset-4
+      rounded-xl
+      bg-[#FF9900]/40
+      blur-2xl
+      opacity-0
+      transition-all
+      duration-500
+      group-hover:opacity-100
+      group-hover:scale-125
+    "
+            />
+
+            {/* Shine */}
+            <span
+              className="
+      absolute
+      -left-20
+      top-0
+      h-full
+      w-12
+      rotate-12
+      bg-white/40
+      blur-sm
+      transition-all
+      duration-700
+      group-hover:left-[120%]
+    "
+            />
+
+            <span className="relative z-10">Register</span>
           </button>
 
           {/* MOBILE BUTTON */}

@@ -11,6 +11,7 @@ import {
 import "./globals.css";
 
 import AnimatedBackground from "./AnimatedBackground";
+import SplashManager from "./components/starter/SplashManager";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -60,13 +61,15 @@ export default function RootLayout({
           min-h-screen flex flex-col
         `}
       >
-        {/* ===== Animated Background ===== */}
-        <AnimatedBackground />
+        <SplashManager>
+          {/* ===== Animated Background ===== */}
+          <AnimatedBackground />
 
-        {/* ===== CONTENT ===== */}
-        <div className="relative z-10 flex-1 flex flex-col">
-          <LayoutWrapper>{children}</LayoutWrapper>
-        </div>
+          {/* ===== CONTENT ===== */}
+          <div className="relative z-10 flex-1 flex flex-col">
+            <LayoutWrapper>{children}</LayoutWrapper>
+          </div>
+        </SplashManager>
       </body>
     </html>
   );

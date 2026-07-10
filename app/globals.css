@@ -9,7 +9,8 @@
   --font-tech: var(--font-mono);
 
   /* Amazon-style fallback system */
-  --font-amazon: var(--font-inter), system-ui, -apple-system, Segoe UI, Roboto,
+  --font-amazon:
+    var(--font-inter), system-ui, -apple-system, Segoe UI, Roboto,
     Helvetica Neue, Arial, sans-serif;
 
   /* Text rendering optimization (AWS-like crisp UI) */
@@ -49,7 +50,9 @@ body {
    TYPOGRAPHY SYSTEM (AWS SCD STYLE)
 ================================================== */
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-display);
   letter-spacing: -0.03em;
 }
@@ -60,7 +63,9 @@ p {
   color: rgba(255, 255, 255, 0.78);
 }
 
-code, pre, .mono {
+code,
+pre,
+.mono {
   font-family: var(--font-tech);
 }
 
@@ -263,8 +268,6 @@ code, pre, .mono {
   100% { transform: rotate(0deg) translateY(0); }
 } */
 
-
-
 /* ==================================================
    RESPONSIVE & PERFORMANCE TWEAKS
 ================================================== */
@@ -321,7 +324,6 @@ code, pre, .mono {
 
 /* --------------------------------------------------------------------- */
 
-
 /* FOR sticky top announcement strip */
 @keyframes marquee {
   0% {
@@ -333,11 +335,16 @@ code, pre, .mono {
 }
 
 @keyframes slowZoom {
-  0% { transform: scale(1.1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1.1); }
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.1);
+  }
 }
-
 
 /* for HERO image glow: */
 @keyframes sweep {
@@ -355,7 +362,8 @@ code, pre, .mono {
 
 /* for HERO text glow: */
 @keyframes glow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.25;
     transform: scale(1);
   }

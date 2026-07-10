@@ -123,7 +123,7 @@ export default function Hero() {
           "
         >
           <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-            {/* 29 AUG, 2026 */}
+            {/* 26 SEP, 2026 */}
             COMING
           </span>
 
@@ -148,7 +148,7 @@ export default function Hero() {
           transition={{ delay: 0.3 }}
           className="mt-8 w-full"
         >
-          {/* <CountdownTimer targetDate="2026-08-29T08:00:00" /> */}
+          {/* <CountdownTimer targetDate="2026-09-26T08:00:00" /> */}
         </motion.div>
 
         {/* ================= CTA ================= */}
@@ -161,20 +161,90 @@ export default function Hero() {
           <Link
             href="#register"
             className="
-              px-8 py-4
-              rounded-full
-              bg-[#A45AFA]
-              text-white
-              font-semibold
-              hover:scale-105
-              transition
-              shadow-[0_0_30px_rgba(164,90,250,0.4)]
-            "
+    group
+    relative
+    inline-flex
+    items-center
+    justify-center
+    overflow-hidden
+
+    rounded-full
+    px-8
+    py-4
+
+    font-bold
+    text-black
+
+    bg-gradient-to-b
+    from-[#FFB238]
+    via-[#FF9900]
+    to-[#CC7000]
+
+    border border-[#FFD27A]/30
+    backdrop-blur-xl
+
+    shadow-[0_8px_30px_rgba(255,153,0,0.35)]
+    transition-all
+    duration-500
+
+    hover:scale-105
+    hover:shadow-[0_0_30px_rgba(255,153,0,0.8),0_0_60px_rgba(255,153,0,0.65),0_0_120px_rgba(255,153,0,0.45)]
+  "
           >
-            Register Now <ArrowRight className="inline ml-2 w-4 h-4" />
+            {/* Bright Glass Reflection */}
+            <span
+              className="
+      absolute
+      inset-0
+      rounded-full
+      bg-gradient-to-b
+      from-white/35
+      via-white/10
+      to-transparent
+      pointer-events-none
+    "
+            />
+
+            {/* Bloom */}
+            <span
+              className="
+      absolute
+      -inset-5
+      rounded-full
+      bg-[#FF9900]
+      blur-3xl
+      opacity-20
+      transition-all
+      duration-500
+      group-hover:opacity-70
+      group-hover:scale-125
+    "
+            />
+
+            {/* Animated Shine */}
+            <span
+              className="
+      absolute
+      -left-32
+      top-0
+      h-full
+      w-20
+      rotate-12
+      bg-white/50
+      blur-md
+      transition-all
+      duration-700
+      group-hover:left-[130%]
+    "
+            />
+
+            <span className="relative z-10 flex items-center">
+              Register Now
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
           </Link>
 
-          <Link
+          {/* <Link
             href="#about"
             className="
               px-8 py-4
@@ -187,7 +257,7 @@ export default function Hero() {
             "
           >
             Learn More
-          </Link>
+          </Link> */}
         </motion.div>
       </div>
     </section>
