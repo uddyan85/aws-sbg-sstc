@@ -16,7 +16,7 @@ const organizers = [
     image: "/uddyan.png", 
     linkedin: "https://www.linkedin.com/in/uddyan-sahu/",
     // instagram: "https://instagram.com/uddyan.sahu",
-    email: "uddyan@example.com",
+    email: "uddyansahu7@gmail.com",
   },
   // Add more organizers here if needed
 ];
