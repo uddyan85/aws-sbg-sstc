@@ -11,7 +11,7 @@ import {
 import "./globals.css";
 
 import AnimatedBackground from "./AnimatedBackground";
-import SplashManager from "./starter/SplashManager";
+import SplashManager from "./components/sections/SplashManager";
 
 const inter = Inter({
   subsets: ["latin"],
