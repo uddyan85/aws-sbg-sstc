@@ -23,7 +23,7 @@ export default function Hero() {
       "
     >
       {/* Background */}
-      <FloatingParticles />
+      {/* <FloatingParticles /> */}
 
       {/* Main Glow */}
       <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2" />
@@ -140,12 +140,14 @@ export default function Hero() {
           "
         >
           <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
+          {/* 26 SEP, 2026 */}
             COMING
           </span>
 
           <span className="text-[#A45AFA]">•</span>
 
           <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
+          {/* 08:00 AM */}
             SOON
           </span>
 
