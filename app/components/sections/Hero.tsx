@@ -28,6 +28,27 @@ export default function Hero() {
       {/* Main Glow */}
       <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2" />
 
+      {/* ================= BACKGROUND BOTTOM ILLUSTRATION ================= */}
+      <div className="absolute bottom-[-109px] left-0 w-full h-[500px] sm:h-[580px] lg:h-[350px] z-0 overflow-hidden pointer-events-none flex items-end justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative w-full h-full"
+        >
+          {/* Fade Overlay: Makes the image blend into the dark hero background */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10" />
+          
+          <Image
+            src="/theme.png" // REPLACE THIS WITH YOUR ACTUAL FILENAME
+            alt="Bottom Landscape"
+            fill
+            className="object-cover object-bottom"
+            priority={false}
+          />
+        </motion.div>
+      </div>
+
       {/* CONTENT */}
       <div className="relative z-10 w-full max-w-6xl px-6 text-center flex flex-col items-center">
         {/* AWS IMAGE (ONLY HERO FOCUS) */}
@@ -81,8 +102,6 @@ export default function Hero() {
             leading-[1.05]
           "
         >
-          {/* <span className="block text-white">AWS</span> */}
-
           <span className="bg-gradient-to-r font-bold text-white bg-clip-text text-transparent">
             Student Community Day
           </span>
@@ -90,8 +109,6 @@ export default function Hero() {
           <span className="inline-block mt-2 font-medium text-[#FF9900] drop-shadow-[0_0_35px_rgba(255,179,71,1)] animate-pulse-slow">
             Bhilai 2026
           </span>
-
-          {/* <span className="block text-white mt-2">Bhilai 2026</span> */}
         </motion.h1>
 
         {/* ================= SUBTITLE ================= */}
@@ -123,14 +140,12 @@ export default function Hero() {
           "
         >
           <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-            {/* 26 SEP, 2026 */}
             COMING
           </span>
 
           <span className="text-[#A45AFA]">•</span>
 
           <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-            {/* 08:00 AM */}
             SOON
           </span>
 
@@ -151,7 +166,7 @@ export default function Hero() {
           {/* <CountdownTimer targetDate="2026-09-26T08:00:00" /> */}
         </motion.div>
 
-        {/* ================= CTA ================= */}
+        {/* ================= CTA (REGISTER BUTTON) ================= */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -243,21 +258,6 @@ export default function Hero() {
               <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
           </Link>
-
-          {/* <Link
-            href="#about"
-            className="
-              px-8 py-4
-              rounded-full
-              border border-white/10
-              bg-white/5
-              text-white
-              hover:bg-white/10
-              transition
-            "
-          >
-            Learn More
-          </Link> */}
         </motion.div>
       </div>
     </section>

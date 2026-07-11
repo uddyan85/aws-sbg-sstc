@@ -250,7 +250,7 @@ export default function Contact() {
           >
             <Users size={18} className="shrink-0" />
             <span className="hidden md:block ml-2.5 font-medium text-xs lg:text-sm tracking-widest whitespace-nowrap">
-              {isConnectOpen ? "CLOSE" : "CONNECT WITH ORGANIZER"}
+              {isConnectOpen ? "CLOSE" : "CONNECT WITH ORGANIZERS"}
             </span>
           </button>
         </div>
