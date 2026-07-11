@@ -7,6 +7,7 @@ import Venue from "./components/sections/Venue";
 import Sponsors from "./components/sections/Sponsors";
 import Faq from "./components/sections/FAQ";
 import ImageMarqueeStrip from "./components/sections/ImageMarqueeStrip";
+import SplashManager from "./starter/SplashManager";
 
 const images = [
   { src: "/AWS-logo.png", alt: "AWS" },
@@ -17,6 +18,7 @@ const images = [
 export default function Home() {
   return (
     <>
+     <SplashManager> 
       <Hero />
       
       <ImageMarqueeStrip
@@ -37,6 +39,7 @@ export default function Home() {
       <Faq />
       {/* <Contact /> */}
       {/* <Register /> */}
+       </SplashManager> 
     </>
   );
 }
