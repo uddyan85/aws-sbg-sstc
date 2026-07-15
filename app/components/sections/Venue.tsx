@@ -13,7 +13,7 @@ import {
 
 export default function Venue() {
   return (
-    <section id="venue" className="relative overflow-hidden bg-[#050816] py-15">
+    <section id="venue" className="relative overflow-hidden bg-[#050816] py-5">
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* HEADER */}
         <div className="mx-auto max-w-5xl text-center">
