@@ -13,11 +13,7 @@ import {
 
 export default function Venue() {
   return (
-    <section
-      id="venue"
-      className="relative overflow-hidden bg-[#050816] py-15"
-    >
-
+    <section id="venue" className="relative overflow-hidden bg-[#050816] py-15">
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* HEADER */}
         <div className="mx-auto max-w-5xl text-center">
@@ -52,31 +48,32 @@ export default function Venue() {
                 allowFullScreen
                 className="h-full w-full"
               />
+
               {/* --- CUSTOM "OPEN IN MAPS" BUTTON --- */}
-    <a
-      href="https://www.google.com/maps?q=21.2212825,81.3074439"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="absolute bottom-4 right-4 flex items-center gap-2 rounded-lg bg-[#18181b] px-4 py-2 text-[#8ecae6] shadow-lg transition-colors hover:bg-[#27272a]"
-    >
-      <span className="text-sm font-medium">Open in Maps</span>
-      {/* External Link SVG Icon */}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-        <polyline points="15 3 21 3 21 9" />
-        <line x1="10" y1="14" x2="21" y2="3" />
-      </svg>
-    </a>
+              <a
+                href="https://maps.app.goo.gl/BQsDGLMC1zqPhoqQ6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-4 right-4 flex items-center gap-2 rounded-lg bg-[#18181b] px-4 py-2 text-[#8ecae6] shadow-lg transition-colors hover:bg-[#27272a]"
+              >
+                <span className="text-sm font-medium">Open in Maps</span>
+                {/* External Link SVG Icon */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
             </div>
           </div>
 
@@ -141,9 +138,7 @@ export default function Venue() {
                       {item.title}
                     </h4>
 
-                    <p className="mt-2 text-sm text-slate-400">
-                      {item.desc}
-                    </p>
+                    <p className="mt-2 text-sm text-slate-400">{item.desc}</p>
                   </div>
                 );
               })}
