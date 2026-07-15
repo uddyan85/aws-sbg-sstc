@@ -279,7 +279,7 @@ export default function Registration() {
                     duration: 0.8,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="group relative flex flex-col rounded-[32px] border border-white/10 bg-white/[0.03] p-10 transition-[border-color] duration-500 hover:border-white/20 overflow-hidden"
+                  className="group relative flex flex-col rounded-[32px] border border-purple-500/30 bg-white/[0.03] p-10 transition-[border-color] duration-500 hover:border-purple-500 overflow-hidden"
                 >
                   {tier.badge && (
                     <div className="absolute top-6 -right-11 z-20 rotate-45 overflow-hidden">
@@ -296,7 +296,7 @@ export default function Registration() {
                   )}
 
                   <div className="mb-8 flex items-center justify-between relative z-10">
-                    <h3 className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">
+                    <h3 className="text-xl font-bold tracking-[0.2em] text-purple-400 uppercase">
                       {tier.name}
                     </h3>
                     <div className="flex items-baseline gap-1 mr-3">
@@ -310,7 +310,7 @@ export default function Registration() {
                     {tier.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <Check
-                          className="mt-0.5 h-4 w-4 shrink-0 opacity-50"
+                          className="mt-0.5 h-5 w-5 shrink-0 "
                           style={{ color: tier.glowColor }}
                         />
                         <span className="leading-snug">{feature}</span>
@@ -447,6 +447,13 @@ export default function Registration() {
             })}
           </div>
 
+
+
+
+
+
+
+
           {/* VIP Tiers – unchanged */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {vipTiers.map((tier, idx) => {
@@ -465,7 +472,7 @@ export default function Registration() {
                     duration: 0.8,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="group relative flex flex-col rounded-[32px] border border-white/10 bg-white/[0.03] p-10 transition-[border-color] duration-500 hover:border-white/20 overflow-hidden"
+                  className="group relative flex flex-col rounded-[32px] border border-purple-500/30 bg-white/[0.03] p-10 transition-[border-color] duration-500 hover:border-purple-500 overflow-hidden"
                 >
                   {tier.badge && (
                     <div className="absolute top-6 -right-11 z-20 rotate-45 overflow-hidden">
@@ -482,7 +489,7 @@ export default function Registration() {
                   )}
 
                   <div className="mb-8 flex items-center justify-between relative z-10">
-                    <h3 className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">
+                    <h3 className="text-xl font-bold tracking-[0.2em] text-purple-400 uppercase">
                       {tier.name}
                     </h3>
                     <div className="flex items-baseline gap-1 mr-3">
@@ -496,7 +503,7 @@ export default function Registration() {
                     {tier.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <Check
-                          className="mt-0.5 h-4 w-4 shrink-0 opacity-60"
+                          className="mt-0.5 h-5 w-5 shrink-0"
                           style={{ color: tier.glowColor }}
                         />
                         <span className="leading-snug text-slate-300">
