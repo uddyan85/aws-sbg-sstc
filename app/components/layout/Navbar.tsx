@@ -178,7 +178,7 @@ export default function Navbar() {
 
           {/* CTA */}
           <button
-            onClick={() => handleClick("/register")}
+            onClick={() => handleClick("#registration")}
             className="
     hidden lg:inline-flex
     group

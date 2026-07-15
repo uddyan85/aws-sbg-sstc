@@ -176,7 +176,7 @@ export default function Hero() {
           className="mt-8 mb-14 flex flex-col sm:flex-row gap-4"
         >
           <Link
-            href="#register"
+            href="#registration"
             className="
     group
     relative

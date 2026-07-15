@@ -8,6 +8,9 @@ import Sponsors from "./components/sections/Sponsors";
 import Faq from "./components/sections/FAQ";
 import ImageMarqueeStrip from "./components/sections/ImageMarqueeStrip";
 import SplashManager from "./starter/SplashManager";
+import BadgeGenerator from "./components/sections/BadgeGenerator";
+import VenueNew from "./components/layout/VenueNew";
+import Register from "./components/sections/Register";
 
 const images = [
   { src: "/AWS-logo.png", alt: "AWS" },
@@ -18,28 +21,27 @@ const images = [
 export default function Home() {
   return (
     <>
-     <SplashManager> 
-      <Hero />
-      
-      <ImageMarqueeStrip
-        images={images}
-        speed={100}
-        direction="left"
-        pauseOnHover
-      />
+      <SplashManager>
+        <Hero />
 
-      <About />
-      <Tracks />
-      <Speakers />
-      <Agenda />
-      <Venue />
-      <Sponsors />
-      {/* <Partners /> */}
-      {/* <Team /> */}
-      <Faq />
-      {/* <Contact /> */}
-      {/* <Register /> */}
-       </SplashManager> 
+        <ImageMarqueeStrip
+          images={images}
+          speed={100}
+          direction="left"
+          pauseOnHover
+        />
+
+        <About />
+        {/* <VenueNew /> */}
+        <Tracks />
+        <Speakers />
+        <Agenda />
+        <Register />
+        <Venue />
+        <Sponsors />
+        {/* <BadgeGenerator /> */}
+        <Faq />
+      </SplashManager>
     </>
   );
 }

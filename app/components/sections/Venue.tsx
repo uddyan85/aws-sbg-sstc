@@ -44,7 +44,7 @@ export default function Venue() {
           <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-xl h-[500px]">
             <div className="h-[500px] w-full">
               <iframe
-                src="https://www.google.com/maps?q=Shri+Shankaracharya+Medical+College+Auditorium+Bhilai&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d463.0922509921905!2d81.3074439!3d21.2212825!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a293d120166784d%3A0xaa6272228c50e8d6!2sAcademic%20Block!5e1!3m2!1sen!2sin!4v1784096387005!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -52,6 +52,31 @@ export default function Venue() {
                 allowFullScreen
                 className="h-full w-full"
               />
+              {/* --- CUSTOM "OPEN IN MAPS" BUTTON --- */}
+    <a
+      href="https://www.google.com/maps?q=21.2212825,81.3074439"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="absolute bottom-4 right-4 flex items-center gap-2 rounded-lg bg-[#18181b] px-4 py-2 text-[#8ecae6] shadow-lg transition-colors hover:bg-[#27272a]"
+    >
+      <span className="text-sm font-medium">Open in Maps</span>
+      {/* External Link SVG Icon */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        <polyline points="15 3 21 3 21 9" />
+        <line x1="10" y1="14" x2="21" y2="3" />
+      </svg>
+    </a>
             </div>
           </div>
 
@@ -75,7 +100,7 @@ export default function Venue() {
               </div>
 
               <Link
-                href="https://www.google.com/maps?q=Shri+Shankaracharya+Medical+College+Auditorium+Bhilai&output=embed"
+                href="https://maps.app.goo.gl/v8zy4G6HKahCBMuS6"
                 target="_blank"
                 className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#A45AFA]/30 bg-[#A45AFA]/10 px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-[#A45AFA]/20"
               >
