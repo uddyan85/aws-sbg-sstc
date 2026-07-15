@@ -36,7 +36,7 @@ export default function Home() {
         <Tracks />
         <Speakers />
         <Agenda />
-        <Register />
+        {/* <Register /> */}
         <Venue />
         <Sponsors />
         {/* <BadgeGenerator /> */}
