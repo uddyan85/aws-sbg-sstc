@@ -36,7 +36,8 @@ const topTiers: TicketTier[] = [
     glowColor: "#a45afa",
     ticketsClaimed: 185,
     totalTickets: 200,
-    paymentLink: "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
+    paymentLink:
+      "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
     features: [
       "Full Event Access",
       "AWS Expert Sessions",
@@ -57,7 +58,8 @@ const topTiers: TicketTier[] = [
     glowColor: "#a45afa",
     ticketsClaimed: 120,
     totalTickets: 300,
-    paymentLink: "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
+    paymentLink:
+      "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
     features: [
       "Full Event Access",
       "AWS Expert Sessions",
@@ -82,7 +84,8 @@ const vipTiers: TicketTier[] = [
     glowColor: "#a45afa",
     ticketsClaimed: 85,
     totalTickets: 100,
-    paymentLink: "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
+    paymentLink:
+      "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
     features: [
       "Reserved seating area (front)",
       "Exclusive AWS Community T-shirt",
@@ -108,7 +111,8 @@ const vipTiers: TicketTier[] = [
     glowColor: "#a45afa",
     ticketsClaimed: 8,
     totalTickets: 25,
-    paymentLink: "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
+    paymentLink:
+      "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
     features: [
       "Full Event Access",
       "VIP Check-In",
@@ -447,13 +451,6 @@ export default function Registration() {
             })}
           </div>
 
-
-
-
-
-
-
-
           {/* VIP Tiers – unchanged */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {vipTiers.map((tier, idx) => {
@@ -639,7 +636,7 @@ export default function Registration() {
         </div>
       </section>
 
-      {/* Modal – unchanged */}
+      {/* Modal – updated per requirements */}
       <AbsolutePortal>
         <AnimatePresence>
           {selectedTier && (
@@ -660,8 +657,10 @@ export default function Registration() {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative w-full max-w-4xl h-[85vh] max-h-[800px] flex flex-col overflow-hidden rounded-[32px] border border-white/10 bg-[#050816] shadow-2xl"
+                // Responsive sizing: larger max-width, better height for laptop/tablet
+                className="relative w-full max-w-5xl h-[90vh] max-h-[900px] flex flex-col overflow-hidden rounded-[32px] border border-white/10 bg-[#050816] shadow-2xl"
               >
+                {/* Header */}
                 <div
                   className="relative flex flex-col overflow-hidden rounded-t-[32px] border-b"
                   style={{
@@ -669,51 +668,42 @@ export default function Registration() {
                     borderBottomColor: `${selectedTier.glowColor}60`,
                   }}
                 >
-                  <div className="relative z-10 px-6 py-5 flex items-center justify-between">
-                    <div className="flex items-center gap-4 sm:gap-5">
-                      <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-slate-900">
+                  <div className="relative z-10 px-3 sm:px-5 py-3 sm:py-4 flex items-center justify-between">
+                    {/* Left: only "Register · AWS SCD Bhilai2026" + "Secure Link" badge */}
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-slate-900">
                         <ShieldCheck
-                          className="h-6 w-6"
+                          className="h-5 w-5 sm:h-6 sm:w-6"
                           style={{ color: selectedTier.glowColor }}
                         />
                       </div>
-
-                      <div className="flex flex-col">
-                        <div className="flex items-center gap-3">
-                          <h2 className="text-xl sm:text-2xl font-black text-white uppercase tracking-wide">
-                            {selectedTier.name}
-                          </h2>
-                          <span className="hidden sm:inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-slate-800 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-slate-300">
-                            <span
-                              className="h-1.5 w-1.5 rounded-full animate-pulse"
-                              style={{
-                                backgroundColor: selectedTier.glowColor,
-                              }}
-                            />
-                            Secure Link
-                          </span>
-                        </div>
-
-                        <div className="mt-1 flex items-center gap-2 sm:gap-3 text-sm">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                        <h2 className="text-base sm:text-xl font-black text-white tracking-wide whitespace-nowrap">
+                          Register · AWS SCD Bhilai 2026
+                        </h2>
+                        <span
+                          className="
+    inline-flex w-fit items-center gap-1.5
+    rounded-xl
+    border border-white/10
+    bg-slate-800/80
+    px-3 py-1
+    text-[10px] sm:text-xs
+    font-semibold uppercase tracking-wider
+    text-slate-300
+    whitespace-nowrap
+  "
+                        >
                           <span
-                            className="text-lg font-bold"
-                            style={{ color: selectedTier.glowColor }}
-                          >
-                            ₹{selectedTier.price}
-                          </span>
-                          <span className="text-xs font-medium text-slate-400">
-                            / Allocation
-                          </span>
-                          <span className="hidden sm:inline text-slate-600">
-                            •
-                          </span>
-                          <span className="hidden sm:inline text-[10px] uppercase tracking-widest text-slate-500">
-                            ID: {selectedTier.id}
-                          </span>
-                        </div>
+                            className="h-2 w-2 rounded-full animate-pulse"
+                            style={{ backgroundColor: selectedTier.glowColor }}
+                          />
+                          Secure Link
+                        </span>
                       </div>
                     </div>
 
+                    {/* Right: "Open in new tab" + close button */}
                     <div className="flex items-center gap-2 sm:gap-3">
                       <a
                         href={selectedTier.paymentLink}
@@ -721,20 +711,21 @@ export default function Registration() {
                         rel="noopener noreferrer"
                         className="hidden sm:flex items-center gap-2 rounded-xl border border-white/10 bg-slate-800 px-4 py-2.5 text-xs font-semibold text-slate-300 transition-colors hover:bg-slate-700 hover:text-white"
                       >
-                        Browser{" "}
+                        Open in new tab
                         <ExternalLink className="h-3.5 w-3.5 opacity-70" />
                       </a>
 
                       <button
                         onClick={() => setSelectedTier(null)}
-                        className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-800 text-slate-400 transition-colors hover:bg-red-500/20 hover:text-red-400"
+                        className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-800 text-slate-400 transition-colors hover:bg-red-500/20 hover:text-red-400"
                       >
-                        <X className="h-5 w-5" />
+                        <X className="h-4 w-4 sm:h-5 sm:w-5" />
                       </button>
                     </div>
                   </div>
                 </div>
 
+                {/* Mobile helper link */}
                 <div className="sm:hidden flex items-center justify-center py-2 bg-slate-950 border-b border-white/5">
                   <a
                     href={selectedTier.paymentLink}
@@ -742,11 +733,12 @@ export default function Registration() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-xs font-medium text-slate-400 hover:text-white"
                   >
-                    Having trouble viewing? Open in new tab{" "}
+                    Having trouble viewing? Open in new tab
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
 
+                {/* Iframe */}
                 <div className="flex-1 w-full relative bg-[#050816]">
                   <iframe
                     src={selectedTier.paymentLink}
