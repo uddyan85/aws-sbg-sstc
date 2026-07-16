@@ -646,7 +646,7 @@ export default function Registration() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               style={{ pointerEvents: "auto" }}
-              className="absolute inset-0 flex items-center justify-center p-4 sm:p-6"
+              className="absolute inset-0 flex items-center justify-center p-4 max-[340px]:p-2 sm:p-6"
             >
               <div
                 onClick={() => setSelectedTier(null)}
@@ -657,7 +657,6 @@ export default function Registration() {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                // Responsive sizing: larger max-width, better height for laptop/tablet
                 className="relative w-full max-w-5xl h-[90vh] max-h-[900px] flex flex-col overflow-hidden rounded-[32px] border border-purple-900/50 bg-[#050816] shadow-2xl"
               >
                 {/* Header */}
@@ -668,31 +667,31 @@ export default function Registration() {
                     borderBottomColor: `${selectedTier.glowColor}60`,
                   }}
                 >
-                  <div className="relative z-10 px-3 sm:px-5 py-3 sm:py-4 flex items-center justify-between">
-                    {/* Left: only "Register · AWS SCD Bhilai2026" + "Secure Link" badge */}
-                    <div className="flex items-center gap-3 sm:gap-4">
-                      <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-slate-900">
+                  <div className="relative z-10 px-3 max-[340px]:px-2 sm:px-5 py-3 sm:py-4 flex items-center justify-between">
+                    {/* Left: icon + title + badge */}
+                    <div className="flex items-center gap-3 max-[340px]:gap-2 sm:gap-4 min-w-0">
+                      <div className="flex h-10 w-10 max-[340px]:h-8 max-[340px]:w-8 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-slate-900">
                         <ShieldCheck
-                          className="h-5 w-5 sm:h-6 sm:w-6"
+                          className="h-5 w-5 max-[340px]:h-4 max-[340px]:w-4 sm:h-6 sm:w-6"
                           style={{ color: selectedTier.glowColor }}
                         />
                       </div>
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-                        <h2 className="text-base sm:text-xl font-black text-white tracking-wide whitespace-nowrap">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 min-w-0">
+                        <h2 className="text-base max-[340px]:text-sm sm:text-xl font-black text-white tracking-wide whitespace-normal break-words">
                           Register · AWS SCD Bhilai 2026
                         </h2>
                         <span
                           className="
-    inline-flex w-fit items-center gap-1.5
-    rounded-xl
-    border border-white/10
-    bg-slate-800/80
-    px-3 py-1
-    text-[10px] sm:text-xs
-    font-semibold uppercase tracking-wider
-    text-slate-300
-    whitespace-nowrap
-  "
+                      inline-flex w-fit items-center gap-1.5
+                      rounded-xl
+                      border border-white/10
+                      bg-slate-800/80
+                      px-3 max-[340px]:px-2 py-1 max-[340px]:py-0.5
+                      text-[10px] max-[340px]:text-[8px] sm:text-xs
+                      font-semibold uppercase tracking-wider
+                      text-slate-300
+                      whitespace-nowrap
+                    "
                         >
                           <span
                             className="h-2 w-2 rounded-full animate-pulse"
@@ -704,7 +703,7 @@ export default function Registration() {
                     </div>
 
                     {/* Right: "Open in new tab" + close button */}
-                    <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                       <a
                         href={selectedTier.paymentLink}
                         target="_blank"
@@ -717,9 +716,9 @@ export default function Registration() {
 
                       <button
                         onClick={() => setSelectedTier(null)}
-                        className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-800 text-slate-400 transition-colors hover:bg-red-500/20 hover:text-red-400 cursor-pointer"
+                        className="flex h-9 w-9 max-[340px]:h-8 max-[340px]:w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-800 text-slate-400 transition-colors hover:bg-red-500/20 hover:text-red-400 cursor-pointer"
                       >
-                        <X className="h-4 w-4 sm:h-5 sm:w-5" />
+                        <X className="h-4 w-4 max-[340px]:h-3.5 max-[340px]:w-3.5 sm:h-5 sm:w-5" />
                       </button>
                     </div>
                   </div>

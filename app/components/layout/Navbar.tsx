@@ -296,7 +296,7 @@ export default function Navbar() {
             ))}
 
             <button
-              onClick={() => handleClick("#register")}
+              onClick={() => handleClick("#registration")}
               className="
     group
     relative

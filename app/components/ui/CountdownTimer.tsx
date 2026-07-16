@@ -82,7 +82,7 @@ export default function CountdownTimer({
 
               flex flex-col items-center justify-center
 
-              w-[70px]
+              w-[60px]
               sm:w-[85px]
               md:w-[110px]
 
