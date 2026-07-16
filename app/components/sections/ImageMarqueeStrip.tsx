@@ -124,7 +124,7 @@ export default function ImageMarqueeStrip({
               xl:w-[260px] xl:h-[110px]
             "
           >
-            <div className="relative w-full h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-lg">
+            <div className="relative w-full h-full rounded-2xl border border-purple-500/20 bg-white/5 backdrop-blur-md overflow-hidden shadow-lg">
               <Image
                 src={img.src}
                 alt={img.alt ?? ""}

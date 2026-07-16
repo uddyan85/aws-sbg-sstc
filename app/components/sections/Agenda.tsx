@@ -152,7 +152,7 @@ export default function Agenda() {
                         }}
                     />
 
-                    <div className="relative rounded-3xl border border-white/10 bg-white/[0.04] px-6 py-12 sm:px-14 sm:py-16 text-center backdrop-blur-2xl shadow-[0_0_80px_rgba(164,90,250,0.12)] overflow-hidden">
+                    <div className="relative rounded-3xl border border-purple-500/20 hover:border-purple-500/40 bg-white/[0.04] px-6 py-12 sm:px-14 sm:py-16 text-center backdrop-blur-2xl shadow-[0_0_80px_rgba(164,90,250,0.12)] overflow-hidden">
                         {/* Inner glow */}
                         <motion.div
                             className="absolute inset-0 bg-gradient-to-br from-[#A45AFA]/5 via-transparent to-transparent"

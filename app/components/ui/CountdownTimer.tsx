@@ -76,7 +76,7 @@ export default function CountdownTimer({
               overflow-hidden
 
               rounded-xl
-              border border-white/10
+              border border-purple-500/30
               bg-white/[0.03]
               backdrop-blur-xl
 

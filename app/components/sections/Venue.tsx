@@ -37,7 +37,7 @@ export default function Venue() {
         {/* VENUE GRID */}
         <div className="mt-20 grid gap-10 lg:grid-cols-2">
           {/* MAP */}
-          <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-xl h-[500px]">
+          <div className="overflow-hidden rounded-[32px] border border-purple-500/20 bg-white/[0.03] backdrop-blur-xl h-[500px]">
             <div className="h-[500px] w-full">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d463.0922509921905!2d81.3074439!3d21.2212825!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a293d120166784d%3A0xaa6272228c50e8d6!2sAcademic%20Block!5e1!3m2!1sen!2sin!4v1784096387005!5m2!1sen!2sin"
@@ -79,7 +79,7 @@ export default function Venue() {
 
           {/* INFO */}
           <div className="space-y-6">
-            <div className="rounded-[32px] border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl">
+            <div className="rounded-[32px] border border-purple-500/20 bg-white/[0.03] p-8 backdrop-blur-xl">
               <div className="flex items-center gap-3">
                 <Building2 className="h-8 w-8 text-[#A45AFA]" />
                 <h3 className="text-3xl font-black text-white">
@@ -130,7 +130,7 @@ export default function Venue() {
                 return (
                   <div
                     key={item.title}
-                    className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl"
+                    className="rounded-3xl border border-purple-500/20 bg-white/[0.03] p-5 backdrop-blur-xl"
                   >
                     <Icon className="h-6 w-6 text-[#A45AFA]" />
 

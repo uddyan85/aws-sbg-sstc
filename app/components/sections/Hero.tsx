@@ -139,21 +139,21 @@ export default function Hero() {
             sm:text-base
           "
         >
-          <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-          {/* 26 SEP, 2026 */}
-            COMING
+          <span className="px-4 py-2 rounded-full bg-white/5 border border-purple-500/30">
+          26 SEP, 2026
+            {/* COMING */}
           </span>
 
           <span className="text-[#A45AFA]">•</span>
 
-          <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-          {/* 08:00 AM */}
-            SOON
+          <span className="px-4 py-2 rounded-full bg-white/5 border border-purple-500/30">
+          08:00 AM
+            {/* SOON */}
           </span>
 
           <span className="text-[#A45AFA]">•</span>
 
-          <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
+          <span className="px-4 py-2 rounded-full bg-white/5 border border-purple-500/30">
             IST
           </span>
         </motion.div>
@@ -165,7 +165,7 @@ export default function Hero() {
           transition={{ delay: 0.3 }}
           className="mt-8 w-full"
         >
-          {/* <CountdownTimer targetDate="2026-09-26T08:00:00" /> */}
+          <CountdownTimer targetDate="2026-09-26T08:00:00" />
         </motion.div>
 
         {/* ================= CTA (REGISTER BUTTON) ================= */}

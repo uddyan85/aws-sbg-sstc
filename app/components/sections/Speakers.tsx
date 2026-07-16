@@ -37,7 +37,7 @@ export default function Speakers() {
   return (
     <motion.section
       id="speakers"
-      className="relative overflow-hidden bg-[#050816] py-30"
+      className="relative overflow-hidden bg-[#050816] py-18"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}

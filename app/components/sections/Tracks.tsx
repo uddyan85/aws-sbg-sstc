@@ -36,7 +36,7 @@ export default function Tracks() {
   return (
     <motion.section
       id="tracks"
-      className="relative overflow-hidden bg-[#050816] py-30"
+      className="relative overflow-hidden bg-[#050816] py-20"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}

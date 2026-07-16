@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Send, ArrowLeft, Users } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Send,
+  ArrowLeft,
+  Users,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa6";
 
@@ -13,7 +19,7 @@ const organizers = [
     id: 1,
     name: "Uddyan Sahu",
     title: "Organizer - AWS SBG Leader, SSTC",
-    image: "/uddyan.png", 
+    image: "/uddyan.png",
     linkedin: "https://www.linkedin.com/in/uddyan-sahu/",
     // instagram: "https://instagram.com/uddyan.sahu",
     email: "uddyansahu7@gmail.com",
@@ -26,7 +32,9 @@ export default function Contact() {
   const [step, setStep] = useState(0);
   const [isConnectOpen, setIsConnectOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
+    null,
+  );
 
   const [formData, setFormData] = useState({
     name: "",
@@ -55,13 +63,16 @@ export default function Contact() {
     if (step > 0) setStep(step - 1);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const isStepValid = () => {
     if (step === 0) return formData.name.trim().length > 0;
-    if (step === 1) return formData.email.trim().length > 0 && formData.email.includes("@");
+    if (step === 1)
+      return formData.email.trim().length > 0 && formData.email.includes("@");
     if (step === 2) return formData.role.trim().length > 0;
     if (step === 3) return formData.reason.length > 0;
     if (step === 4) return formData.message.trim().length > 0;
@@ -95,7 +106,8 @@ export default function Contact() {
 
   const inputClasses =
     "w-full text-3xl md:text-5xl font-light bg-transparent border-b border-white/20 focus:border-[#A45AFA] outline-none transition-colors placeholder:text-white/20 pb-4 text-center mt-8";
-  const questionClasses = "text-4xl md:text-6xl font-light text-white/90 tracking-wide";
+  const questionClasses =
+    "text-4xl md:text-6xl font-light text-white/90 tracking-wide";
 
   const renderStepContent = (index: number) => {
     switch (index) {
@@ -104,7 +116,9 @@ export default function Contact() {
           <>
             <h2 className={questionClasses}>Hello SBG, my name is</h2>
             <input
-              ref={(el) => { inputRefs.current[0] = el; }}
+              ref={(el) => {
+                inputRefs.current[0] = el;
+              }}
               name="name"
               value={formData.name}
               onChange={handleChange}
@@ -119,7 +133,9 @@ export default function Contact() {
           <>
             <h2 className={questionClasses}>And my email is</h2>
             <input
-              ref={(el) => { inputRefs.current[1] = el; }}
+              ref={(el) => {
+                inputRefs.current[1] = el;
+              }}
               name="email"
               type="email"
               value={formData.email}
@@ -135,7 +151,9 @@ export default function Contact() {
           <>
             <h2 className={questionClasses}>I work as a</h2>
             <input
-              ref={(el) => { inputRefs.current[2] = el; }}
+              ref={(el) => {
+                inputRefs.current[2] = el;
+              }}
               name="role"
               value={formData.role}
               onChange={handleChange}
@@ -150,7 +168,9 @@ export default function Contact() {
           <>
             <h2 className={questionClasses}>I'm reaching out about</h2>
             <select
-              ref={(el) => { inputRefs.current[3] = el; }}
+              ref={(el) => {
+                inputRefs.current[3] = el;
+              }}
               name="reason"
               value={formData.reason}
               onChange={handleChange}
@@ -186,7 +206,9 @@ export default function Contact() {
           <>
             <h2 className={questionClasses}>Here's my message...</h2>
             <input
-              ref={(el) => { inputRefs.current[4] = el; }}
+              ref={(el) => {
+                inputRefs.current[4] = el;
+              }}
               name="message"
               type="text"
               value={formData.message}
@@ -229,15 +251,25 @@ export default function Contact() {
           >
             <span className="absolute inset-0 rounded-full bg-[#A45AFA]/20 blur-md animate-pulse" />
             <span className="absolute inset-0 rounded-full border border-[#A45AFA]/30 group-hover:rotate-45 transition-transform duration-700" />
-            <ArrowLeft size={18} className="relative z-10 text-slate-300 group-hover:text-white transition-all duration-300 group-hover:-translate-x-0.5" />
+            <ArrowLeft
+              size={18}
+              className="relative z-10 text-slate-300 group-hover:text-white transition-all duration-300 group-hover:-translate-x-0.5"
+            />
             <span className="absolute left-3 h-5 w-5 rounded-full bg-[#A45AFA] animate-ping opacity-20" />
           </button>
 
           <a
-            className="cm-to text-white/60 font-light tracking-[0.2em] text-sm md:text-base  whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer"
             href="mailto:aws.sbg.sstc@gmail.com"
+            className="cm-to text-white/60 font-light tracking-[0.12em] text-xs sm:text-sm md:text-base whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer truncate"
           >
-            To: aws.sbg.sstc@gmail.com
+            {/* Mobile */}
+            <span className="sm:hidden">To: aws.sbg.sstc@gmail.com</span>
+
+            {/* Tablet */}
+            <span className="hidden sm:inline md:hidden">To: aws.sbg.sstc@gmail.com</span>
+
+            {/* Desktop */}
+            <span className="hidden md:inline">To: aws.sbg.sstc@gmail.com</span>
           </a>
         </div>
 
@@ -330,7 +362,8 @@ export default function Contact() {
       >
         <div className="w-full max-w-7xl h-full p-6 md:p-12 overflow-y-auto pt-24 md:pt-32 flex flex-col">
           <h2 className="text-4xl md:text-6xl font-light text-white mb-12 tracking-wide text-center">
-            Connect with an <span className="text-[#A45AFA] italic">Organizer</span>
+            Connect with an{" "}
+            <span className="text-[#A45AFA] italic">Organizer</span>
           </h2>
 
           {/* Dynamically render organizer cards */}
@@ -338,19 +371,19 @@ export default function Contact() {
             {organizers.map((org) => (
               <div
                 key={org.id}
-                className="flex-1 max-w-md mx-auto lg:mx-0 bg-white/[0.02] border border-white/10 p-8 rounded-[2rem] flex flex-col justify-between items-center text-center transition-all duration-300 hover:bg-white/[0.04] hover:border-white/20"
+                className="flex-1 max-w-md mx-auto lg:mx-0 bg-purple-900/10 border border-purple-500/30 p-8 rounded-[2rem] flex flex-col justify-between items-center text-center transition-all duration-300 hover:bg-white/[0.04] hover:border-purple-500"
               >
                 <div className="flex flex-col items-center gap-6 mb-10">
-                  <img
+                  {/* <img
                     src={org.image}
                     alt={org.name}
                     className="h-24 w-24 rounded-full border-2 border-[#A45AFA]/50 object-cover bg-gradient-to-br from-[#A45AFA]/20 to-transparent"
-                  />
+                  /> */}
                   <div>
-                    <h3 className="text-2xl font-medium text-white mb-1">
+                    <h3 className="text-2xl font-medium text-purple-400 mb-1">
                       {org.name}
                     </h3>
-                    <p className="text-xs text-[#A45AFA] uppercase tracking-[0.15em] font-medium">
+                    <p className="text-xs text-white uppercase tracking-[0.15em] font-medium">
                       {org.title}
                     </p>
                   </div>

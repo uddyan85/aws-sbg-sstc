@@ -357,7 +357,7 @@ export default function Footer() {
 
       {/*---------------------- CODE OF CONDUCT ----------------------*/}
 
-      <PolicyDialog
+      {/* <PolicyDialog
         open={openConduct}
         onClose={() => setOpenConduct(false)}
         title="Code of Conduct"
@@ -421,18 +421,18 @@ export default function Footer() {
             help create a positive experience for everyone.
           </p>
         </div>
-      </PolicyDialog>
+      </PolicyDialog> */}
 
       {/*---------------------- PRIVACY ----------------------*/}
 
-      <PolicyDialog
+      {/* <PolicyDialog
         open={openPrivacy}
         onClose={() => setOpenPrivacy(false)}
         title="Privacy Policy"
         badge="LEGAL INFORMATION"
       >
         <div className="space-y-6">
-          {/* INTRO */}
+         
 
           <div className="rounded-2xl border border-[#A45AFA]/20 bg-[#A45AFA]/5 p-5">
             <p className="text-slate-300 leading-7">
@@ -442,7 +442,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* POLICY ITEMS */}
+          
 
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
@@ -478,7 +478,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* DETAILS */}
+          
 
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
             <h4 className="mb-3 text-white font-medium">
@@ -493,14 +493,14 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* FOOTER NOTE */}
+          
 
           <p className="text-center text-xs sm:text-sm text-slate-500">
             By registering for this event, you consent to the collection and use
             of information as described in this Privacy Policy.
           </p>
         </div>
-      </PolicyDialog>
+      </PolicyDialog> */}
     </>
   );
 }

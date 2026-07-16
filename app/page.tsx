@@ -32,11 +32,10 @@ export default function Home() {
         />
 
         <About />
-        {/* <VenueNew /> */}
         <Tracks />
         <Speakers />
         <Agenda />
-        {/* <Register /> */}
+        <Register />
         <Venue />
         <Sponsors />
         {/* <BadgeGenerator /> */}

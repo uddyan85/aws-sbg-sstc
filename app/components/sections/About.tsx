@@ -289,7 +289,7 @@ export default function About() {
                   <motion.div
                     key={idx}
                     variants={itemVariants}
-                    className="group relative rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition-all duration-300 hover:border-[#A45AFA]/40 hover:bg-[#A45AFA]/10 hover:shadow-xl hover:shadow-[#A45AFA]/10 hover:-translate-y-1 overflow-hidden"
+                    className="group relative rounded-2xl border border-purple-500/20 bg-white/[0.04] p-5 transition-all duration-300 hover:border-[#A45AFA]/40 hover:bg-[#A45AFA]/10 hover:shadow-xl hover:shadow-[#A45AFA]/10 hover:-translate-y-1 overflow-hidden"
                   >
                     <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-gradient-to-br from-[#A45AFA]/20 to-[#7C3AED]/10" />
                     <div className="relative z-10">

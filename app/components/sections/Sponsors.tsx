@@ -241,7 +241,7 @@ export default function Sponsors() {
                     >
                       <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-[#A45AFA] via-[#F0E1FF] to-[#A45AFA] opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-700" />
                       <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-[#A45AFA] via-[#F0E1FF] to-[#A45AFA] opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
-                      <div className="relative bg-[#0a0a1a]/80 backdrop-blur-sm rounded-3xl p-8 border border-white/5 group-hover:border-transparent transition-all duration-300">
+                      <div className="relative bg-[#0a0a1a]/80 backdrop-blur-sm rounded-3xl p-8 border-purple-500/30 group-hover:border-transparent transition-all duration-300">
                         {/* Tier Badge */}
                         <div className="absolute top-3 right-3 z-10">
                           <div className={`flex items-center gap-1 rounded-full bg-gradient-to-r ${tier.badgeColor} px-2 py-1 text-[10px] font-bold text-black shadow-lg`}>
@@ -346,7 +346,7 @@ export default function Sponsors() {
         >
           <motion.div
             variants={itemVariants}
-            className="relative overflow-hidden rounded-[40px] border border-[#A45AFA]/20 bg-[#0a0a1a]/80 backdrop-blur-sm p-12 md:p-16"
+            className="relative overflow-hidden rounded-[40px] border border-purple-500/20 bg-[#0a0a1a]/80 backdrop-blur-sm p-12 md:p-16"
             whileHover={{ boxShadow: "0 0 80px -20px rgba(164,90,250,0.4)" }}
           >
             <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#A45AFA]/20 blur-[160px]" />
