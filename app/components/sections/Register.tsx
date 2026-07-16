@@ -658,7 +658,7 @@ export default function Registration() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 // Responsive sizing: larger max-width, better height for laptop/tablet
-                className="relative w-full max-w-5xl h-[90vh] max-h-[900px] flex flex-col overflow-hidden rounded-[32px] border border-white/10 bg-[#050816] shadow-2xl"
+                className="relative w-full max-w-5xl h-[90vh] max-h-[900px] flex flex-col overflow-hidden rounded-[32px] border border-purple-900/50 bg-[#050816] shadow-2xl"
               >
                 {/* Header */}
                 <div
@@ -717,7 +717,7 @@ export default function Registration() {
 
                       <button
                         onClick={() => setSelectedTier(null)}
-                        className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-800 text-slate-400 transition-colors hover:bg-red-500/20 hover:text-red-400"
+                        className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-800 text-slate-400 transition-colors hover:bg-red-500/20 hover:text-red-400 cursor-pointer"
                       >
                         <X className="h-4 w-4 sm:h-5 sm:w-5" />
                       </button>
