@@ -36,7 +36,7 @@ const topTiers: TicketTier[] = [
     glowColor: "#a45afa",
     ticketsClaimed: 185,
     totalTickets: 200,
-    paymentLink: "https://example.com/checkout/early-bird",
+    paymentLink: "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
     features: [
       "Full Event Access",
       "AWS Expert Sessions",
@@ -57,7 +57,7 @@ const topTiers: TicketTier[] = [
     glowColor: "#a45afa",
     ticketsClaimed: 120,
     totalTickets: 300,
-    paymentLink: "https://example.com/checkout/regular",
+    paymentLink: "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
     features: [
       "Full Event Access",
       "AWS Expert Sessions",
@@ -82,7 +82,7 @@ const vipTiers: TicketTier[] = [
     glowColor: "#a45afa",
     ticketsClaimed: 85,
     totalTickets: 100,
-    paymentLink: "https://example.com/checkout/premium",
+    paymentLink: "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
     features: [
       "Reserved seating area (front)",
       "Exclusive AWS Community T-shirt",
@@ -108,7 +108,7 @@ const vipTiers: TicketTier[] = [
     glowColor: "#a45afa",
     ticketsClaimed: 8,
     totalTickets: 25,
-    paymentLink: "https://example.com/checkout/patron",
+    paymentLink: "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
     features: [
       "Full Event Access",
       "VIP Check-In",
