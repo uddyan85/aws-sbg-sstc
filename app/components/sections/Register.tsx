@@ -265,7 +265,7 @@ export default function Registration() {
           </motion.div>
 
           {/* Top Tiers – now with p-10, mr-3, mb-12 to match VIP */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-10">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-10">
             {topTiers.map((tier, idx) => {
               const fillPercentage = Math.round(
                 (tier.ticketsClaimed / tier.totalTickets) * 100,
@@ -283,7 +283,7 @@ export default function Registration() {
                     duration: 0.8,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="group relative flex flex-col rounded-[32px] border border-purple-500/30 bg-white/[0.03] p-10 transition-[border-color] duration-500 hover:border-purple-500 overflow-hidden"
+                  className="group relative flex flex-col rounded-[32px] border border-purple-500/30 bg-white/[0.03] p-6 md:p-10 transition-[border-color] duration-500 hover:border-purple-500 overflow-hidden"
                 >
                   {tier.badge && (
                     <div className="absolute top-6 -right-11 z-20 rotate-45 overflow-hidden">
@@ -303,7 +303,7 @@ export default function Registration() {
                     <h3 className="text-xl font-bold tracking-[0.2em] text-purple-400 uppercase">
                       {tier.name}
                     </h3>
-                    <div className="flex items-baseline gap-1 mr-3">
+                    <div className="flex items-baseline gap-1 mr-8">
                       <span className="text-3xl lg:text-4xl font-black text-white tracking-tight">
                         ₹{tier.price}
                       </span>
@@ -317,7 +317,8 @@ export default function Registration() {
                           className="mt-0.5 h-5 w-5 shrink-0 "
                           style={{ color: tier.glowColor }}
                         />
-                        <span className="leading-snug">{feature}</span>
+                        {/* Added text-left so next lines always start from the left side */}
+                        <span className="leading-snug text-left">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -469,7 +470,8 @@ export default function Registration() {
                     duration: 0.8,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="group relative flex flex-col rounded-[32px] border border-purple-500/30 bg-white/[0.03] p-10 transition-[border-color] duration-500 hover:border-purple-500 overflow-hidden"
+                  // Changed p-10 to p-6 md:p-10 for better mobile spacing
+                  className="group relative flex flex-col rounded-[32px] border border-purple-500/30 bg-white/[0.03] p-6 md:p-10 transition-[border-color] duration-500 hover:border-purple-500 overflow-hidden"
                 >
                   {tier.badge && (
                     <div className="absolute top-6 -right-11 z-20 rotate-45 overflow-hidden">
@@ -503,7 +505,8 @@ export default function Registration() {
                           className="mt-0.5 h-5 w-5 shrink-0"
                           style={{ color: tier.glowColor }}
                         />
-                        <span className="leading-snug text-slate-300">
+                        {/* Added text-left to ensure multi-line text starts from the left */}
+                        <span className="leading-snug text-slate-300 text-left">
                           {feature}
                         </span>
                       </li>

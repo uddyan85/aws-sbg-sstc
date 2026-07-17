@@ -105,7 +105,7 @@ export default function Hero() {
           <span className="bg-gradient-to-r font-bold text-white bg-clip-text text-transparent">
             Student Community Day
           </span>
-
+          <div></div>
           <span className="inline-block mt-2 font-medium text-[#FF9900] drop-shadow-[0_0_35px_rgba(255,179,71,1)] animate-pulse-slow">
             Bhilai 2026
           </span>
