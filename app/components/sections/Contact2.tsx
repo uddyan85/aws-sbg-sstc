@@ -21,7 +21,6 @@ const organizers = [
     title: "Organizer - AWS SBG Leader, SSTC",
     image: "/uddyan.png",
     linkedin: "https://www.linkedin.com/in/uddyan-sahu/",
-    // instagram: "https://instagram.com/uddyan.sahu",
     email: "uddyansahu7@gmail.com",
   },
   // Add more organizers here if needed
@@ -35,6 +34,7 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
     null,
   );
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -47,6 +47,7 @@ export default function Contact() {
   const totalSteps = 5;
   const inputRefs = useRef<(HTMLInputElement | HTMLSelectElement | null)[]>([]);
 
+  // Focus management
   useEffect(() => {
     if (!isConnectOpen && inputRefs.current[step]) {
       setTimeout(() => {
@@ -67,6 +68,11 @@ export default function Contact() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear any previous error when user types
+    if (submitStatus === "error") {
+      setSubmitStatus(null);
+      setErrorMessage("");
+    }
   };
 
   const isStepValid = () => {
@@ -90,26 +96,77 @@ export default function Contact() {
     }
   };
 
+  // ---------------------------------------------
+  // Web3Forms submission
+  // ---------------------------------------------
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Final validation (should be redundant but safe)
+    if (!isStepValid()) return;
+
     setIsSubmitting(true);
+    setSubmitStatus(null);
+    setErrorMessage("");
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Prepare payload for Web3Forms
+    const payload = {
+      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+      name: formData.name,
+      email: formData.email,
+      role: formData.role,
+      reason: formData.reason,
+      message: formData.message,
+      // Optional: add a subject line
+      subject: `New contact from ${formData.name} - ${formData.reason}`,
+      // Enable CAPTCHA if you set it up in Web3Forms
+      _captcha: true,
+    };
 
-    setSubmitStatus("success");
-    setIsSubmitting(false);
-    setFormData({ name: "", email: "", role: "", reason: "", message: "" });
-    setStep(0);
+    try {
+      const endpoint =
+        process.env.NEXT_PUBLIC_WEB3FORMS_ENDPOINT ||
+        "https://api.web3forms.com/submit";
 
-    setTimeout(() => setSubmitStatus(null), 3000);
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus("success");
+        // Reset form
+        setFormData({ name: "", email: "", role: "", reason: "", message: "" });
+        setStep(0);
+        // Clear success message after 5 seconds
+        setTimeout(() => setSubmitStatus(null), 5000);
+      } else {
+        // Web3Forms returned an error (e.g., missing fields, spam)
+        throw new Error(result.message || "Something went wrong.");
+      }
+    } catch (error: any) {
+      console.error("Submission error:", error);
+      setSubmitStatus("error");
+      setErrorMessage(error.message || "Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
+  // Styles (unchanged)
   const inputClasses =
     "w-full text-3xl md:text-5xl font-light bg-transparent border-b border-white/20 focus:border-[#A45AFA] outline-none transition-colors placeholder:text-white/20 pb-4 text-center mt-8";
   const questionClasses =
     "text-4xl md:text-6xl font-light text-white/90 tracking-wide";
 
   const renderStepContent = (index: number) => {
+    // ... (same as original, no changes needed)
     switch (index) {
       case 0:
         return (
@@ -125,6 +182,7 @@ export default function Contact() {
               onKeyDown={handleKeyDown}
               placeholder="Type here..."
               className={inputClasses}
+              aria-label="Your name"
             />
           </>
         );
@@ -143,6 +201,7 @@ export default function Contact() {
               onKeyDown={handleKeyDown}
               placeholder="Type here..."
               className={inputClasses}
+              aria-label="Your email address"
             />
           </>
         );
@@ -160,6 +219,7 @@ export default function Contact() {
               onKeyDown={handleKeyDown}
               placeholder="e.g. Developer, Designer..."
               className={inputClasses}
+              aria-label="Your role"
             />
           </>
         );
@@ -176,23 +236,24 @@ export default function Contact() {
               onChange={handleChange}
               className={`${inputClasses} appearance-none cursor-pointer text-white/90`}
               style={{ textAlignLast: "center" }}
+              aria-label="Reason for contact"
             >
               <option value="" disabled className="bg-[#050816] text-white/50">
                 Select an option
               </option>
-              <option value="sponsorship" className="bg-[#050816] py-2">
+              <option value="sponsorship & partnership" className="bg-[#050816] py-2">
                 Sponsorship &amp; Partnership
               </option>
-              <option value="speaking" className="bg-[#050816] py-2">
+              <option value="speaking & volunteering" className="bg-[#050816] py-2">
                 Speaking or Volunteering
               </option>
-              <option value="tickets" className="bg-[#050816] py-2">
+              <option value="tickets & registration" className="bg-[#050816] py-2">
                 Tickets &amp; Registration
               </option>
-              <option value="press" className="bg-[#050816] py-2">
+              <option value="press & media" className="bg-[#050816] py-2">
                 Press &amp; Media
               </option>
-              <option value="community" className="bg-[#050816] py-2">
+              <option value="community partnership" className="bg-[#050816] py-2">
                 Community Partnership
               </option>
               <option value="other" className="bg-[#050816] py-2">
@@ -216,6 +277,7 @@ export default function Contact() {
               onKeyDown={handleKeyDown}
               placeholder="Type here..."
               className={inputClasses}
+              aria-label="Your message"
             />
           </>
         );
@@ -246,7 +308,7 @@ export default function Contact() {
           <button
             type="button"
             onClick={() => router.push("/")}
-            className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-white/5 backdrop-blur-2xl border border-white/10 transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer shrink-0"
+            className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-white/5 backdrop-blur-2xl border border-white/10 transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer shrink-0 cursor-pointer"
             aria-label="Go to main page"
           >
             <span className="absolute inset-0 rounded-full bg-[#A45AFA]/20 blur-md animate-pulse" />
@@ -260,20 +322,15 @@ export default function Contact() {
 
           <a
             href="mailto:aws.sbg.sstc@gmail.com"
-            className="cm-to text-white/60 font-light tracking-[0.12em] text-xs sm:text-sm md:text-base whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer truncate"
+            className="text-white/60 font-light tracking-[0.12em] text-xs sm:text-sm md:text-base whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer truncate"
           >
-            {/* Mobile */}
             <span className="sm:hidden">To: aws.sbg.sstc@gmail.com</span>
-
-            {/* Tablet */}
             <span className="hidden sm:inline md:hidden">To: aws.sbg.sstc@gmail.com</span>
-
-            {/* Desktop */}
             <span className="hidden md:inline">To: aws.sbg.sstc@gmail.com</span>
           </a>
         </div>
 
-        {/* RIGHT CONTROLS (Connect Panel Trigger - Toggle) */}
+        {/* RIGHT CONTROLS (Connect Panel Trigger) */}
         <div>
           <button
             type="button"
@@ -321,7 +378,7 @@ export default function Contact() {
             <button
               onClick={handleNext}
               disabled={!isStepValid()}
-              className="flex items-center gap-2 px-8 py-3 rounded-full bg-[#A45AFA] text-white font-semibold tracking-wide disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#8B4CDB] transition-all duration-300 hover:scale-105 shadow-lg"
+              className="flex items-center gap-2 px-8 py-3 rounded-full bg-[#A45AFA] text-white font-semibold tracking-wide disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#8B4CDB] transition-all duration-300 hover:scale-105 shadow-lg cursor-pointer"
             >
               Next <ChevronRight size={18} />
             </button>
@@ -329,7 +386,7 @@ export default function Contact() {
             <button
               onClick={handleSubmit}
               disabled={!isStepValid() || isSubmitting}
-              className="flex items-center gap-2 px-8 py-3 rounded-full bg-[#A45AFA] text-white font-semibold tracking-wide disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#8B4CDB] transition-all duration-300 hover:scale-105 shadow-lg"
+              className="flex items-center gap-2 px-8 py-3 rounded-full bg-[#A45AFA] text-white font-semibold tracking-wide disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#8B4CDB] transition-all duration-300 hover:scale-105 shadow-lg cursor-pointer"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
               <Send size={18} />
@@ -341,12 +398,12 @@ export default function Contact() {
         <div className="h-10 mt-4 flex items-center justify-center">
           {submitStatus === "success" && (
             <p className="text-[#A45AFA] font-medium tracking-wide animate-pulse">
-              Message sent successfully!
+              ✓ Message sent successfully!
             </p>
           )}
           {submitStatus === "error" && (
             <p className="text-red-400 font-medium tracking-wide animate-pulse">
-              Failed to send. Please try again.
+              {errorMessage || "Failed to send. Please try again."}
             </p>
           )}
         </div>
@@ -366,7 +423,6 @@ export default function Contact() {
             <span className="text-[#A45AFA] italic">Organizer</span>
           </h2>
 
-          {/* Dynamically render organizer cards */}
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 justify-center items-stretch">
             {organizers.map((org) => (
               <div
@@ -374,6 +430,7 @@ export default function Contact() {
                 className="flex-1 max-w-md mx-auto lg:mx-0 bg-purple-900/10 border border-purple-500/30 p-8 rounded-[2rem] flex flex-col justify-between items-center text-center transition-all duration-300 hover:bg-white/[0.04] hover:border-purple-500"
               >
                 <div className="flex flex-col items-center gap-6 mb-10">
+                  {/* Uncomment if you have images */}
                   {/* <img
                     src={org.image}
                     alt={org.name}
@@ -397,14 +454,6 @@ export default function Contact() {
                   >
                     <FaLinkedin size={14} /> LinkedIn
                   </a>
-                  {/* <a
-                    href={org.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 py-3.5 bg-white/5 hover:bg-[#A45AFA] hover:text-white rounded-full text-xs font-medium tracking-wide transition-all duration-300 text-white/70 min-w-[100px] cursor-pointer"
-                  >
-                    <FaInstagram size={14} /> Instagram
-                  </a> */}
                   <a
                     href={`mailto:${org.email}`}
                     className="flex-1 flex items-center justify-center gap-2 py-3.5 bg-white/5 hover:bg-[#A45AFA] hover:text-white rounded-full text-xs font-medium tracking-wide transition-all duration-300 text-white/70 min-w-[100px] cursor-pointer"
