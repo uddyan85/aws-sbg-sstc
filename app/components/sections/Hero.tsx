@@ -78,7 +78,7 @@ export default function Hero() {
 
             {/* image */}
             <Image
-              src="/AWS-logo.png"
+              src="/AWS.png"
               alt="AWS"
               fill
               priority

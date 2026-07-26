@@ -11,74 +11,38 @@ import {
   ArrowRight,
   Handshake,
 } from "lucide-react";
-import { motion, useScroll, useTransform, useInView, type Variants } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useInView,
+  type Variants,
+} from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 // ─── Data ──────────────────────────────────────────────────────────────
-
-const sponsorTiers = [
+const sponsorsData = [
   {
-    title: "Platinum Sponsors",
-    icon: Trophy,
-    color: "#A45AFA",
-    badgeColor: "from-[#A45AFA] to-[#E9D5FF]",
-    sponsors: [
-      { name: "Amazon Web Services", logo: "AWS-logo.png" },
-      // { name: "AWS", logo: "AWS.png" },
-    ],
+    name: "Amazon Web Services",
+    logo: "AWS.png",
+    category: "Title",
   },
-  // {
-  //   title: "Gold Sponsors",
-  //   icon: Star,
-  //   color: "#FBBF24",
-  //   badgeColor: "from-[#FBBF24] to-[#FDE68A]",
-  //   sponsors: [
-  //     { name: "Coming Soon", logo: "https://via.placeholder.com/220x100?text=Gold+Sponsor" },
-  //   ],
-  // },
-  // {
-  //   title: "Silver Sponsors",
-  //   icon: Shield,
-  //   color: "#94A3B8",
-  //   badgeColor: "from-[#94A3B8] to-[#CBD5E1]",
-  //   sponsors: [
-  //     { name: "Coming Soon", logo: "https://via.placeholder.com/200x80?text=Silver+Sponsor" },
-  //   ],
-  // },
-  // {
-  //   title: "Bronze Sponsors",
-  //   icon: Medal,
-  //   color: "#CD7F32",
-  //   badgeColor: "from-[#CD7F32] to-[#E8A87C]",
-  //   sponsors: [
-  //     { name: "Coming Soon", logo: "https://via.placeholder.com/200x80?text=Bronze+Sponsor" },
-  //   ],
-  // },
-];
-
-const communityPartners = [
-  // Replace with real partners
-  // {
-  //   name: "AWS User Group Bhilai",
-  //   type: "AWS Community",
-  //   icon: Globe,
-  //   logo: "https://via.placeholder.com/200x100?text=AWSUG",
-  // },
-  // {
-  //   name: "Cloud Native Community",
-  //   type: "CNCF Ecosystem",
-  //   icon: Users,
-  //   logo: "https://via.placeholder.com/200x100?text=CNCF",
-  // },
   {
-    name: "Coming Soon",
-    type: "Community Partner",
-    icon: Users,
-    logo: "https://via.placeholder.com/200x100?text=Soon",
+    name: "Meetio",
+    logo: "meetio.png",
+    category: "Technology",
   },
 ];
 
-// ─── Animation Variants ──────────────────────────────────────────────
+// Community partner data
+const communityPartnersData = [
+  {
+    name: "AWS User Group Bhilai",
+    type: "Community",
+    logo: "",
+    category: "Community",
+  },
+];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -88,7 +52,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants : Variants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
@@ -96,8 +60,6 @@ const itemVariants : Variants = {
     transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] },
   },
 };
-
-// ─── Component ────────────────────────────────────────────────────────
 
 export default function Sponsors() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -110,7 +72,6 @@ export default function Sponsors() {
   });
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 60]);
 
-  // Mouse tracking for 3D tilt
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -119,20 +80,32 @@ export default function Sponsors() {
     setMousePos({ x, y });
   };
 
-  // Particle background
-  const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; size: number; duration: number; delay: number }>>([]);
-  useEffect(() => {
-    const count = 40;
-    const newParticles = Array.from({ length: count }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      duration: Math.random() * 20 + 15,
-      delay: Math.random() * 10,
-    }));
-    setParticles(newParticles);
-  }, []);
+  // ─── Filter state ──────────────────────────────────────────────────
+  // Get unique categories from sponsors data
+  const sponsorCategories = [
+    "All",
+    ...new Set(sponsorsData.map((s) => s.category)),
+  ];
+  const [selectedSponsorCategory, setSelectedSponsorCategory] = useState("All");
+
+  const filteredSponsors =
+    selectedSponsorCategory === "All"
+      ? sponsorsData
+      : sponsorsData.filter((s) => s.category === selectedSponsorCategory);
+
+  // Community partners filter
+  const partnerCategories = [
+    "All",
+    ...new Set(communityPartnersData.map((p) => p.category)),
+  ];
+  const [selectedPartnerCategory, setSelectedPartnerCategory] = useState("All");
+
+  const filteredPartners =
+    selectedPartnerCategory === "All"
+      ? communityPartnersData
+      : communityPartnersData.filter(
+          (p) => p.category === selectedPartnerCategory,
+        );
 
   return (
     <section
@@ -140,39 +113,6 @@ export default function Sponsors() {
       ref={sectionRef}
       className="relative overflow-hidden bg-[#050816] py-20 md:py-25"
     >
-      {/* ─── Animated Background ─── */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-[-30%] left-[-10%] h-[70vh] w-[70vh] rounded-full bg-[#A45AFA]/15 blur-[140px] animate-pulse" />
-        <div className="absolute bottom-[-30%] right-[-10%] h-[60vh] w-[60vh] rounded-full bg-[#7C3AED]/15 blur-[150px] animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80vh] w-[80vh] rounded-full bg-[#A45AFA]/5 blur-[180px]" />
-
-        {particles.map((p) => (
-          <div
-            key={p.id}
-            className="absolute rounded-full bg-[#A45AFA]/30"
-            style={{
-              left: `${p.x}%`,
-              top: `${p.y}%`,
-              width: p.size,
-              height: p.size,
-              animation: `float ${p.duration}s ease-in-out ${p.delay}s infinite alternate`,
-            }}
-          />
-        ))}
-
-        <div className="absolute top-[10%] left-[5%] h-40 w-40 rounded-full border border-[#A45AFA]/10 animate-spin-slow" />
-        <div className="absolute bottom-[10%] right-[5%] h-56 w-56 rounded-full border border-[#A45AFA]/10 animate-spin-slow-reverse" />
-        <div className="absolute top-1/2 left-[2%] h-24 w-24 rounded-full border border-[#A45AFA]/20 animate-spin-slow" />
-
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
-      </div>
-
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* ─── Header ─── */}
         <motion.div
@@ -207,84 +147,75 @@ export default function Sponsors() {
           </motion.p>
         </motion.div>
 
-        {/* ─── Sponsor Tiers ─── */}
+        {/* ─── Partners Section with Filter ─── */}
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="mt-12 space-y-20"
+          className="mt-16"
         >
-          {sponsorTiers.map((tier) => {
-            const Icon = tier.icon;
-            return (
-              <motion.div key={tier.title} variants={itemVariants}>
-                <div className="mb-10 flex items-center justify-center gap-4">
-                  <Icon className="h-8 w-8 text-[#A45AFA]" />
-                  <h3 className="text-3xl md:text-4xl font-black text-white">
-                    {tier.title}
-                  </h3>
-                </div>
+          <motion.div variants={itemVariants} className="text-center">
+            <h3 className="text-4xl md:text-5xl font-black text-white">
+              Partners
+            </h3>
+          </motion.div>
 
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
-                  {tier.sponsors.map((sponsor, idx) => (
-                    <motion.div
-                      key={sponsor.name}
-                      variants={itemVariants}
-                      whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                      onMouseMove={handleMouseMove}
-                      style={{
-                        perspective: "800px",
-                        transform: `rotateX(${mousePos.y * 8}deg) rotateY(${mousePos.x * 8}deg)`,
-                        transition: "transform 0.1s ease-out",
-                      }}
-                      className="group relative w-full max-w-xs"
-                    >
-                      <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-[#A45AFA] via-[#F0E1FF] to-[#A45AFA] opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-700" />
-                      <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-[#A45AFA] via-[#F0E1FF] to-[#A45AFA] opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
-                      <div className="relative bg-[#0a0a1a]/80 backdrop-blur-sm rounded-3xl p-8 border-purple-500/30 group-hover:border-transparent transition-all duration-300">
-                        {/* Tier Badge */}
-                        <div className="absolute top-3 right-3 z-10">
-                          <div className={`flex items-center gap-1 rounded-full bg-gradient-to-r ${tier.badgeColor} px-2 py-1 text-[10px] font-bold text-black shadow-lg`}>
-                            <Icon className="h-3 w-3" />
-                            <span>{tier.title.replace(' Sponsors', '')}</span>
-                          </div>
-                        </div>
+          {/* Sponsor Cards Grid */}
+          <motion.div
+            variants={containerVariants}
+            className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-items-center"
+          >
+            {filteredSponsors.map((sponsor) => (
+              <motion.div
+                key={sponsor.name}
+                variants={itemVariants}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                onMouseMove={handleMouseMove}
+                style={{
+                  perspective: "800px",
+                  transform: `rotateX(${mousePos.y * 8}deg) rotateY(${mousePos.x * 8}deg)`,
+                  transition: "transform 0.1s ease-out",
+                }}
+                className="group relative w-full max-w-xs"
+              >
+                <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-[#A45AFA] via-[#F0E1FF] to-[#A45AFA] opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-700" />
+                <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-[#A45AFA] via-[#F0E1FF] to-[#A45AFA] opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
+                <div className="relative bg-[#0a0a1a]/80 backdrop-blur-sm rounded-3xl p-8 border-purple-500/30 group-hover:border-transparent transition-all duration-300">
+                  {/* Category Badge */}
+                  <div className="absolute top-3 right-3 z-10">
+                    <div className="flex items-center gap-1 rounded-full bg-gradient-to-r from-[#A45AFA] to-[#E9D5FF] px-3 py-2 text-[14px] font-semibold text-black shadow-lg">
+                      {/* <Trophy className="h-3 w-3" /> */}
+                      <span>{sponsor.category}</span>
+                    </div>
+                  </div>
 
-                        <div className="flex flex-col items-center justify-center h-48">
-                          <div className="relative">
-                            <div className="absolute inset-0 bg-[#A45AFA] blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 rounded-full" />
-                            <img
-                              src={sponsor.logo}
-                              alt={sponsor.name}
-                              className="relative max-h-20 w-auto object-contain transition-all duration-500 group-hover:scale-110"
-                            />
-                          </div>
-                          <p className="mt-6 text-sm font-medium text-slate-400 group-hover:text-white transition-colors">
-                            {sponsor.name}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
+                  <div className="flex flex-col items-center justify-center h-48">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-[#A45AFA] blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 rounded-full" />
+                      <img
+                        src={sponsor.logo}
+                        alt={sponsor.name}
+                        className="relative max-h-20 w-auto object-contain transition-all duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <p className="mt-6 text-lg font-bold text-white transition-colors duration-300">
+                      {sponsor.name}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
-            );
-          })}
+            ))}
+          </motion.div>
         </motion.div>
 
-
-
-        {/* ─── Community Partners ─── */}
+        {/* ─── Community Partners Section with Filter ─── */}
         {/* <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
           className="mt-20"
         >
-          <motion.div
-            variants={itemVariants}
-            className="mx-auto max-w-5xl text-center"
-          >
+          <motion.div variants={itemVariants} className="text-center">
             <span className="inline-flex rounded-full border border-[#A45AFA]/30 bg-[#A45AFA]/10 px-6 py-2 text-sm font-semibold tracking-[0.3em] text-[#DDBEFF] backdrop-blur-xl">
               COMMUNITY PARTNERS
             </span>
@@ -292,48 +223,44 @@ export default function Sponsors() {
 
           <motion.div
             variants={containerVariants}
-            className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-items-center"
+            className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-items-center"
           >
-            {communityPartners.map((partner) => {
-              const Icon = partner.icon;
-              return (
-                <motion.div
-                  key={partner.name}
-                  variants={itemVariants}
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  className="group relative overflow-hidden rounded-3xl bg-[#0a0a1a]/80 backdrop-blur-sm border border-white/5 hover:border-[#A45AFA]/30 transition-all duration-300 p-8 w-full max-w-xs"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#A45AFA]/0 via-[#A45AFA]/0 to-[#A45AFA]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" /> */}
+            {filteredPartners.map((partner) => (
+              <motion.div
+                key={partner.name}
+                variants={itemVariants}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className="group relative overflow-hidden rounded-3xl bg-[#0a0a1a]/80 backdrop-blur-sm border border-white/5 hover:border-[#A45AFA]/30 transition-all duration-300 p-8 w-full max-w-xs"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-[#A45AFA]/0 via-[#A45AFA]/0 to-[#A45AFA]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  {/* ── Community Partner Badge ── */}
-                  {/* <div className="absolute top-3 right-3 z-10">
-                    <div className="flex items-center gap-1 rounded-full bg-gradient-to-r from-[#A45AFA] to-[#E9D5FF] px-2 py-1 text-[10px] font-bold text-black shadow-lg">
-                      <Users className="h-3 w-3" />
-                      <span>Community</span>
-                    </div>
+                <div className="absolute top-3 right-3 z-10">
+                  <div className="flex items-center gap-1 rounded-full bg-gradient-to-r from-[#A45AFA] to-[#E9D5FF] px-2 py-1 text-[10px] font-bold text-black shadow-lg">
+                    <Users className="h-3 w-3" />
+                    <span>{partner.category}</span>
                   </div>
+                </div>
 
-                  <div className="relative z-10 flex items-center justify-between">
-                    <Icon className="h-6 w-6 text-[#A45AFA]" />
-                    <span className="text-xs tracking-widest text-slate-400">
-                      {partner.type}
-                    </span>
-                  </div>
-                  <div className="relative z-10 mt-8 flex h-24 items-center justify-center">
-                    <img
-                      src={partner.logo}
-                      alt={partner.name}
-                      className="max-h-16 object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_30px_rgba(164,90,250,0.3)]"
-                    />
-                  </div>
-                  <div className="relative z-10 mt-6 text-center">
-                    <h3 className="font-semibold text-white group-hover:text-[#DDBEFF] transition-colors">
-                      {partner.name}
-                    </h3>
-                  </div>
-                </motion.div>
-              );
-            })}
+                <div className="relative z-10 flex items-center justify-between">
+                  <Globe className="h-6 w-6 text-[#A45AFA]" />
+                  <span className="text-xs tracking-widest text-slate-400">
+                    {partner.type}
+                  </span>
+                </div>
+                <div className="relative z-10 mt-8 flex h-24 items-center justify-center">
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="max-h-16 object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_30px_rgba(164,90,250,0.3)]"
+                  />
+                </div>
+                <div className="relative z-10 mt-6 text-center">
+                  <h3 className="font-semibold text-white group-hover:text-[#DDBEFF] transition-colors">
+                    {partner.name}
+                  </h3>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div> */}
 
@@ -396,8 +323,14 @@ export default function Sponsors() {
       {/* ─── Custom Styles ─── */}
       <style jsx>{`
         @keyframes float {
-          0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
-          100% { transform: translate(20px, -30px) scale(1.5); opacity: 0.8; }
+          0% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.2;
+          }
+          100% {
+            transform: translate(20px, -30px) scale(1.5);
+            opacity: 0.8;
+          }
         }
         .animate-spin-slow {
           animation: spin 25s linear infinite;
@@ -406,23 +339,39 @@ export default function Sponsors() {
           animation: spin 30s linear infinite reverse;
         }
         @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
         .animate-gradient-x {
           background-size: 200% auto;
           animation: gradientShift 4s ease-in-out infinite;
         }
         @keyframes gradientShift {
-          0%, 100% { background-position: 0% center; }
-          50% { background-position: 100% center; }
+          0%,
+          100% {
+            background-position: 0% center;
+          }
+          50% {
+            background-position: 100% center;
+          }
         }
         .animate-pulse {
           animation: pulse 8s ease-in-out infinite;
         }
         @keyframes pulse {
-          0%, 100% { opacity: 0.6; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.1); }
+          0%,
+          100% {
+            opacity: 0.6;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.1);
+          }
         }
         .delay-1000 {
           animation-delay: 1s;
