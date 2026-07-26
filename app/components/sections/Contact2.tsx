@@ -19,7 +19,7 @@ const organizers = [
     id: 1,
     name: "Uddyan Sahu",
     title: "Organizer - AWS SBG Leader, SSTC",
-    image: "/uddyan.png",
+    image: "/uddyan_sahu.png",
     linkedin: "https://www.linkedin.com/in/uddyan-sahu/",
     email: "uddyansahu7@gmail.com",
   },
@@ -153,7 +153,9 @@ export default function Contact() {
     } catch (error: any) {
       console.error("Submission error:", error);
       setSubmitStatus("error");
-      setErrorMessage(error.message || "Failed to send message. Please try again.");
+      setErrorMessage(
+        error.message || "Failed to send message. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -241,19 +243,31 @@ export default function Contact() {
               <option value="" disabled className="bg-[#050816] text-white/50">
                 Select an option
               </option>
-              <option value="sponsorship & partnership" className="bg-[#050816] py-2">
+              <option
+                value="sponsorship & partnership"
+                className="bg-[#050816] py-2"
+              >
                 Sponsorship &amp; Partnership
               </option>
-              <option value="speaking & volunteering" className="bg-[#050816] py-2">
+              <option
+                value="speaking & volunteering"
+                className="bg-[#050816] py-2"
+              >
                 Speaking or Volunteering
               </option>
-              <option value="tickets & registration" className="bg-[#050816] py-2">
+              <option
+                value="tickets & registration"
+                className="bg-[#050816] py-2"
+              >
                 Tickets &amp; Registration
               </option>
               <option value="press & media" className="bg-[#050816] py-2">
                 Press &amp; Media
               </option>
-              <option value="community partnership" className="bg-[#050816] py-2">
+              <option
+                value="community partnership"
+                className="bg-[#050816] py-2"
+              >
                 Community Partnership
               </option>
               <option value="other" className="bg-[#050816] py-2">
@@ -325,7 +339,9 @@ export default function Contact() {
             className="text-white/60 font-light tracking-[0.12em] text-xs sm:text-sm md:text-base whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer truncate"
           >
             <span className="sm:hidden">To: aws.sbg.sstc@gmail.com</span>
-            <span className="hidden sm:inline md:hidden">To: aws.sbg.sstc@gmail.com</span>
+            <span className="hidden sm:inline md:hidden">
+              To: aws.sbg.sstc@gmail.com
+            </span>
             <span className="hidden md:inline">To: aws.sbg.sstc@gmail.com</span>
           </a>
         </div>
@@ -417,7 +433,7 @@ export default function Contact() {
             : "-translate-x-full opacity-0 pointer-events-none"
         }`}
       >
-        <div className="w-full max-w-7xl h-full p-6 md:p-12 overflow-y-auto pt-24 md:pt-32 flex flex-col">
+        <div className="w-full max-w-7xl h-full p-6 md:p-12 overflow-y-auto pt-30 md:pt-32 flex flex-col">
           <h2 className="text-4xl md:text-6xl font-light text-white mb-12 tracking-wide text-center">
             Connect with an{" "}
             <span className="text-[#A45AFA] italic">Organizer</span>
@@ -427,22 +443,25 @@ export default function Contact() {
             {organizers.map((org) => (
               <div
                 key={org.id}
-                className="flex-1 max-w-md mx-auto lg:mx-0 bg-purple-900/10 border border-purple-500/30 p-8 rounded-[2rem] flex flex-col justify-between items-center text-center transition-all duration-300 hover:bg-white/[0.04] hover:border-purple-500"
+                className="flex-1 max-w-md mx-auto lg:mx-0 bg-purple-900/10 border border-purple-500 p-8 rounded-[2rem] flex flex-col justify-between items-center text-center transition-all duration-300 hover:bg-white/[0.04] hover:border-purple-500"
               >
-                <div className="flex flex-col items-center gap-6 mb-10">
+                <div className="flex flex-col items-center gap-4 mb-4">
                   {/* Uncomment if you have images */}
-                  {/* <img
+                  <img
                     src={org.image}
                     alt={org.name}
-                    className="h-24 w-24 rounded-full border-2 border-[#A45AFA]/50 object-cover bg-gradient-to-br from-[#A45AFA]/20 to-transparent"
-                  /> */}
+                    className="h-60 w-55 rounded-2xl object-cover border-1 border-[#A45AFA]/10 bg-gray-900 shadow-lg shadow-[#A45AFA]/10 transition-all duration-300 hover:border-[#A45AFA] hover:shadow-2xl hover:shadow-[#A45AFA]/10 hover:scale-[1.02]"
+                  />
                   <div>
-                    <h3 className="text-2xl font-medium text-purple-400 mb-1">
+                    <h3 className="mb-1 text-2xl font-bold tracking-tight text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.25)]">
                       {org.name}
                     </h3>
-                    <p className="text-xs text-white uppercase tracking-[0.15em] font-medium">
-                      {org.title}
-                    </p>
+                    <span className="relative inline-flex items-center overflow-hidden rounded-full p-[1px]">
+                      <span className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,#A45AFA,#7C3AED,#60A5FA,#A45AFA)] animate-[spin_8s_linear_infinite]" />
+                      <span className="relative rounded-full bg-[#09090B] px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-white">
+                        {org.title}
+                      </span>
+                    </span>
                   </div>
                 </div>
                 <div className="flex flex-wrap sm:flex-nowrap gap-3 w-full justify-center">
