@@ -149,36 +149,24 @@ export default function Footer() {
                 </li>
 
                 <li>
-                  <button
-                    onClick={() => setOpenConduct(true)}
-                    className="
-                      text-slate-400
-                      hover:text-[#A45AFA]
-                      transition
-                      flex items-center gap-2
-                      cursor-pointer
-                    "
+                  <Link
+                    href="/code-of-conduct"
+                    className="flex items-center gap-2 text-slate-400 hover:text-[#A45AFA] transition"
                   >
                     <Shield size={15} />
                     Code of Conduct
-                  </button>
+                  </Link>
                 </li>
 
-                <li>
-                  <button
-                    onClick={() => setOpenPrivacy(true)}
-                    className="
-                      text-slate-400
-                      hover:text-[#A45AFA]
-                      transition
-                      flex items-center gap-2
-                      cursor-pointer
-                    "
+                {/* <li>
+                  <Link
+                    href="/privacy-policy"
+                    className="flex items-center gap-2 text-slate-400 hover:text-[#A45AFA] transition"
                   >
                     <FileText size={15} />
                     Privacy Policy
-                  </button>
-                </li>
+                  </Link>
+                </li> */}
               </ul>
             </div>
 

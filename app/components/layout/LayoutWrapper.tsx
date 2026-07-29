@@ -12,7 +12,7 @@ export default function LayoutWrapper({
   const pathname = usePathname();
 
   // pages where navbar/footer should be hidden
-  const hideLayoutRoutes = ["/team", "/contact", "/registration",];
+  const hideLayoutRoutes = ["/team", "/contact", "/code-of-conduct", "/privacy-policy", "/registration",];
 
   const hideLayout = hideLayoutRoutes.includes(pathname);
 
