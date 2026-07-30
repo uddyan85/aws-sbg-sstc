@@ -128,7 +128,7 @@ export default function Speakers() {
               viewport={{ once: true, margin: "-80px" }}
               variants={containerVariants}
             >
-              <div className="mb-12 text-center">
+              {/* <div className="mb-12 text-center">
                 <motion.span
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
@@ -137,7 +137,7 @@ export default function Speakers() {
                 >
                   Speakers
                 </motion.span>
-              </div>
+              </div> */}
               <div className="flex flex-wrap justify-center gap-8">
                 {regularSpeakers.map((speaker) => (
                   <div key={speaker.id} className="w-full max-w-[360px]">
