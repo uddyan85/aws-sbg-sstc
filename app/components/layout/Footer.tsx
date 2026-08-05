@@ -150,6 +150,23 @@ export default function Footer() {
 
                 <li>
                   <Link
+                    href="https://bit.ly/4w1crxG"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                    flex items-center gap-2
+                    text-slate-400
+                    hover:text-[#A45AFA]
+                    transition
+                    "
+                  >
+                    AWS Builder Center
+                    <ArrowUpRight size={14} />
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
                     href="/code-of-conduct"
                     className="flex items-center gap-2 text-slate-400 hover:text-[#A45AFA] transition"
                   >
