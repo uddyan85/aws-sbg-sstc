@@ -37,9 +37,8 @@ const sponsorsData = [
 // Community partner data
 const communityPartnersData = [
   {
-    name: "AWS User Group Bhilai",
-    type: "Community",
-    logo: "",
+    name: "AWS SBG Amity",
+    logo: "Amity.png",
     category: "Community",
   },
 ];
@@ -209,7 +208,7 @@ export default function Sponsors() {
         </motion.div>
 
         {/* ─── Community Partners Section with Filter ─── */}
-        {/* <motion.div
+        <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
@@ -235,34 +234,29 @@ export default function Sponsors() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#A45AFA]/0 via-[#A45AFA]/0 to-[#A45AFA]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="absolute top-3 right-3 z-10">
-                  <div className="flex items-center gap-1 rounded-full bg-gradient-to-r from-[#A45AFA] to-[#E9D5FF] px-2 py-1 text-[10px] font-bold text-black shadow-lg">
+                  <div className="flex items-center gap-1 rounded-full bg-gradient-to-r from-[#A45AFA] to-[#E9D5FF] px-3 py-2 text-[14px] font-semibold text-black shadow-lg">
                     <Users className="h-3 w-3" />
                     <span>{partner.category}</span>
                   </div>
                 </div>
 
-                <div className="relative z-10 flex items-center justify-between">
-                  <Globe className="h-6 w-6 text-[#A45AFA]" />
-                  <span className="text-xs tracking-widest text-slate-400">
-                    {partner.type}
-                  </span>
-                </div>
-                <div className="relative z-10 mt-8 flex h-24 items-center justify-center">
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="max-h-16 object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_30px_rgba(164,90,250,0.3)]"
-                  />
-                </div>
-                <div className="relative z-10 mt-6 text-center">
-                  <h3 className="font-semibold text-white group-hover:text-[#DDBEFF] transition-colors">
+                <div className="flex flex-col items-center justify-center h-48">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-[#A45AFA] blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 rounded-full" />
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="relative max-h-20 w-auto object-contain transition-all duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <p className="mt-6 text-lg font-bold text-white transition-colors duration-300">
                     {partner.name}
-                  </h3>
+                  </p>
                 </div>
               </motion.div>
             ))}
           </motion.div>
-        </motion.div> */}
+        </motion.div>
 
         {/* ─── CTA ─── */}
         <motion.div
