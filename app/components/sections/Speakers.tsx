@@ -27,6 +27,16 @@ const speakers = [
   // },
   {
     id: 1,
+    name: "Deepak Nishad",
+    company: "Snapmint",
+    category: "speaker",
+    current_designation: "DevOps Engineer",
+    topic: "Scaling to 90 Million Users: A Blueprint for Highly Available and Cost-Optimized Cloud Infrastructure",
+    image: "/deepak_nishad_.jpg",
+    // socials: { linkedin: "#" },
+  },
+  {
+    id: 2,
     name: "Nikita Mourya",
     company: "AWS Community Builder",
     category: "speaker",
@@ -312,7 +322,7 @@ function SpeakerCard({
 
         {/* ─── TOPIC — Purple Highlight ────── */}
         {speaker.topic && (
-          <div className="mt-5 w-full rounded-2xl border border-[#A45AFA]/20 bg-gradient-to-br from-[#A45AFA]/5 via-[#A45AFA]/8 to-transparent p-4 transition-all duration-500 group-hover:border-[#A45AFA]/40 group-hover:shadow-inner group-hover:shadow-[#A45AFA]/10">
+          <div className="mt-3 w-full rounded-2xl border border-[#A45AFA]/20 bg-gradient-to-br from-[#A45AFA]/5 via-[#A45AFA]/8 to-transparent p-3 transition-all duration-500 group-hover:border-[#A45AFA]/40 group-hover:shadow-inner group-hover:shadow-[#A45AFA]/10">
             <div className="flex items-start gap-3">
               {/* Topic icon */}
               <div className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#A45AFA]/20 text-[#A45AFA]">
@@ -324,7 +334,7 @@ function SpeakerCard({
                   Topic
                 </span>
                 {/* Topic text */}
-                <p className="mt-1 text-sm font-medium leading-snug text-white/90 line-clamp-2 group-hover:text-white transition-colors">
+                <p className="mt-1 text-sm font-medium leading-snug text-white/90 group-hover:text-white transition-colors">
                   {speaker.topic}
                 </p>
               </div>
