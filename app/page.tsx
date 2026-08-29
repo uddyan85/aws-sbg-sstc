@@ -13,7 +13,7 @@ import VenueNew from "./components/layout/VenueNew";
 import Register from "./components/sections/Register";
 
 const images = [
-  { src: "/AWS-logo.png", alt: "AWS" },
+  { src: "/AWS.png", alt: "AWS" },
   { src: "/AWS_SBG.png", alt: "AWS" },
   { src: "/SSTC_.png", alt: "AWS" },
 ];
