@@ -736,7 +736,7 @@ export default function BadgeGenerator() {
                   </svg>
 
                   <div
-                    className="absolute left-0 right-0 z-10 text-center truncate  font-extrabold tracking-[0.15em] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]"
+                    className="absolute left-0 right-0 z-10 text-center truncate  font-extrabold tracking-[0.15em] "
                     style={{
                       bottom: "70%",
                       fontFamily: "'Chakra Petch', sans-serif",
