@@ -744,7 +744,7 @@ export default function BadgeGenerator() {
                       lineHeight: 1.4,
                       WebkitTextStroke: "0.45px rgba(0,0,0,0.9)",
                       letterSpacing: "0.09em",
-                      color: "#A45AFA",
+                      color: "#ffffff",
                       textShadow: `
       0 1px 1px rgba(0,0,0,1),
       0 2px 3px rgba(0,0,0,1),
