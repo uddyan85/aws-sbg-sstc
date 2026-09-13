@@ -736,20 +736,18 @@ export default function BadgeGenerator() {
                   </svg>
 
                   <div
-                    className="absolute left-0 right-0 z-10 text-center truncate  font-extrabold tracking-[0.15em] "
+                    className="absolute left-0 right-0 z-10 text-center truncate  font-extrabold tracking-[0.15em]"
                     style={{
                       bottom: "70%",
                       fontFamily: "'Chakra Petch', sans-serif",
                       fontSize: "clamp(12px, 4.2cqw, 22px)",
                       lineHeight: 1.4,
-                      WebkitTextStroke: "0.45px rgba(0,0,0,0.9)",
+                      // WebkitTextStroke: "0.45px rgba(0,0,0,0.9)",
                       letterSpacing: "0.09em",
                       color: "#ffffff",
                       textShadow: `
       0 1px 1px rgba(0,0,0,1),
       0 2px 3px rgba(0,0,0,1),
-      0 4px 7px rgba(0,0,0,0.95),
-      0 6px 14px rgba(0,0,0,0.75)
     `,
                     }}
                     title={nameForBadge}
