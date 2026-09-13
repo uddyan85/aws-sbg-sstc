@@ -12,6 +12,7 @@ const navItems = [
   { name: "Speakers", href: "#speakers" },
   // { name: "Team", href: "/team" },
   { name: "Agenda", href: "#agenda" },
+  { name: "Badge", href: "#BadgeGenerator" },
   { name: "Venue", href: "#venue" },
   { name: "Sponsors", href: "#sponsors" },
   { name: "FAQ", href: "#faq" },

@@ -36,9 +36,9 @@ export default function Home() {
         <Speakers />
         <Agenda />
         <Register />
+        <BadgeGenerator />
         <Venue />
         <Sponsors />
-        {/* <BadgeGenerator /> */}
         <Faq />
       </SplashManager>
     </>
