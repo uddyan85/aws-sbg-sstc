@@ -1,10 +1,12 @@
 "use client";
 
+
 import { useState, useEffect } from "react";
 import {
     CalendarDays,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
 
 // ─── STATS DATA ────────────────────────────────────────────────────────────────
 const statsData = [
@@ -13,6 +15,7 @@ const statsData = [
     { value: 8, label: "Speakers", suffix: "+" },
     { value: 400, label: "Builders", suffix: "+" },
 ];
+
 
 // ─── STAT CARD ────────────────────────────────────────────────────────────────
 const StatCard = ({
@@ -28,12 +31,14 @@ const StatCard = ({
 }) => {
     const [count, setCount] = useState(0);
 
+
     useEffect(() => {
         const duration = 2000;
         const steps = 60;
         const stepValue = value / steps;
         const stepTime = duration / steps;
         let current = 0;
+
 
         const timer = setInterval(() => {
             current += stepValue;
@@ -45,8 +50,10 @@ const StatCard = ({
             }
         }, stepTime);
 
+
         return () => clearInterval(timer);
     }, [value]);
+
 
     return (
         <motion.div
@@ -66,6 +73,7 @@ const StatCard = ({
                 initial={false}
             />
 
+
             {/* Value */}
             <motion.div
                 className="bg-gradient-to-r from-[#A45AFA] to-white bg-clip-text text-5xl font-black text-transparent"
@@ -77,10 +85,12 @@ const StatCard = ({
                 {suffix}
             </motion.div>
 
+
             {/* Label */}
             <div className="mt-3 text-xs uppercase tracking-[0.3em] text-slate-400 font-medium">
                 {label}
             </div>
+
 
             {/* Animated border glow */}
             <motion.div
@@ -90,15 +100,18 @@ const StatCard = ({
     );
 };
 
+
 // ─── MAIN COMPONENT ──────────────────────────────────────────────────────────
 export default function Agenda() {
     const [isHovering, setIsHovering] = useState(false);
+
 
     return (
         <section
             id="agenda"
             className="relative min-h-screen overflow-hidden bg-[#050816] py-15"
         >
+
 
             {/* ─── CONTENT ────────────────────────────────────────────────── */}
             <div className="relative z-10 mx-auto max-w-7xl px-6">
@@ -114,6 +127,7 @@ export default function Agenda() {
                         EVENT AGENDA
                     </motion.div>
 
+
                     <motion.h2
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -126,6 +140,7 @@ export default function Agenda() {
                         </span>
                     </motion.h2>
                 </div>
+
 
                 {/* ─── COMING SOON CARD ────────────────────────────────────── */}
                 <motion.div
@@ -152,6 +167,7 @@ export default function Agenda() {
                         }}
                     />
 
+
                     <div className="relative rounded-3xl border border-purple-500/20 hover:border-purple-500/40 bg-white/[0.04] px-6 py-12 sm:px-14 sm:py-16 text-center backdrop-blur-2xl shadow-[0_0_80px_rgba(164,90,250,0.12)] overflow-hidden">
                         {/* Inner glow */}
                         <motion.div
@@ -161,6 +177,7 @@ export default function Agenda() {
                             }}
                             transition={{ duration: 0.6 }}
                         />
+
 
                         {/* Title */}
                         <motion.h1
@@ -173,6 +190,7 @@ export default function Agenda() {
                             COMING SOON
                         </motion.h1>
 
+
                         {/* Divider */}
                         <motion.div
                             className="mx-auto mt-5 h-px w-32 bg-gradient-to-r from-transparent via-[#A45AFA] to-transparent"
@@ -181,6 +199,7 @@ export default function Agenda() {
                             }}
                             transition={{ duration: 0.6 }}
                         />
+
 
                         {/* Description */}
                         <motion.p
@@ -195,6 +214,7 @@ export default function Agenda() {
                                 Stay tuned for updates.
                             </span>
                         </motion.p>
+
 
                         {/* Pulse ring */}
                         <motion.div
@@ -212,6 +232,7 @@ export default function Agenda() {
                     </div>
                 </motion.div>
 
+
                 {/* ─── STATS ──────────────────────────────────────────────────── */}
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -228,6 +249,7 @@ export default function Agenda() {
                     ))}
                 </motion.div>
 
+
                 {/* ─── BOTTOM DECORATIVE LINE ──────────────────────────────── */}
                 <motion.div
                     initial={{ opacity: 0, scaleX: 0 }}
@@ -239,3 +261,4 @@ export default function Agenda() {
         </section>
     );
 }
+

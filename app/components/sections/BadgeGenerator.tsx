@@ -11,6 +11,7 @@ import React, {
 } from "react";
 
 import html2canvas from "html2canvas-pro";
+import { motion } from "framer-motion";
 
 const MAX_NAME = 40;
 const MAX_FILE_MB = 5;
@@ -30,8 +31,14 @@ const PURPLE = {
   orange: "#F97316",
 } as const;
 
-const SHARE_TEXT =
-  "I'm attending AWS Student Community Day Bhilai 2026! 🚀 #AWSStudentCommunityDayBhilai";
+const SHARE_TEXT =`
+  "Excited to attend AWS Student Community Day Bhilai 2026! 🚀
+  
+  Join me for Central India's premier cloud community event a day of Cloud, AI and networking. ☁️ 
+  
+  🎫 Get your personalized badge: awssstc.site 
+  
+  #AWSStudentCommunityDayBhilai #AWSSCD2026 #AWS #AWSCommunity #CloudCommunity"`;
 
 const clamp = (v: number, min: number, max: number) =>
   Math.min(max, Math.max(min, v));
@@ -543,7 +550,7 @@ export default function BadgeGenerator() {
     } catch (err) {
       console.error("[badge] download failed:", err);
       showToast(
-        "Could not generate the badge. Check the console for details.",
+        "Could not generate the badge. Please try again.",
         "err",
       );
     } finally {
@@ -567,7 +574,7 @@ export default function BadgeGenerator() {
           title: "AWS SCD Bhilai",
           text: SHARE_TEXT,
         });
-        showToast("Shared 🚀");
+        showToast("Shared");
       } else {
         setSheetOpen(true);
       }
@@ -599,7 +606,7 @@ export default function BadgeGenerator() {
     const urls = {
       x: `https://twitter.com/intent/tweet?text=${text}`,
       whatsapp: `https://wa.me/?text=${text}`,
-      linkedin: "https://www.linkedin.com/feed/?shareActive=true",
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${text}`,
     } as const;
     window.open(urls[network], "_blank", "noopener,noreferrer");
     setSheetOpen(false);
@@ -640,11 +647,19 @@ export default function BadgeGenerator() {
             Participation Badge
           </div>
           <h1 className="mt-8 text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight text-white">
-            Make your{" "}
+            Share Your{" "}
             <span className="block bg-gradient-to-r from-[#A45AFA] via-[#F0E1FF] to-[#A45AFA] bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
-              Attendee Badge
+              AWS SCD Badge
             </span>
           </h1>
+          <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mx-auto mt-6 max-w-3xl text-lg md:text-xl leading-relaxed text-slate-400"
+        >
+          Add your photo & name, generate your badge and share it on LinkedIn & X!
+        </motion.p>
         </header>
 
         <div className="grid items-start pt-8 gap-8 lg:grid-cols-2 lg:gap-12">
@@ -953,7 +968,7 @@ export default function BadgeGenerator() {
                 )}
                 Download badge
               </button>
-              <button
+              {/* <button
                 onClick={handleShare}
                 disabled={busy !== null}
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-purple-300/25 bg-purple-500/10 px-6 py-4 text-sm font-bold tracking-wide text-white transition-all hover:-translate-y-0.5 hover:border-purple-300/50 hover:bg-purple-500/20 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 cursor-pointer"
@@ -976,7 +991,7 @@ export default function BadgeGenerator() {
                   </svg>
                 )}
                 Share badge
-              </button>
+              </button> */}
             </div>
             <p className="mt-4 text-center text-[11px] text-white/30">
               Rendered at 3× resolution ·{" "}
@@ -1011,16 +1026,6 @@ export default function BadgeGenerator() {
               </button>
             </div>
             <div className="grid grid-cols-2 gap-2.5">
-              <SheetButton
-                onClick={handleNativeShareFromSheet}
-                label="Device share"
-                emoji=""
-              />
-              <SheetButton
-                onClick={handleCopyImage}
-                label="Copy image"
-                emoji=""
-              />
               <SheetButton
                 onClick={() => shareTo("x")}
                 label="Post on X"
