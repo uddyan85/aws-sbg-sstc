@@ -21,7 +21,7 @@ const speakers = [
     category: "keynote",
     current_designation: "Head of DevRel – India & South Asia",
     // topic: "",
-    image: "/praful_bagai.jpeg",
+    image: "/praful_bagai.png",
     // socials: { linkedin: "#" },
   },
   {
@@ -31,7 +31,7 @@ const speakers = [
     category: "speaker",
     current_designation: "AI Engineer",
     topic: "Agile AI with AWS",
-    image: "/anmoldeep_singh.jpg",
+    image: "/anmoldeep_singh.png",
     // socials: { linkedin: "#" },
   },
   {
