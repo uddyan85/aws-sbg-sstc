@@ -32,7 +32,7 @@ export default function Home() {
         />
 
         <About />
-        <Tracks />
+        {/* <Tracks /> */}
         <Speakers />
         <Agenda />
         <Register />

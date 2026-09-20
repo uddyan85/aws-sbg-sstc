@@ -38,7 +38,12 @@ const sponsorsData = [
 const communityPartnersData = [
   {
     name: "AWS SBG Amity",
-    logo: "Amity.png",
+    logo: "AWS_SBG.png",
+    category: "Community",
+  },
+  {
+    name: "AWS SBG SSIPMT",
+    logo: "AWS_SBG.png",
     category: "Community",
   },
 ];

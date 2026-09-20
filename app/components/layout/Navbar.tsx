@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 const navItems = [
   { name: "About", href: "#about" },
-  { name: "Tracks", href: "#tracks" },
+  // { name: "Tracks", href: "#tracks" },
   { name: "Speakers", href: "#speakers" },
   // { name: "Team", href: "/team" },
   { name: "Agenda", href: "#agenda" },

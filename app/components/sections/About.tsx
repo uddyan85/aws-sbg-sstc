@@ -339,11 +339,10 @@ export default function About() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-8"
         >
           <AnimatedCounter value={400} label="Builders" />
-          <AnimatedCounter value={8} label="Speakers" />
-          <AnimatedCounter value={3} label="Tracks" />
+          <AnimatedCounter value={6} label="Speakers" />
         </motion.div>
       </div>
     </section>

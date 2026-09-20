@@ -14,19 +14,28 @@ import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 // ─── Speakers Data ──────────────────────────────────────────────
 const speakers = [
-  // {
-  //   id: 1,
-  //   name: "ABC",
-  //   company: "AWS Community Builder",
-  //   category: "keynote",
-  //   current_designation: "Principal Cloud Architect",
-  //   // bio: "Building resilient cloud systems at scale.",
-  //   topic: "abcd",
-  //   image: "/abc.png",
-  //   socials: { linkedin: "#" },
-  // },
   {
     id: 1,
+    name: "Praful Bagai",
+    company: "Amazon Web Services",
+    category: "keynote",
+    current_designation: "Head of DevRel – India & South Asia",
+    // topic: "",
+    image: "/praful_bagai.jpeg",
+    // socials: { linkedin: "#" },
+  },
+  {
+    id: 1,
+    name: "Anmoldeep Singh Arora",
+    company: "Accenture",
+    category: "speaker",
+    current_designation: "AI Engineer",
+    topic: "Agile AI with AWS",
+    image: "/anmoldeep_singh.jpg",
+    // socials: { linkedin: "#" },
+  },
+  {
+    id: 2,
     name: "Deepak Nishad",
     company: "Snapmint",
     category: "speaker",
@@ -36,13 +45,22 @@ const speakers = [
     // socials: { linkedin: "#" },
   },
   {
-    id: 2,
+    id: 3,
     name: "Nikita Mourya",
     company: "AWS Community Builder",
     category: "speaker",
     current_designation: "Staff Cloud Platform Engineer",
     topic: "The Building Blocks of AI Agents with Amazon Bedrock",
     image: "/nikita_mourya.png",
+    // socials: { linkedin: "#" },
+  },
+  {
+    id: 4,
+    name: "Varsha Verma",
+    company: "AWS Community Builder",
+    category: "speaker",
+     topic: "SOON TO BE ANNOUNCED",
+    image: "/Varsha_Verma.jpeg",
     // socials: { linkedin: "#" },
   },
 ];
@@ -138,7 +156,7 @@ export default function Speakers() {
               viewport={{ once: true, margin: "-80px" }}
               variants={containerVariants}
             >
-              {/* <div className="mb-12 text-center">
+              <div className="mb-12 text-center">
                 <motion.span
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
@@ -147,7 +165,7 @@ export default function Speakers() {
                 >
                   Speakers
                 </motion.span>
-              </div> */}
+              </div>
               <div className="flex flex-wrap justify-center gap-8">
                 {regularSpeakers.map((speaker) => (
                   <div key={speaker.id} className="w-full max-w-[360px]">

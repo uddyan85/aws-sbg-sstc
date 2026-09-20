@@ -82,8 +82,12 @@ export default function Venue() {
             <div className="rounded-[32px] border border-purple-500/20 bg-white/[0.03] p-8 backdrop-blur-xl">
               <div className="flex items-center gap-3">
                 <Building2 className="h-8 w-8 text-[#A45AFA]" />
-                <h3 className="text-3xl font-black text-white">
-                  Shri Shankaracharya Technical Campus Bhilai
+                <h3 className="text-2xl font-black text-white">
+                  {/* Shri Shankaracharya Technical Campus Bhilai */}
+                  Shri Shankaracharya Technical Campus 
+                  <br/>
+                  ( Academic Block – SSIMS
+                  Campus ), Bhilai
                 </h3>
               </div>
 
