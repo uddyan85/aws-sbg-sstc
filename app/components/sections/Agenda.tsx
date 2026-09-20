@@ -11,8 +11,8 @@ import { motion, AnimatePresence } from "framer-motion";
 // ─── STATS DATA ────────────────────────────────────────────────────────────────
 const statsData = [
     { value: 9, label: "Hours",  suffix: "+" },
-    { value: 12, label: "Sessions", suffix: "+" },
-    { value: 8, label: "Speakers", suffix: "+" },
+    { value: 9, label: "Sessions", suffix: "+" },
+    { value: 6, label: "Speakers", suffix: "+" },
     { value: 400, label: "Builders", suffix: "+" },
 ];
 
