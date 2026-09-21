@@ -63,7 +63,7 @@ const agendaData = [
     ampm: "AM",
     dotColor: "bg-green-500",
     shadowColor: "shadow-[0_0_10px_rgba(99,102,241,0.8)]",
-    title: "Quiz 1:",
+    title: "Quiz 1",
     type: "Activity",
     typeColor: "text-purple-400",
     duration: "20 MIN",
