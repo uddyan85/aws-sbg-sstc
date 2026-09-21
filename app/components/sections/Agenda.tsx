@@ -150,7 +150,9 @@ const agendaData = [
 
 export default function AgendaPage() {
   return (
-    <div className="relative w-full max-w-4xl mx-auto pt-10 pb-32 px-4 sm:px-6 z-10">
+    <div 
+    id="agenda"
+    className="relative w-full max-w-4xl mx-auto pt-10 pb-32 px-4 sm:px-6 z-10">
       
       {/* Header */}
       {/* HEADER */}
