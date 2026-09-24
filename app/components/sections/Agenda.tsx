@@ -56,7 +56,7 @@ const agendaData = [
     type: "Technical Session",
     typeColor: "text-purple-400",
     duration: "45 MIN",
-    subtitle: "SOON TO BE ANNOUNCED",
+    subtitle: "Cloud Under Lockdown: Rethinking The Cloud Security",
   },
   {
     time: "11:30",
