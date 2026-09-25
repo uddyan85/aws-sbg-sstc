@@ -3,20 +3,23 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Ticket, ExternalLink, X, ShieldCheck } from "lucide-react";
+import { Check, Ticket, ExternalLink, X, ShieldCheck, Lock, Clock } from "lucide-react";
 
 // --- Feature Flags ---
 const FEATURE_FLAGS = {
-  showTimer: true,
+  showTimer: false, // timer disabled – only closing soon notice
   showAllocation: false,
 };
 
 // --- Types & Data ---
+type TicketStatus = "open" | "closing-soon" | "closed";
+
 type TicketTier = {
   id: string;
   name: string;
   price: number;
   badge?: string;
+  status: TicketStatus;
   features: string[];
   buttonText: string;
   glowColor: string;
@@ -25,13 +28,19 @@ type TicketTier = {
   paymentLink: string;
 };
 
+const badgeGradient = (status: TicketStatus) =>
+  status === "closed"
+    ? "linear-gradient(135deg, #9CA3AF 0%, #6B7280 50%, #374151 100%)"
+    : "linear-gradient(135deg, #FFB84D 0%, #FF9900 50%, #E67E00 100%)";
+
 // Top Tiers – now using p-10 and consistent spacing
 const topTiers: TicketTier[] = [
   {
     id: "early-bird",
     name: "EARLY BIRD",
     price: 259,
-    badge: "Limited Time",
+    badge: "Closing Soon",
+    status: "closing-soon",
     buttonText: "Secure Early Bird",
     glowColor: "#a45afa",
     ticketsClaimed: 185,
@@ -54,6 +63,8 @@ const topTiers: TicketTier[] = [
     id: "regular",
     name: "REGULAR",
     price: 299,
+    badge: "Closing Soon",
+    status: "closing-soon",
     buttonText: "Book Standard",
     glowColor: "#a45afa",
     ticketsClaimed: 120,
@@ -68,7 +79,7 @@ const topTiers: TicketTier[] = [
       "Participation Certificate",
       "Breakfast & Lunch",
       "High Tea Included",
-      "AWS Credits & Giveaway Eligibility",
+      "Giveaway Eligibility",
       "Networking Opportunities",
     ],
   },
@@ -80,6 +91,8 @@ const vipTiers: TicketTier[] = [
     id: "premium",
     name: "PREMIUM",
     price: 499,
+    badge: "Closing Soon",
+    status: "closing-soon",
     buttonText: "Upgrade to Premium",
     glowColor: "#a45afa",
     ticketsClaimed: 85,
@@ -106,10 +119,11 @@ const vipTiers: TicketTier[] = [
     id: "patron",
     name: "COMMUNITY PATRON",
     price: 3999,
-    badge: "Ultimate",
+    badge: "Closed",
+    status: "closed",
     buttonText: "Become a Patron",
     glowColor: "#a45afa",
-    ticketsClaimed: 8,
+    ticketsClaimed: 25,
     totalTickets: 25,
     paymentLink:
       "https://meetio.online/events/53dbbc84-29f6-490d-93b3-bf791b893c00/ticket",
@@ -130,62 +144,147 @@ const vipTiers: TicketTier[] = [
   },
 ];
 
-const Countdown = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 1,
-    hours: 0,
-    minutes: 41,
-    seconds: 44,
-  });
+// --- Closing soon notice ---
+const ClosingSoonNotice = () => (
+  <div className="mb-5 flex items-center justify-center gap-2 rounded-xl border border-amber-400/30 bg-amber-400/10 px-3 py-2.5">
+    <Clock className="h-3.5 w-3.5 shrink-0 animate-pulse text-amber-400" />
+    <span className="text-center text-[10px] font-bold uppercase tracking-[0.15em] text-amber-300">
+      Registration closing soon
+    </span>
+  </div>
+);
 
-  useEffect(() => {
-    const targetDate = new Date("August 29, 2026 08:00:00").getTime();
-
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance < 0) {
-        clearInterval(timer);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      } else {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-          ),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000),
-        });
-      }
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+// --- Shared tier CTA button ---
+const TierButton = ({
+  tier,
+  onClick,
+}: {
+  tier: TicketTier;
+  onClick: () => void;
+}) => {
+  if (tier.status === "closed") {
+    return (
+      <button
+        type="button"
+        disabled
+        aria-disabled="true"
+        className="
+          w-full
+          rounded-xl
+          py-4
+          flex
+          items-center
+          justify-center
+          gap-2
+          text-sm
+          font-bold
+          text-slate-500
+          bg-slate-800/50
+          border
+          border-white/10
+          cursor-not-allowed
+          select-none
+        "
+      >
+        <Lock className="h-4 w-4" />
+        <span>Registration Closed</span>
+      </button>
+    );
+  }
 
   return (
-    <div className="mb-8 overflow-hidden rounded-xl border border-white/5 bg-black/40 p-4">
-      <p className="mb-3 text-[10px] font-bold tracking-[0.2em] text-cyan-400 uppercase flex items-center justify-center gap-2">
-        <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
-        Offer Ends In
-      </p>
-      <div className="flex justify-center gap-4 text-white">
-        {[
-          { label: "Days", value: timeLeft.days },
-          { label: "Hours", value: timeLeft.hours },
-          { label: "Mins", value: timeLeft.minutes },
-          { label: "Secs", value: timeLeft.seconds },
-        ].map((time, idx) => (
-          <div key={idx} className="flex flex-col items-center">
-            <span className="text-2xl font-bold tracking-wider tabular-nums">
-              {time.value.toString().padStart(2, "0")}
-            </span>
-            <span className="text-[9px] text-slate-400 uppercase tracking-widest mt-1">
-              {time.label}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
+    <button
+      onClick={onClick}
+      className="
+    group
+    relative
+    w-full
+    overflow-hidden
+
+    rounded-xl
+    py-4
+
+    flex
+    items-center
+    justify-center
+    gap-2
+
+    text-sm
+    font-bold
+    text-black
+
+    bg-gradient-to-b
+    from-[#FFB238]
+    via-[#FF9900]
+    to-[#CC7000]
+
+    border
+    border-[#FFD27A]/20
+
+    backdrop-blur-xl
+
+    shadow-[0_4px_20px_rgba(255,153,0,0.35)]
+
+    transition-all
+    duration-500
+
+    hover:scale-[1.03]
+    hover:-translate-y-0.5
+    hover:shadow-[0_0_25px_rgba(255,153,0,0.7),0_0_50px_rgba(255,153,0,0.45),0_0_100px_rgba(255,153,0,0.25)]
+
+    active:scale-[0.98]
+    cursor-pointer
+  "
+    >
+      {/* Glass Highlight */}
+      <span
+        className="
+      absolute
+      inset-0
+      rounded-xl
+      bg-gradient-to-b
+      from-white/30
+      via-white/10
+      to-transparent
+    "
+      />
+
+      {/* Bloom */}
+      <span
+        className="
+      absolute
+      -inset-4
+      rounded-xl
+      bg-[#FF9900]/40
+      blur-2xl
+      opacity-0
+      transition-all
+      duration-500
+      group-hover:opacity-100
+      group-hover:scale-125
+    "
+      />
+
+      {/* Shine */}
+      <span
+        className="
+      absolute
+      -left-20
+      top-0
+      h-full
+      w-12
+      rotate-12
+      bg-white/40
+      blur-sm
+      transition-all
+      duration-700
+      group-hover:left-[120%]
+    "
+      />
+
+      {/* Button Text */}
+      <span className="relative z-10">{tier.buttonText}</span>
+    </button>
   );
 };
 
@@ -259,8 +358,8 @@ export default function Registration() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="mx-auto max-w-2xl text-lg md:text-xl text-slate-400 mt-6 leading-relaxed"
             >
-              Limited seats across all tiers. Secure your spot before allocation
-              runs out.
+              Limited seats across all tiers. Early Bird, Regular and Premium
+              registrations are closing soon — COMMUNITY PATRON is now closed.
             </motion.p>
           </motion.div>
 
@@ -270,28 +369,32 @@ export default function Registration() {
               const fillPercentage = Math.round(
                 (tier.ticketsClaimed / tier.totalTickets) * 100,
               );
+              const isClosed = tier.status === "closed";
 
               return (
                 <motion.div
                   key={tier.id}
                   initial={{ opacity: 0, y: 80 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ y: -12 }}
+                  whileHover={isClosed ? undefined : { y: -12 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{
                     delay: idx * 0.15,
                     duration: 0.8,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="group relative flex flex-col rounded-[32px] border border-purple-500/30 bg-white/[0.03] p-6 md:p-10 transition-[border-color] duration-500 hover:border-purple-500 overflow-hidden"
+                  className={`group relative flex flex-col rounded-[32px] border border-purple-500/30 bg-white/[0.03] p-6 md:p-10 transition-[border-color] duration-500 overflow-hidden ${
+                    isClosed ? "opacity-70" : "hover:border-purple-500"
+                  }`}
                 >
                   {tier.badge && (
                     <div className="absolute top-6 -right-11 z-20 rotate-45 overflow-hidden">
                       <div
-                        className="px-10 py-1.5 text-[10px] font-black uppercase tracking-[0.25em] text-black shadow-xl border-y border-white/20"
+                        className={`px-10 py-1.5 text-[10px] font-black uppercase tracking-[0.25em] shadow-xl border-y border-white/20 ${
+                          isClosed ? "text-white" : "text-black"
+                        }`}
                         style={{
-                          background:
-                            "linear-gradient(135deg, #FFB84D 0%, #FF9900 50%, #E67E00 100%)",
+                          background: badgeGradient(tier.status),
                         }}
                       >
                         {tier.badge}
@@ -324,9 +427,7 @@ export default function Registration() {
                   </ul>
 
                   <div className="mt-auto relative z-10">
-                    {FEATURE_FLAGS.showTimer && tier.id === "early bird" && (
-                      <Countdown />
-                    )}
+                    {tier.status === "closing-soon" && <ClosingSoonNotice />}
 
                     {FEATURE_FLAGS.showAllocation &&
                       tier.id !== "early-bird" && (
@@ -354,98 +455,10 @@ export default function Registration() {
                         </div>
                       )}
 
-                    <button
+                    <TierButton
+                      tier={tier}
                       onClick={() => setSelectedTier(tier)}
-                      className="
-    group
-    relative
-    w-full
-    overflow-hidden
-
-    rounded-xl
-    py-4
-
-    flex
-    items-center
-    justify-center
-    gap-2
-
-    text-sm
-    font-bold
-    text-black
-
-    bg-gradient-to-b
-    from-[#FFB238]
-    via-[#FF9900]
-    to-[#CC7000]
-
-    border
-    border-[#FFD27A]/20
-
-    backdrop-blur-xl
-
-    shadow-[0_4px_20px_rgba(255,153,0,0.35)]
-
-    transition-all
-    duration-500
-
-    hover:scale-[1.03]
-    hover:-translate-y-0.5
-    hover:shadow-[0_0_25px_rgba(255,153,0,0.7),0_0_50px_rgba(255,153,0,0.45),0_0_100px_rgba(255,153,0,0.25)]
-
-    active:scale-[0.98]
-    cursor-pointer
-  "
-                    >
-                      {/* Glass Highlight */}
-                      <span
-                        className="
-      absolute
-      inset-0
-      rounded-xl
-      bg-gradient-to-b
-      from-white/30
-      via-white/10
-      to-transparent
-    "
-                      />
-
-                      {/* Bloom */}
-                      <span
-                        className="
-      absolute
-      -inset-4
-      rounded-xl
-      bg-[#FF9900]/40
-      blur-2xl
-      opacity-0
-      transition-all
-      duration-500
-      group-hover:opacity-100
-      group-hover:scale-125
-    "
-                      />
-
-                      {/* Shine */}
-                      <span
-                        className="
-      absolute
-      -left-20
-      top-0
-      h-full
-      w-12
-      rotate-12
-      bg-white/40
-      blur-sm
-      transition-all
-      duration-700
-      group-hover:left-[120%]
-    "
-                      />
-
-                      {/* Button Text */}
-                      <span className="relative z-10">{tier.buttonText}</span>
-                    </button>
+                    />
                   </div>
                 </motion.div>
               );
@@ -458,12 +471,14 @@ export default function Registration() {
               const fillPercentage = Math.round(
                 (tier.ticketsClaimed / tier.totalTickets) * 100,
               );
+              const isClosed = tier.status === "closed";
+
               return (
                 <motion.div
                   key={tier.id}
                   initial={{ opacity: 0, y: 80 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ y: -12 }}
+                  whileHover={isClosed ? undefined : { y: -12 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{
                     delay: 0.4 + idx * 0.15,
@@ -471,15 +486,18 @@ export default function Registration() {
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   // Changed p-10 to p-6 md:p-10 for better mobile spacing
-                  className="group relative flex flex-col rounded-[32px] border border-purple-500/30 bg-white/[0.03] p-6 md:p-10 transition-[border-color] duration-500 hover:border-purple-500 overflow-hidden"
+                  className={`group relative flex flex-col rounded-[32px] border border-purple-500/30 bg-white/[0.03] p-6 md:p-10 transition-[border-color] duration-500 overflow-hidden ${
+                    isClosed ? "opacity-70" : "hover:border-purple-500"
+                  }`}
                 >
                   {tier.badge && (
                     <div className="absolute top-6 -right-11 z-20 rotate-45 overflow-hidden">
                       <div
-                        className="px-10 py-1.5 text-[10px] font-black uppercase tracking-[0.25em] text-black shadow-xl border-y border-white/20"
+                        className={`px-10 py-1.5 text-[10px] font-black uppercase tracking-[0.25em] shadow-xl border-y border-white/20 ${
+                          isClosed ? "text-white" : "text-black"
+                        }`}
                         style={{
-                          background:
-                            "linear-gradient(135deg, #FFB84D 0%, #FF9900 50%, #E67E00 100%)",
+                          background: badgeGradient(tier.status),
                         }}
                       >
                         {tier.badge}
@@ -491,7 +509,7 @@ export default function Registration() {
                     <h3 className="text-xl font-bold tracking-[0.2em] text-purple-400 uppercase">
                       {tier.name}
                     </h3>
-                    <div className="flex items-baseline gap-1 mr-3">
+                    <div className="flex items-baseline gap-1 mr-8">
                       <span className="text-3xl lg:text-4xl font-black text-white tracking-tight">
                         ₹{tier.price}
                       </span>
@@ -514,6 +532,8 @@ export default function Registration() {
                   </ul>
 
                   <div className="mt-auto relative z-10">
+                    {tier.status === "closing-soon" && <ClosingSoonNotice />}
+
                     {FEATURE_FLAGS.showAllocation && (
                       <div className="mb-6">
                         <div className="flex justify-between text-[10px] text-slate-400 uppercase tracking-widest mb-2 font-medium">
@@ -539,98 +559,10 @@ export default function Registration() {
                       </div>
                     )}
 
-                    <button
+                    <TierButton
+                      tier={tier}
                       onClick={() => setSelectedTier(tier)}
-                      className="
-    group
-    relative
-    w-full
-    overflow-hidden
-
-    rounded-xl
-    py-4
-
-    flex
-    items-center
-    justify-center
-    gap-2
-
-    text-sm
-    font-bold
-    text-black
-
-    bg-gradient-to-b
-    from-[#FFB238]
-    via-[#FF9900]
-    to-[#CC7000]
-
-    border
-    border-[#FFD27A]/20
-
-    backdrop-blur-xl
-
-    shadow-[0_4px_20px_rgba(255,153,0,0.35)]
-
-    transition-all
-    duration-500
-
-    hover:scale-[1.03]
-    hover:-translate-y-0.5
-    hover:shadow-[0_0_25px_rgba(255,153,0,0.7),0_0_50px_rgba(255,153,0,0.45),0_0_100px_rgba(255,153,0,0.25)]
-
-    active:scale-[0.98]
-    cursor-pointer
-  "
-                    >
-                      {/* Glass Highlight */}
-                      <span
-                        className="
-      absolute
-      inset-0
-      rounded-xl
-      bg-gradient-to-b
-      from-white/30
-      via-white/10
-      to-transparent
-    "
-                      />
-
-                      {/* Bloom */}
-                      <span
-                        className="
-      absolute
-      -inset-4
-      rounded-xl
-      bg-[#FF9900]/40
-      blur-2xl
-      opacity-0
-      transition-all
-      duration-500
-      group-hover:opacity-100
-      group-hover:scale-125
-    "
-                      />
-
-                      {/* Shine */}
-                      <span
-                        className="
-      absolute
-      -left-20
-      top-0
-      h-full
-      w-12
-      rotate-12
-      bg-white/40
-      blur-sm
-      transition-all
-      duration-700
-      group-hover:left-[120%]
-    "
-                      />
-
-                      {/* Button Text */}
-                      <span className="relative z-10">{tier.buttonText}</span>
-                    </button>
+                    />
                   </div>
                 </motion.div>
               );

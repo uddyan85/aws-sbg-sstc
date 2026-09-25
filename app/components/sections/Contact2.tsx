@@ -22,6 +22,7 @@ const organizers = [
     image: "/uddyan_sahu.png",
     linkedin: "https://www.linkedin.com/in/uddyan-sahu/",
     email: "uddyansahu7@gmail.com",
+    phone: "+91 8518903022",
   },
   // Add more organizers here if needed
 ];
@@ -39,6 +40,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     role: "",
     reason: "",
     message: "",
@@ -82,6 +84,7 @@ export default function Contact() {
     if (step === 2) return formData.role.trim().length > 0;
     if (step === 3) return formData.reason.length > 0;
     if (step === 4) return formData.message.trim().length > 0;
+    if (step === 5) return formData.phone.trim().length > 0; 
     return false;
   };
 
@@ -114,6 +117,7 @@ export default function Contact() {
       access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
       name: formData.name,
       email: formData.email,
+      phone: formData.phone,
       role: formData.role,
       reason: formData.reason,
       message: formData.message,
@@ -142,7 +146,7 @@ export default function Contact() {
       if (result.success) {
         setSubmitStatus("success");
         // Reset form
-        setFormData({ name: "", email: "", role: "", reason: "", message: "" });
+        setFormData({ name: "", email: "", role: "", reason: "", message: "", phone: "" });
         setStep(0);
         // Clear success message after 5 seconds
         setTimeout(() => setSubmitStatus(null), 5000);
@@ -295,6 +299,25 @@ export default function Contact() {
             />
           </>
         );
+      case 5:
+        return (
+          <>
+            <h2 className={questionClasses}>And my phone number is</h2>
+            <input
+              ref={(el) => {
+                inputRefs.current[5] = el;
+              }}
+              name="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
+              placeholder="Type here..."
+              className={inputClasses}
+              aria-label="Your phone number"
+            />
+          </>
+        );
       default:
         return null;
     }
@@ -355,7 +378,7 @@ export default function Contact() {
           >
             <Users size={18} className="shrink-0" />
             <span className="hidden md:block ml-2.5 font-medium text-xs lg:text-sm tracking-widest whitespace-nowrap">
-              {isConnectOpen ? "CLOSE" : "CONNECT WITH ORGANIZERS"}
+              {isConnectOpen ? "CLOSE" : "CONNECT WITH ORGANIZER"}
             </span>
           </button>
         </div>
@@ -433,7 +456,7 @@ export default function Contact() {
             : "-translate-x-full opacity-0 pointer-events-none"
         }`}
       >
-        <div className="w-full max-w-7xl h-full p-6 md:p-12 overflow-y-auto pt-30 md:pt-32 flex flex-col">
+        <div className="w-full max-w-7xl h-full p-6 md:p-12 overflow-y-auto pt-25 md:pt-25 flex flex-col">
           <h2 className="text-4xl md:text-6xl font-light text-white mb-12 tracking-wide text-center">
             Connect with an{" "}
             <span className="text-[#A45AFA] italic">Organizer</span>
@@ -446,7 +469,6 @@ export default function Contact() {
                 className="flex-1 max-w-md mx-auto lg:mx-0 bg-purple-900/10 border border-purple-500 p-8 rounded-[2rem] flex flex-col justify-between items-center text-center transition-all duration-300 hover:bg-white/[0.04] hover:border-purple-500"
               >
                 <div className="flex flex-col items-center gap-4 mb-4">
-                  {/* Uncomment if you have images */}
                   <img
                     src={org.image}
                     alt={org.name}
@@ -480,6 +502,14 @@ export default function Contact() {
                     <FaEnvelope size={14} /> Email
                   </a>
                 </div>
+                <div className="flex flex-wrap sm:flex-nowrap gap-2 w-full justify-center mt-2">
+                  <a
+                    href={`tel:${org.phone}`}
+                    className="flex-1 flex items-center justify-center gap-2 py-3 bg-white/5 hover:bg-[#A45AFA] hover:text-white rounded-full text-xs font-medium tracking-wide transition-all duration-300 text-white/70 min-w-[100px] cursor-pointer"
+                  >
+                    <span className="text-sm">📞 {org.phone}</span>
+                  </a>
+                  </div>
               </div>
             ))}
           </div>

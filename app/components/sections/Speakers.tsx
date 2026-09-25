@@ -59,7 +59,7 @@ const speakers = [
     name: "Varsha Verma",
     company: "AWS Community Builder",
     category: "speaker",
-     topic: "SOON TO BE ANNOUNCED",
+     topic: "Cloud Under Lockdown: Rethinking The Cloud Security",
     image: "/Varsha_Verma.jpeg",
     // socials: { linkedin: "#" },
   },
